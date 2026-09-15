@@ -1,7 +1,7 @@
 # Case File: Graph Neural Networks — Master Slide-by-Slide Speaker Script
 
 **Deck Target**: [gnn-deck.tex](file:///c:/Users/user/Desktop/presentation/gnn-deck.tex) / [gnn-deck.pdf](file:///c:/Users/user/Desktop/presentation/gnn-deck.pdf)
-**Total Slides**: 34 Slides (112 PDF Pages)
+**Total Slides**: 35 Slides (113 PDF Pages)
 **Target Duration**: 10:00 – 11:30 Total Runtime
 **Delivery Style**: Conversational, investigative, Veritasium-style causal progression (*Puzzle → Failure → Mathematical Discovery → Real-World Consequence*).
 
@@ -37,41 +37,48 @@
 
 ---
 
-### Slide 01–02 [Pages 1–9] · Scene 01: Cold Open — Mbappé and His Connections
+### Cover [Page 1] · Graph Neural Networks
+**Visuals**: Full-page cover image: "GRAPH NEURAL NETWORKS" with the team standing inside a network of connected topics (molecule, globe, people, city, weather, football).
+
+- *(On screen while the audience settles. Introduce yourselves, then click straight into the cold open without explaining the topic.)*
+
+---
+
+### Slide 01–02 [Pages 2–10] · Scene 01: Cold Open — Mbappé and His Connections
 **Visuals**: Same nine clicks as before, now spread over three slides on the deck's normal white background. Pages 1–2: Mbappé alone as the centre node. Pages 3–6: the three photos arrive as neighbouring nodes, each joined to him by an edge labelled with the relationship in orange (`PITCH STAFF — ordered to mop the pitch`, `THE REFEREE — told how to referee`, `YOU, THE VIEWER — stared down through the screen`). Pages 7–9: Mbappé now appears in the military-uniform photo, still linked to the three connections, with `INFERRED FROM HIS CONNECTIONS` → red `DICTATOR?` (of the penalty box); the two questions appear on the right and the connection edges turn orange on the last click.
 
-- **[Page 1 / Initial]** *(Mbappé alone: KYLIAN MBAPPÉ · FORWARD · WORLD CUP WINNER)*
+- **[Page 2 / Initial]** *(Mbappé alone: KYLIAN MBAPPÉ · FORWARD · WORLD CUP WINNER)*
   > "Can we trust this person?
   > Kylian Mbappé. Forward. World Cup winner."
 
-- **[Page 2 / Click 1]** *(On his own, nothing looks suspicious.)*
+- **[Page 3 / Click 1]** *(On his own, nothing looks suspicious.)*
   > "Look at him on his own. Nothing suspicious. Completely normal footballer."
 
-- **[Page 3 / Click 2]** *(Pitch staff photo + edge: ordered to mop the pitch)*
+- **[Page 4 / Click 2]** *(Pitch staff photo + edge: ordered to mop the pitch)*
   > "But let's look at how he interacts with the people around him.
   > Here he is with the pitch staff... ordering them to mop the pitch."
 
-- **[Page 4 / Click 3]** *(Referee photo + edge: told how to referee)*
+- **[Page 5 / Click 3]** *(Referee photo + edge: told how to referee)*
   > "Here he is with the referee. Telling the referee how to referee."
 
-- **[Page 5 / Click 4]** *(Viewer photo + edge: stared down through the screen)*
+- **[Page 6 / Click 4]** *(Viewer photo + edge: stared down through the screen)*
   > "And here he is with... you. Staring you down, straight through the TV."
 
-- **[Page 6 / Click 5]** *(Wait... why is everyone taking orders from this guy?)*
+- **[Page 7 / Click 5]** *(Wait... why is everyone taking orders from this guy?)*
   *(Pause. Let the audience connect it themselves.)*
   > "Wait. Why is everyone taking orders from this guy?"
 
-- **[Page 7 / Click 6]** *(Arrow: INFERRED FROM HIS CONNECTIONS → DICTATOR? (of the penalty box))*
+- **[Page 8 / Click 6]** *(Arrow: INFERRED FROM HIS CONNECTIONS → DICTATOR? (of the penalty box))*
   *(Deadpan. Wait for the laugh.)*
   > "Dictator. Of the penalty box.
   >
   > Notice we never learned a single new fact about Mbappé himself. Everything we concluded came from the edges: how he treats other people."
 
-- **[Page 8 / Click 7]** *(Title becomes: What if the person itself isn't the information?)*
+- **[Page 9 / Click 7]** *(Title becomes: What if the person itself isn't the information?)*
   *(Drop the comedy. Slow down.)*
   > "So what if the person itself isn't the information?"
 
-- **[Page 9 / Click 8]** *(What if the connections are? · every edge turns orange)*
+- **[Page 10 / Click 8]** *(What if the connections are? · every edge turns orange)*
   > "What if the **connections** are?
   >
   > So how do we normally make machines understand structured information?
@@ -79,64 +86,64 @@
 
 ---
 
-### Slide 03 [Pages 10–12] · Scene 02: The CNN Example — The Grid Assumption
+### Slide 03 [Pages 11–13] · Scene 02: The CNN Example — The Grid Assumption
 **Visuals**: A crisp 5x5 regular pixel grid appears. At Click 1, a golden 3x3 convolution patch highlights.
 
-- **[Page 10 / Initial]**
+- **[Page 11 / Initial]**
   > "Imagine this is an image. Each square is one pixel.
   > Deep learning is famously good at images, so let's see why."
 
-- **[Page 11 / Click 1]** *(Golden 3x3 convolution window highlights on the grid)*
+- **[Page 12 / Click 1]** *(Golden 3x3 convolution window highlights on the grid)*
   > "Suppose I give this image to a neural network. It succeeds because this image has rigid, predictable structure. Every pixel has an obvious neighbourhood: a pixel above it, below it, left, and right."
 
-- **[Page 12 / Click 2]** *(Subtitle: A neural network doesn't need to swallow the whole canvas at once.)*
+- **[Page 13 / Click 2]** *(Subtitle: A neural network doesn't need to swallow the whole canvas at once.)*
   > "A network doesn't need to swallow the entire image all at once. It can slide a local 3-by-3 window across predictable coordinates."
 
 ---
 
-### Slide 04 [Pages 13–18] · Scene 02: The CNN Example — The Hierarchy
+### Slide 04 [Pages 14–19] · Scene 02: The CNN Example — The Hierarchy
 **Visuals**: Left: 5x5 pixel grid. Right: Vertical pipeline revealing Pixels → Edges → Patterns → Shapes → Object Recognized.
 
-- **[Page 13 / Initial]** *(Pixels chip appears)*
+- **[Page 14 / Initial]** *(Pixels chip appears)*
   > "Because of that spatial regularity, we can think of a CNN as building increasingly complex features out of local patterns. Conceptually, pixels combine..."
-- **[Page 14 / Click 1]** *(Edges)*
+- **[Page 15 / Click 1]** *(Edges)*
   > "...into edges."
-- **[Page 15 / Click 2]** *(Patterns)*
+- **[Page 16 / Click 2]** *(Patterns)*
   > "Edges combine into patterns."
-- **[Page 16 / Click 3]** *(Shapes)*
+- **[Page 17 / Click 3]** *(Shapes)*
   > "Patterns combine into shapes."
-- **[Page 17 / Click 4]** *(Object Recognized in gold)*
+- **[Page 18 / Click 4]** *(Object Recognized in gold)*
   > "And shapes combine into an object recognized."
-- **[Page 18 / Click 5]** *(Bottom takeaway: Why does this work? Rigid geometric order)*
+- **[Page 19 / Click 5]** *(Bottom takeaway: Why does this work? Rigid geometric order)*
   *(Firm, authoritative tone)*
   > "Why does this work so brilliantly? Because an image possesses an obvious, rigid geometric order."
 
 ---
 
-### Slide 05 [Pages 19–21] · Scene 03: Name the CNN
+### Slide 05 [Pages 20–22] · Scene 03: Name the CNN
 **Visuals**: High-impact editorial title: *Convolutional Neural Network*, followed by *CNN* badge.
 
-- **[Page 19 / Initial]**
+- **[Page 20 / Initial]**
   > "This architecture has a name you already know:"
-- **[Page 20 / Click 1]** *(CNN badge pops)*
+- **[Page 21 / Click 1]** *(CNN badge pops)*
   > "A Convolutional Neural Network. A CNN."
-- **[Page 21 / Click 2]** *(Subtitle: A network designed for data with an obvious spatial arrangement.)*
+- **[Page 22 / Click 2]** *(Subtitle: A network designed for data with an obvious spatial arrangement.)*
   > "CNNs are brilliant, but they come with a hidden contract: they only work because the world we handed them was neatly laid out on a grid."
 
 ---
 
-### Slide 06 [Pages 22–25] · Scene 04: Grid vs. Graph — Breaking the Assumption
+### Slide 06 [Pages 23–26] · Scene 04: Grid vs. Graph — Breaking the Assumption
 **Visuals**: Left panel: 5x5 pixel grid with cell #37 in amber. Right panel: An irregular, asymmetric graph with 6 nodes connected by crimson edges.
 
-- **[Page 22 / Initial]** *(Pixel 37 on left grid)*
+- **[Page 23 / Initial]** *(Pixel 37 on left grid)*
   > "In an image, pixel number 37 has predictable neighbours. Left, right, top, bottom. Its geometry is fixed."
-- **[Page 23 / Click 1]** *(Right panel prompt: What happens when the data has no grid?)*
+- **[Page 24 / Click 1]** *(Right panel prompt: What happens when the data has no grid?)*
   *(Shift gaze to the right side of the screen.)*
   > "CNNs work because images have a grid.
   > But what happens when our data doesn't?"
-- **[Page 24 / Click 2]** *(Irregular graph appears)*
+- **[Page 25 / Click 2]** *(Irregular graph appears)*
   > "Look over here. What is pixel 37 in this graph?"
-- **[Page 25 / Click 3]** *(Bottom punchline: There is no pixel 37. Only things and relationships.)*
+- **[Page 26 / Click 3]** *(Bottom punchline: There is no pixel 37. Only things and relationships.)*
   *(Slow down. Emphasize every word.)*
   > "There is no pixel 37. There are no rows. No columns. No left-to-right scanning order.
   >
@@ -144,59 +151,59 @@
 
 ---
 
-### Slide 07 [Pages 26–30] · Scene 05: Obvious Solutions 1 & 2
+### Slide 07 [Pages 27–31] · Scene 05: Obvious Solutions 1 & 2
 **Visuals**: Left: Solution 1 (Discard the edges → isolated dots). Right: Solution 2 (Flatten the adjacency matrix: $A \rightarrow$ [0,1,0,1, 1,0,1,0, …]).
 
-- **[Page 26 / Initial]** *(Solution 1: Discard the edges)*
+- **[Page 27 / Initial]** *(Solution 1: Discard the edges)*
   > "So how do we feed a graph into deep learning? There are two obvious ideas that everyone tries first.
   >
   > Idea number one: throw away the edges. Treat every node as an isolated dot."
-- **[Page 27 / Click 1]** *(LOSES GRAPH STRUCTURE · What if we keep them?)*
+- **[Page 28 / Click 1]** *(LOSES GRAPH STRUCTURE · What if we keep them?)*
   > "That throws away the very information we care about. The cold open already showed us the edges hold the secret."
-- **[Page 28 / Click 2]** *(Solution 2: Flatten the adjacency matrix)*
+- **[Page 29 / Click 2]** *(Solution 2: Flatten the adjacency matrix)*
   > "Fine. Let's preserve those connections in a form a conventional model can process.
   > Write the graph as an adjacency matrix of ones and zeros, flatten it into one long row, and feed that row into a standard neural network."
-- **[Page 29 / Click 3]** *(SENSITIVE TO NODE ORDERING)*
+- **[Page 30 / Click 3]** *(SENSITIVE TO NODE ORDERING)*
   > "The matrix itself is perfectly good graph data. The problem is what a standard network does with it: it treats position 1 of that row as meaning something specific. And position 1 depends on how we numbered the nodes."
-- **[Page 30 / Click 4]** *(Why do naive approaches fail?)*
+- **[Page 31 / Click 4]** *(Why do naive approaches fail?)*
   *(Lean in slightly; deliver as a cliffhanger)*
   > "Why would that matter? Watch."
 
 ---
 
-### Slide 08 [Pages 31–36] · Scene 06: The Failure — Permutation Sensitivity
+### Slide 08 [Pages 32–37] · Scene 06: The Failure — Permutation Sensitivity
 **Visuals**: Left: Caffeine molecule (Numbering A: 1-6) with Toxicity: 0.83. Right: Exact same molecule renumbered (Numbering B: 4,1,6,2,5,3) with Toxicity: 0.11. Top line: `TASK: PREDICT WHETHER THIS MOLECULE IS TOXIC`. Both numbers are tagged `ILLUSTRATIVE PREDICTION`.
 
-- **[Page 31 / Initial]** *(Header: Same molecule. Same atoms. Same bonds.)*
+- **[Page 32 / Initial]** *(Header: Same molecule. Same atoms. Same bonds.)*
   > "Now imagine the graph isn't just anonymous dots. Imagine the nodes are atoms, and the edges are chemical bonds.
   > Suppose we're trying to predict whether this molecule is toxic.
   >
   > Six atoms, seven bonds. We number the atoms 1, 2, 3, 4, 5, 6."
-- **[Page 32 / Click 1]** *(Green toxicity card: 0.83)*
+- **[Page 33 / Click 1]** *(Green toxicity card: 0.83)*
   > "We flatten its adjacency matrix and feed it to the network. Suppose the model predicts toxicity 0.83. *(These numbers are an illustration, not a real model's output.)*"
-- **[Page 33 / Click 2]** *(Center question: What if we simply renumber the atoms?)*
+- **[Page 34 / Click 2]** *(Center question: What if we simply renumber the atoms?)*
   > "Now, what if another scientist writes down the exact same molecule, but numbers the atoms in a different order?"
-- **[Page 34 / Click 3]** *(Numbering B appears with identical bonds)*
+- **[Page 35 / Click 3]** *(Numbering B appears with identical bonds)*
   > "Same atoms. Same bonds. Nothing in the physical universe changed."
-- **[Page 35 / Click 4]** *(Red toxicity card: 0.11)*
+- **[Page 36 / Click 4]** *(Red toxicity card: 0.11)*
   > "We feed the new matrix in. Now suppose the same model says 0.11. Non-toxic."
-- **[Page 36 / Click 5]** *(Bottom takeaway)*
+- **[Page 37 / Click 5]** *(Bottom takeaway)*
   > "The rows and columns swapped places, and the neural network gave a completely contradictory answer."
 
 ---
 
-### Slide 09 [Pages 37–40] · Scene 06: The Failure — The Red X
+### Slide 09 [Pages 38–41] · Scene 06: The Failure — The Red X
 **Visuals**: Numbering A vs. Numbering B, each with its 6×6 adjacency matrix drawn above its toxicity number (filled square = bond). The two matrices have visibly different filling patterns, with `SAME BONDS · DIFFERENT FILLING` between them. Toxicity 0.83 vs. 0.11. A bold crimson X lands across Numbering B's matrix and prediction.
 
-- **[Page 37 / Initial]**
+- **[Page 38 / Initial]**
   > "Here are the two adjacency matrices the network actually saw. Same seven bonds, but because we numbered the atoms differently, the ones land in completely different cells.
   > Toxicity 0.83. Toxicity 0.11. Same molecule. Two opposite predictions."
-- **[Page 38 / Click 1]** *(Massive crimson X slams onto screen)*
+- **[Page 39 / Click 1]** *(Massive crimson X slams onto screen)*
   *(Pause for one full second. Let the visual strike home.)*
   > "This is a catastrophic failure."
-- **[Page 39 / Click 2]** *(Amber text: The network learned our filing system.)*
+- **[Page 40 / Click 2]** *(Amber text: The network learned our filing system.)*
   > "The network didn't learn chemistry."
-- **[Page 40 / Click 3]** *(Bold dark text: It never learned the chemistry.)*
+- **[Page 41 / Click 3]** *(Bold dark text: It never learned the chemistry.)*
   *(Speak with absolute conviction)*
   > "The network learned our **filing system**. It memorized which row we wrote first.
   >
@@ -210,67 +217,55 @@
 
 ---
 
-### Slide 10 [Pages 41–44] · Scene 07: The Pivotal Question
+### Slide 10 [Pages 42–45] · Scene 07: The Pivotal Question
 **Visuals**: Left: three questions stack up, each earlier one fading as the next appears. Right: a single node → its neighbours appear → gold arrows show influence flowing in.
 
-- **[Page 41 / Initial]** *(What is this node?)*
+- **[Page 42 / Initial]** *(What is this node?)*
   > "The relationships. So let's change the question we ask.
   > Classical machine learning asks: *What is this node?* What are its own features?"
-- **[Page 42 / Click 1]** *(What is connected to it? · neighbours appear)*
+- **[Page 43 / Click 1]** *(What is connected to it? · neighbours appear)*
   > "But that's exactly what failed. So ask instead: *What is connected to it?*
   > Remember Mbappé: his own card looked clean. His neighbours didn't."
-- **[Page 43 / Click 2]** *(Who influences this node? · arrows flow inward)*
+- **[Page 44 / Click 2]** *(Who influences this node? · arrows flow inward)*
   *(Pause. Emphasize the word 'influences'.)*
   > "And then the real question: **Who influences this node?**"
-- **[Page 44 / Click 3]** *(RELATIONAL REASONING)*
+- **[Page 45 / Click 3]** *(RELATIONAL REASONING)*
   > "That's relational reasoning, and it's the question ordinary neural networks were never designed to ask."
 
 ---
 
-### Slide 11 [Pages 45–50] · Scene 08: The GNN Idea
+### Slide 11 [Pages 46–51] · Scene 08: The GNN Idea
 **Visuals**: A target node with 3 neighbours. Three plain sentences come first; the step chips only appear once the steps are named.
 
-- **[Page 45 / Initial]** *(We need to use the neighbourhood.)*
+- **[Page 46 / Initial]** *(We need to use the neighbourhood.)*
   > "So if the answer lives in the connections, we need to use the neighbourhood."
-- **[Page 46 / Click 1]** *(That is the idea behind a Graph Neural Network.)*
+- **[Page 47 / Click 1]** *(That is the idea behind a Graph Neural Network.)*
   > "That is the whole idea behind a Graph Neural Network."
-- **[Page 47 / Click 2]** *(It passes messages between connected nodes. · MESSAGE PASSING)*
+- **[Page 48 / Click 2]** *(It passes messages between connected nodes. · MESSAGE PASSING)*
   *(Pause here. Let the idea land before naming any steps.)*
   > "It works by passing messages between connected nodes."
-- **[Page 48 / Click 3]** *(Envelopes fly in. Chips appear; 1. GATHER lights)*
+- **[Page 49 / Click 3]** *(Envelopes fly in. Chips appear; 1. GATHER lights)*
   > "One round of that has three steps. **Gather**: every neighbour hands over a copy of what it knows."
-- **[Page 49 / Click 4]** *(Sum box. 2. AGGREGATE lights)*
+- **[Page 50 / Click 4]** *(Sum box. 2. AGGREGATE lights)*
   > "**Aggregate**: blend those messages into one summary, without caring who spoke first."
-- **[Page 50 / Click 5]** *(Node turns amber. 3. UPDATE lights)*
+- **[Page 51 / Click 5]** *(Node turns amber. 3. UPDATE lights)*
   > "**Update**: the node mixes that summary into its own description of itself.
   > That sounds abstract, so let's run one by hand with real numbers."
 
 ---
 
-### Slide 11b [Page 51] · Scene 08: The Key Difference — What Went Wrong, and How a GNN Fixes It
-**Visuals**: One static slide, three rows. Each row pairs a drawback we actually hit earlier (red card, with the scene it came from) with the GNN step that fixes it (gold card).
+### Slide 11b [Page 52] · Scene 08: The Key Difference — What Went Wrong, and How a GNN Fixes It
+**Visuals**: One key point, no boxes. Left: two small matrices with different fillings and ≠, labelled *Answer depends on numbering* (red). Arrow. Right: neighbour messages merging into one average, labelled *Order doesn't matter* (gold).
 
-| The drawback we hit | Seen in | How a GNN solves it |
-|---|---|---|
-| Needs a fixed grid or vector | Scenes 04–05 | Reads the graph as it is · Step 1 Gather |
-| Answer depends on numbering | Scene 06 | Order cannot matter · Step 2 Aggregate |
-| Judges a node only by itself | Scene 01 | Relationships become features · Step 3 Update |
-
-- *(Point to: row 1)*
-  > "Let's be precise about what went wrong. First: ordinary networks need a fixed grid or vector. A graph has no pixel 37, and when we dropped the edges to make it fit, we lost the structure.
-  > A GNN reads the graph as it is. Each node simply looks at whoever it's connected to, however many there are. That's Gather."
-- *(Point to: row 2)*
-  > "Second: the answer depended on how we numbered the nodes. Same molecule, renumbered, and the prediction jumped from 0.83 to 0.11.
-  > A GNN averages its neighbours' messages, and an average doesn't care about order: mean of Bob and Carol equals mean of Carol and Bob. That's Aggregate."
-- *(Point to: row 3)*
-  > "Third: ordinary networks judge a node only by its own features. Mbappé's own card looked completely normal; the evidence was in his connections.
-  > A GNN rewrites each node's card using its own features plus its neighbours'. The relationships become features. That's Update."
-- *(Point to: takeaway)*
-  > "So each fix is one of the three steps. Let's run them by hand."
+- *(Point to: left)*
+  > "Here's the core thing that went wrong. An ordinary network's answer depends on how we number the nodes. Same molecule, renumbered: 0.83 versus 0.11."
+- *(Point to: right)*
+  > "A GNN fixes that. Each node averages its neighbours' messages, and an average doesn't care about order. Bob then Carol, or Carol then Bob: same answer.
+  > Let's watch that happen with real numbers."
 
 ---
 
-### Slide 12 [Page 52] · Scene 09: Run It By Hand — Setup
+### Slide 12 [Page 53] · Scene 09: Run It By Hand — Setup
 **Visuals**: Five people on screen: Alice in the center, connected to Bob and Carol; David connected to Bob, Eve connected to Carol. Right panel: Dossier worksheet with two vector slots: Activity and Topic X.
 
 - *(Point to: Graph appears)*
@@ -291,7 +286,7 @@
 
 ---
 
-### Slide 13 [Page 53] · Scene 09: Run It By Hand — Step 1: Gather
+### Slide 13 [Page 54] · Scene 09: Run It By Hand — Step 1: Gather
 **Visuals**: Amber arrows run from Bob and Carol into Alice, with their messages on the edges. David and Eve are dimmed.
 
 - *(Point to: Header: Step 1 of 3 --- GATHER)*
@@ -310,7 +305,7 @@
 
 ---
 
-### Slide 14 [Page 54] · Scene 09: Run It By Hand — Step 2: Aggregate
+### Slide 14 [Page 55] · Scene 09: Run It By Hand — Step 2: Aggregate
 **Visuals**: Worksheet calculates the slot-by-slot average. Neighbourhood badge under Alice: [0.50, 1.00]. An order-invariance line shows mean(Bob, Carol) = mean(Carol, Bob).
 
 - *(Point to: Header: Step 2 of 3 --- AGGREGATE)*
@@ -333,7 +328,7 @@
 
 ---
 
-### Slide 15 [Page 55] · Scene 09: Run It By Hand — Step 3: Update
+### Slide 15 [Page 56] · Scene 09: Run It By Hand — Step 3: Update
 **Visuals**: Worksheet shows linear combination of Alice's own card + neighbourhood summary. Alice's card is shown already rewritten in amber: [0.65, 0.50].
 
 - *(Point to: Header: Step 3 of 3 --- UPDATE)*
@@ -354,7 +349,7 @@
 
 ---
 
-### Slide 16 [Page 56] · Scene 09: Run It By Hand — The Answer
+### Slide 16 [Page 57] · Scene 09: Run It By Hand — The Answer
 **Visuals**: Before vs. After side-by-side comparison. Classification readout calculates $p = \sigma(2.10) = 89\%$. LIKELY INTERESTED badge.
 
 - *(Point to: Before: Alice [0.80, 0.00])*
@@ -372,7 +367,7 @@
 
 ---
 
-### Slide 17 [Page 57] · Scene 09: Run It By Hand — All At Once
+### Slide 17 [Page 58] · Scene 09: Run It By Hand — All At Once
 **Visuals**: The full 5-node graph with every card already updated after round 1. All Topic X slots read 0.50.
 
 - *(Opening line)*
@@ -389,10 +384,10 @@
 
 ---
 
-### Slide 18 [Pages 58–59] · Scene 10: The Formal Equation (two static slides)
+### Slide 18 [Pages 59–60] · Scene 10: The Formal Equation (two static slides)
 **Visuals**: The full GNN equation $h_v^{(k+1)} = \sigma(W_{\text{self}} h_v^{(k)} + W_{\text{nbr}} \text{AGG}(\{h_u^{(k)} : u \in \mathcal{N}(v)\}))$ on both slides. Part 1 highlights the neighbours' side and dims Alice's own terms; Part 2 does the reverse. Every callout carries a number from Alice's run.
 
-**Page 58 · Part 1 — What the neighbours contribute**
+**Page 59 · Part 1 — What the neighbours contribute**
 - *(Opening line)*
   > "Here is the master equation of Graph Neural Networks. Don't let the notation intimidate you --- you have already calculated every single symbol by hand. Start with the bright half: the neighbours."
 - *(Point to: my neighbours {Bob, Carol})*
@@ -404,7 +399,7 @@
 - *(Point to: how much of them)*
   > "$W_{\text{nbr}}$ is the learned weight: how much to trust the neighbours. We used 0.5. That half of the equation is Gather and Aggregate."
 
-**Page 59 · Part 2 — What Alice keeps, and the new card**
+**Page 60 · Part 2 — What Alice keeps, and the new card**
 - *(Point to: how much of me)*
   > "Now the other half. $W_{\text{self}}$ is how much Alice keeps of her own previous card: 0.5 times [0.80, 0.00]."
 - *(Point to: squash it back into range)*
@@ -416,7 +411,7 @@
 
 ---
 
-### Slide 19 [Page 60] · Architecture: From Embeddings to Decisions
+### Slide 19 [Page 61] · Architecture: From Embeddings to Decisions
 **Visuals**: 3-stage pipeline: Raw Input $x_v$ → $K$-Layer GNN → Final Vector $h_v^{(K)}$.
 
 - *(Point to: Raw Input box)*
@@ -430,34 +425,34 @@
 
 ---
 
-### Slide 20 [Pages 61–65] · Solving the Crime: Fraud Detection
+### Slide 20 [Pages 62–66] · Solving the Crime: Fraud Detection
 **Visuals**: Left: Target #4091 embedding card containing Bank and Scam ring connections. Right: Softmax head fires → Crimson box: FRAUDULENT 94.2%.
 
-- **[Page 61 / Initial]** *(Suspect embedding card)*
+- **[Page 62 / Initial]** *(Suspect embedding card)*
   > "Let's return to our opening crime scene in Dhaka. Target #4091."
-- **[Page 62 / Click 1]** *(Embedding contents revealed)*
+- **[Page 63 / Click 1]** *(Embedding contents revealed)*
   > "The GNN compressed their network into their final embedding: 1 verified bank, 2 flagged scam rings."
-- **[Page 63 / Click 2]** *(Gold arrow & Softmax Head)*
+- **[Page 64 / Click 2]** *(Gold arrow & Softmax Head)*
   > "We pass that embedding into a simple softmax classifier head."
-- **[Page 64 / Click 3]** *(Red banner: FRAUDULENT 94.2%)*
+- **[Page 65 / Click 3]** *(Red banner: FRAUDULENT 94.2%)*
   *(Punchy delivery)*
   > "Output: Fraudulent with 94.2% confidence."
-- **[Page 65 / Click 4]** *(Bottom takeaway)*
+- **[Page 66 / Click 4]** *(Bottom takeaway)*
   > "The GNN closed the cold open. Guilt by association, proven mathematically."
 
 ---
 
-### Slide 21 [Pages 66–69] · The Three Graph Prediction Tasks
+### Slide 21 [Pages 67–70] · The Three Graph Prediction Tasks
 **Visuals**: Three dossier cards side-by-side: Node Level (Classification), Edge Level (Link Prediction), Graph Level (Property Test).
 
-- **[Page 66 / Initial]** *(Node Level card)*
+- **[Page 67 / Initial]** *(Node Level card)*
   > "And that same mechanism solves every graph problem in computer science across three distinct levels:
   > First, **Node Level**: Is this individual account a scammer? Will this customer churn?"
-- **[Page 67 / Click 1]** *(Edge Level card)*
+- **[Page 68 / Click 1]** *(Edge Level card)*
   > "Second, **Edge Level**: Will an edge form between these two nodes? This powers recommendation engines and friend suggestions on LinkedIn or Instagram."
-- **[Page 68 / Click 2]** *(Graph Level card)*
+- **[Page 69 / Click 2]** *(Graph Level card)*
   > "Third, **Graph Level**: Pool all node vectors together to predict a property of the whole graph: Is this entire molecule toxic? Is this financial network experiencing systemic risk?"
-- **[Page 69 / Click 3]** *(Bottom takeaway)*
+- **[Page 70 / Click 3]** *(Bottom takeaway)*
   > "One unified engine powers all three levels of prediction."
 
 ---
@@ -467,28 +462,28 @@
 
 ---
 
-### Slide 22 [Pages 70–73] · Scene 11: Depth = Reach
+### Slide 22 [Pages 71–74] · Scene 11: Depth = Reach
 **Visuals**: Central node with concentric dashed circular reach boundaries: Layer 1 (1 hop) → Layer 2 (2 hops).
 
-- **[Page 70 / Initial]**
+- **[Page 71 / Initial]**
   > "Now, an intuitive question arises: if one layer let Alice hear from her direct neighbours..."
-- **[Page 71 / Click 1]** *(LAYER 1 badge in gold, 1.8cm dashed circle)*
+- **[Page 72 / Click 1]** *(LAYER 1 badge in gold, 1.8cm dashed circle)*
   > "...what happens if we stack a second layer?"
-- **[Page 72 / Click 2]** *(LAYER 2 badge, circle expands to 2.8cm, outer nodes illuminate)*
+- **[Page 73 / Click 2]** *(LAYER 2 badge, circle expands to 2.8cm, outer nodes illuminate)*
   > "In Layer 2, Alice's neighbours have already gathered from *their* neighbours. So Alice now hears from David and Eve --- two hops out!"
-- **[Page 73 / Click 3]** *(Takeaway: Depth is reach)*
+- **[Page 74 / Click 3]** *(Takeaway: Depth is reach)*
   > "In a GNN, **depth is reach**. Each extra layer widens the horizon of who a node can hear."
 
 ---
 
-### Slide 23 [Pages 74–75] · Scene 11: Over-Smoothing — Disaster at Layer 6
+### Slide 23 [Pages 75–76] · Scene 11: Over-Smoothing — Disaster at Layer 6
 **Visuals**: Top corner: LAYER 6 in crimson. All nodes wash out to identical, faint gray circles. Crimson title: OVER-SMOOTHING.
 
-- **[Page 74 / Initial]** *(Layer 6 counter, washed out gray nodes, OVER-SMOOTHING title)*
+- **[Page 75 / Initial]** *(Layer 6 counter, washed out gray nodes, OVER-SMOOTHING title)*
   > "So in deep learning, we always want more layers, right? In CNNs we use 50 or 100 layers. What happens if we stack 6 layers in a GNN?"
   *(Pause. Point to the faded, washed-out nodes.)*
   > "Disaster."
-- **[Page 75 / Click 1]** *(Both explanation bullets appear together)*
+- **[Page 76 / Click 1]** *(Both explanation bullets appear together)*
   *(Slow, deliberate delivery)*
   > "Remember Alice's demo: after just one round, every single person's Topic X slot already read 0.50.
   >
@@ -499,96 +494,96 @@
 
 ---
 
-### Slide 24 [Pages 76–79] · Scene 12: Attention — Not All Informants Are Equal
+### Slide 24 [Pages 77–80] · Scene 12: Attention — Not All Informants Are Equal
 **Visuals**: Alice between Bob and Carol. At Click 2, the edge to Bob thickens into glowing gold ($\alpha = 0.88$), while the edge to Carol fades to a thin hairline ($\alpha = 0.12$).
 
-- **[Page 76 / Initial]** *(We averaged Bob and Carol equally. Should we have?)*
+- **[Page 77 / Initial]** *(We averaged Bob and Carol equally. Should we have?)*
   > "Here is another flaw in our hand demo. We averaged Bob and Carol 50/50.
   >
   > But should we have?"
-- **[Page 77 / Click 1]** *(Red strings between nodes)*
+- **[Page 78 / Click 1]** *(Red strings between nodes)*
   > "What if Bob is a verified world expert on Topic X, and Carol is a casual observer?"
-- **[Page 78 / Click 2]** *(Bob's edge turns into a 4pt golden beam ($\alpha = 0.88$); Carol's turns into a faint line ($\alpha = 0.12$))*
+- **[Page 79 / Click 2]** *(Bob's edge turns into a 4pt golden beam ($\alpha = 0.88$); Carol's turns into a faint line ($\alpha = 0.12$))*
   *(Point with enthusiasm)*
   > "Why should Alice listen to them equally? She shouldn't!
   > The network should learn attention weights $\alpha$."
-- **[Page 79 / Click 3]** *(Bob node glows in gold, Carol dims)*
+- **[Page 80 / Click 3]** *(Bob node glows in gold, Carol dims)*
   > "Give 88% of your attention to the expert, and only 12% to the stranger."
 
 ---
 
-### Slide 25 [Pages 80–84] · Scene 12: The Architecture Zoo
+### Slide 25 [Pages 81–85] · Scene 12: The Architecture Zoo
 **Visuals**: Three architecture cards: GCN (Average everyone), GraphSAGE (Sample a few), GAT (Learn who to trust).
 
-- **[Page 80 / Initial]** *(GCN card)*
+- **[Page 81 / Initial]** *(GCN card)*
   > "That single realization gives rise to the entire family of modern GNN architectures:
   > Average everyone equally: that's **GCN** (Graph Convolutional Network)."
-- **[Page 81 / Click 1]** *(GraphSAGE card)*
+- **[Page 82 / Click 1]** *(GraphSAGE card)*
   > "When the graph has billions of nodes and you can't listen to everyone: sample a random subset. That's **GraphSAGE**."
-- **[Page 82 / Click 2]** *(GAT card highlighted in amber)*
+- **[Page 83 / Click 2]** *(GAT card highlighted in amber)*
   > "Learn dynamically who to trust using attention: that's **GAT** (Graph Attention Network)."
-- **[Page 83 / Click 3]** *(Header: Not every relationship is equally useful)*
+- **[Page 84 / Click 3]** *(Header: Not every relationship is equally useful)*
   > "Not every relationship is equally useful."
-- **[Page 84 / Click 4]** *(Bottom takeaway)*
+- **[Page 85 / Click 4]** *(Bottom takeaway)*
   > "Every modern GNN variant in the literature is simply a refined answer to one of three questions: how to gather, how to aggregate, or who to listen to."
 
 ---
 
-### Slide 26 [Pages 85–90] · Scene 13: Case Study 1 — Halicin (Drug Discovery)
+### Slide 26 [Pages 86–91] · Scene 13: Case Study 1 — Halicin (Drug Discovery)
 **Visuals**: Parchment dossier on left: *MIT · 2020 Halicin*. Right: Chemical ring graph with Carbon (C) and Nitrogen (N) nodes connected by crimson bonds. Green badge: *Killed Pan-Resistant Bacteria*.
 
-- **[Page 85 / Initial]** *(Halicin card & molecular graph)*
+- **[Page 86 / Initial]** *(Halicin card & molecular graph)*
   > "Up to this point, this might sound like an elegant academic theory.
   >
   > Let me show you what happens when this technology meets the real physical world.
   >
   > In 2020, researchers at MIT represented molecules as graphs. Atoms as nodes. Chemical bonds as edges."
-- **[Page 86 / Click 1]** *(Bullet 1: Screened 100 million molecules)*
+- **[Page 87 / Click 1]** *(Bullet 1: Screened 100 million molecules)*
   > "They screened a digital library of over **100 million** molecules."
-- **[Page 87 / Click 2]** *(Bullet 2: Learned chemical bond topologies)*
+- **[Page 88 / Click 2]** *(Bullet 2: Learned chemical bond topologies)*
   > "The GNN learned chemical bond topology --- completely immune to atom numbering."
-- **[Page 88 / Click 3]** *(Bullet 3: Flagged a molecule humans had overlooked)*
+- **[Page 89 / Click 3]** *(Bullet 3: Flagged a molecule humans had overlooked)*
   > "It flagged a candidate molecule that human chemists had completely overlooked because it looked nothing like any known antibiotic."
-- **[Page 89 / Click 4]** *(Green badge: Killed Pan-Resistant Bacteria)*
+- **[Page 90 / Click 4]** *(Green badge: Killed Pan-Resistant Bacteria)*
   > "They tested it in the lab. It wiped out *Acinetobacter baumannii* --- a deadly superbug resistant to every conventional antibiotic in medicine. They named it **Halicin**."
-- **[Page 90 / Click 5]** *(Bottom takeaway)*
+- **[Page 91 / Click 5]** *(Bottom takeaway)*
   *(Warm, inspiring tone)*
   > "A neural network read chemistry as a graph... and found a life-saving drug."
 
 ---
 
-### Slide 27 [Pages 91–93] · Scene 14: Case Study 2 — Global Weather (The Entire Atmosphere)
+### Slide 27 [Pages 92–94] · Scene 14: Case Study 2 — Global Weather (The Entire Atmosphere)
 **Visuals**: A clean spherical Earth outline. Radial airflow rays and latitude circles reveal a planetary mesh graph.
 
-- **[Page 91 / Initial]** *(Case File 02: The Entire Atmosphere)*
+- **[Page 92 / Initial]** *(Case File 02: The Entire Atmosphere)*
   > "Now let's expand our scale from nanometer molecules to an entire planet."
-- **[Page 92 / Click 1]** *(Mesh lines illuminate around the globe)*
+- **[Page 93 / Click 1]** *(Mesh lines illuminate around the globe)*
   > "What if every coordinate on Earth is a node? Adjacent atmospheric airflows are edges."
-- **[Page 93 / Click 2]** *(Subtitle)*
+- **[Page 94 / Click 2]** *(Subtitle)*
   > "The entire atmosphere of planet Earth becomes a single continuous spherical graph."
 
 ---
 
-### Slide 28 [Pages 94–98] · Scene 14: Case Study 2 — GraphCast (Planetary Scale)
+### Slide 28 [Pages 95–99] · Scene 14: Case Study 2 — GraphCast (Planetary Scale)
 **Visuals**: Left: Planetary mesh. Right: DeepMind 2023 GraphCast dossier card with bullet reveals.
 
-- **[Page 94 / Initial]** *(GraphCast card)*
+- **[Page 95 / Initial]** *(GraphCast card)*
   > "In 2023, Google DeepMind published **GraphCast**."
-- **[Page 95 / Click 1]** *(Bullet 1: 10-day global forecast in under 1 minute)*
+- **[Page 96 / Click 1]** *(Bullet 1: 10-day global forecast in under 1 minute)*
   > "It produces a 10-day global weather forecast in **under 1 minute** on a single machine."
-- **[Page 96 / Click 2]** *(Bullet 2: Beat European supercomputers on >90% of variables)*
+- **[Page 97 / Click 2]** *(Bullet 2: Beat European supercomputers on >90% of variables)*
   > "It outperformed the European gold-standard supercomputers that take hours on massive server clusters on over 90% of test variables."
-- **[Page 97 / Click 3]** *(Bullet 3: Predicted Hurricane Lee days earlier)*
+- **[Page 98 / Click 3]** *(Bullet 3: Predicted Hurricane Lee days earlier)*
   > "It accurately predicted the landfall trajectory of Hurricane Lee days ahead of official forecasters."
-- **[Page 98 / Click 4]** *(Card badge: Same Principle. Planetary Scale.)*
+- **[Page 99 / Click 4]** *(Card badge: Same Principle. Planetary Scale.)*
   > "The exact same three steps you ran on Alice --- Gather, Aggregate, Update --- executed across the entire planet at once."
 
 ---
 
-### Slide 29 [Pages 99–99] · Scene 15: Case Study 3 — CERN Particle Physics (The Question)
+### Slide 29 [Pages 100–100] · Scene 15: Case Study 3 — CERN Particle Physics (The Question)
 **Visuals**: A spray of particle sensor hit dots scattered in space. Full text revealed cleanly in one view.
 
-- **[Page 99 / Full Slide]**
+- **[Page 100 / Full Slide]**
   *(Curious, dramatic tone)*
   > "And finally, let's journey to CERN's Large Hadron Collider.
   >
@@ -599,53 +594,53 @@
 
 ---
 
-### Slide 30 [Pages 100–104] · Scene 15: Case Study 3 — CERN Particle Trajectory Tracking
+### Slide 30 [Pages 101–105] · Scene 15: Case Study 3 — CERN Particle Trajectory Tracking
 **Visuals**: Left: CERN LHC · CMS / ATLAS card. Right: Candidate sensor dots connect into a solid golden particle trajectory line! Red badge: Discovering New Physics.
 
-- **[Page 100 / Initial]** *(Connect Dots card)*
+- **[Page 101 / Initial]** *(Connect Dots card)*
   > "It is the ultimate connect-the-dots challenge."
-- **[Page 101 / Click 1]** *(Bullet 1: Builds a graph of candidate hits)*
+- **[Page 102 / Click 1]** *(Bullet 1: Builds a graph of candidate hits)*
   > "Physicists build a graph connecting candidate sensor hits."
-- **[Page 102 / Click 2]** *(Bullet 2 & Trajectory line lights up in bold gold)*
+- **[Page 103 / Click 2]** *(Bullet 2 & Trajectory line lights up in bold gold)*
   *(Point to the glowing gold curved trajectory)*
   > "A GNN evaluates edge probabilities and prunes away the false connections in **milliseconds**, tracking the true particle path in real time."
-- **[Page 103 / Click 3]** *(Bullet 3: Reconstructs particle trajectories)*
+- **[Page 104 / Click 3]** *(Bullet 3: Reconstructs particle trajectories)*
   > "Filtering millions of collisions per second."
-- **[Page 104 / Click 4]** *(Crimson badge: Discovering New Physics)*
+- **[Page 105 / Click 4]** *(Crimson badge: Discovering New Physics)*
   > "Graph Neural Networks are actively helping physicists discover new fundamental laws of nature."
 
 ---
 
-### Slide 31 [Pages 105–108] · Scene 16: The Unifying Picture — Three Fields
+### Slide 31 [Pages 106–109] · Scene 16: The Unifying Picture — Three Fields
 **Visuals**: Three paper cards side-by-side: MOLECULES (Chemistry), PLANET (Atmosphere), PARTICLES (Physics).
 
-- **[Page 105 / Initial]** *(Card 1: Molecules & Atoms)*
+- **[Page 106 / Initial]** *(Card 1: Molecules & Atoms)*
   > "Think about what we have just seen:
   > A molecule in biology."
-- **[Page 106 / Click 1]** *(Card 2: Planet & Airflow)*
+- **[Page 107 / Click 1]** *(Card 2: Planet & Airflow)*
   > "A planet in meteorology."
-- **[Page 107 / Click 2]** *(Card 3: Particles & Detectors)*
+- **[Page 108 / Click 2]** *(Card 3: Particles & Detectors)*
   > "A subatomic particle in quantum physics."
-- **[Page 108 / Click 3]** *(Bottom takeaway)*
+- **[Page 109 / Click 3]** *(Bottom takeaway)*
   > "To a traditional scientist, these three disciplines have absolutely nothing in common."
 
 ---
 
-### Slide 32 [Pages 109–111] · Scene 16: The Unifying Picture — GRAPH
+### Slide 32 [Pages 110–112] · Scene 16: The Unifying Picture — GRAPH
 **Visuals**: The screen clears to a massive, commanding gold word centered on the white canvas: G R A P H.
 
-- **[Page 109 / Initial]** *(Massive gold title: G R A P H)*
+- **[Page 110 / Initial]** *(Massive gold title: G R A P H)*
   *(Pause for two seconds. Let the single word anchor the entire talk.)*
   > "Except underneath... they share the exact same mathematical soul."
-- **[Page 110 / Click 1]** *(Subtitle: Different problems. Same underlying structure.)*
+- **[Page 111 / Click 1]** *(Subtitle: Different problems. Same underlying structure.)*
   > "Different problems. Same underlying structure."
-- **[Page 111 / Click 2]** *(Takeaway: Whenever relationships are part of the information...)*
+- **[Page 112 / Click 2]** *(Takeaway: Whenever relationships are part of the information...)*
   *(Speak with quiet authority)*
   > "Whenever the relationships are part of the information... ignoring those relationships is throwing information away."
 
 ---
 
-### Slide 33 [Page 112] · Scene 17: Final Close — Thank You
+### Slide 33 [Page 113] · Scene 17: Final Close — Thank You
 **Visuals**: Large gold *Thank you.* with *QUESTIONS & DISCUSSION* underneath.
 
 - *(Stand tall, look directly at the audience / evaluators)*
