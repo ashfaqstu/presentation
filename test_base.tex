@@ -134,115 +134,319 @@
 % ACT I: THE GAP
 % =============================================================
 
-% --- 1.1-1.9: Cold Open · Mbappé alone, then his interactions, then the inference ---
-% One frame, nine clicks. Nothing moves; each click adds exactly one idea:
-%   1 Mbappé alone            2 "nothing suspicious"
-%   3-5 three neighbours arrive, each joined by a labelled relationship edge
-%   6 "why is everyone taking orders?"   7 inference arrow -> DICTATOR?
-%   8-9 the two questions; every edge turns orange on "connections".
-{
-\definecolor{hookbg}{HTML}{F6F1E7}
+
+% --- 1.1: Cold Open · The Relational Hook ---
+\definecolor{hookbg}{HTML}{FAF7F2}
 \definecolor{hooknavy}{HTML}{13213A}
 \definecolor{hookorange}{HTML}{D9731A}
 \definecolor{hookred}{HTML}{C62828}
-\setbeamercolor{background canvas}{bg=hookbg}
+\definecolor{hookcard}{HTML}{FFFFFF}
+\definecolor{hookborder}{HTML}{E2D9C8}
 \tikzset{
-  hookphoto/.style={draw=hooknavy!30, line width=0.8pt, rounded corners=5pt, inner sep=0pt},
-  hookname/.style={text=hooknavy!75, font=\fontsize{7}{8.5}\selectfont\twfont\bfseries},
-  hookrel/.style={text=hookorange, align=center, font=\fontsize{8}{9.5}\selectfont\sffamily\itshape},
-  hookedge/.style={draw=hooknavy!55, line width=1.3pt, -{Stealth[length=7pt]}, shorten >=2pt, shorten <=2pt},
-  hookedgeOn/.style={draw=hookorange, line width=2.6pt, -{Stealth[length=9pt]}, shorten >=2pt, shorten <=2pt}
+  invisible/.style={opacity=0,text opacity=0,draw opacity=0,fill opacity=0},
+  hphoto/.style={draw=hooknavy!35, line width=1.2pt, rounded corners=6pt, inner sep=0pt},
+  hphotoAlert/.style={draw=hookred!80, line width=1.8pt, rounded corners=6pt, inner sep=0pt},
+  hphotoHot/.style={draw=hookorange, line width=2.0pt, rounded corners=6pt, inner sep=0pt},
+  hlabel/.style={fill=hooknavy, text=white, rounded corners=3pt, inner xsep=7pt, inner ysep=3pt, font=\fontsize{7.5}{9}\selectfont\twfont\bfseries},
+  hlabelAlert/.style={fill=hookred, text=white, rounded corners=3pt, inner xsep=7pt, inner ysep=3pt, font=\fontsize{7.5}{9}\selectfont\twfont\bfseries},
+  hlabelHot/.style={fill=hookorange, text=white, rounded corners=3pt, inner xsep=7pt, inner ysep=3pt, font=\fontsize{7.5}{9}\selectfont\twfont\bfseries},
+  relpill/.style={fill=white, draw=hookorange, line width=1.2pt, rounded corners=4pt, inner xsep=6pt, inner ysep=3pt, align=center},
+  relpillAlert/.style={fill=white, draw=hookred, line width=1.4pt, rounded corners=4pt, inner xsep=6pt, inner ysep=3pt, align=center},
+  relpillHot/.style={fill=white, draw=hookorange, line width=1.6pt, rounded corners=4pt, inner xsep=7pt, inner ysep=3.5pt, align=center},
+  hedge/.style={draw=hooknavy!65, line width=1.5pt, -{Stealth[length=6.5pt]}},
+  hedgeAlert/.style={draw=hookred!85, line width=2.0pt, -{Stealth[length=7.5pt]}},
+  hedgeDim/.style={draw=hooknavy!30, line width=1.2pt, -{Stealth[length=6pt]}},
+  hedgeHot/.style={draw=hookorange, line width=2.4pt, -{Stealth[length=8.5pt]}},
+  hseg/.style={draw=hooknavy!65, line width=1.5pt},
+  hsegAlert/.style={draw=hookred!85, line width=2.0pt},
+  hsegDim/.style={draw=hooknavy!30, line width=1.2pt},
+  hsegHot/.style={draw=hookorange, line width=2.4pt}
 }
 \begin{frame}[plain]
 \kicker{SCENE 01 / 17 \quad COLD OPEN}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
 
-  % ================= TITLE -> QUESTIONS (same spot) =================
-  \node[visible on=<1-7>, anchor=south west, text=hooknavy, font=\fontsize{23}{27}\selectfont\sffamily\bfseries]
-    at (-7.2, 2.75) {Can we trust this person?};
-  \node[visible on=<8->, anchor=south west, text=hooknavy, font=\fontsize{15}{18}\selectfont\sffamily\bfseries]
-    at (-7.2, 3.02) {What if the person itself isn't the information?};
-  \node[visible on=<9->, anchor=south west, text=hooknavy, font=\fontsize{19}{23}\selectfont\sffamily\bfseries]
-    at (-7.2, 2.28) {What if the \textcolor{hookorange}{connections} are?};
+  % Slide background
+  \fill[hookbg] (current page.south west) rectangle (current page.north east);
 
-  % ================= CENTRAL NODE: MBAPPÉ =================
-  \coordinate (C) at (0, 0.9);
+  % ================= 1. TITLES & QUESTIONS =================
+  \node[anchor=north west, text=hooknavy, font=\fontsize{23}{27}\selectfont\sffamily\bfseries, visible on=<1-6>]
+    at (-7.2, 3.8) {Can we trust this person?};
+
+  \node[anchor=north west, text=hooknavy, font=\fontsize{19}{23}\selectfont\sffamily\bfseries, visible on=<7>]
+    at (-7.2, 3.8) {What if the person itself isn't the information?};
+
+  \node[anchor=north west, text=hooknavy!45, font=\fontsize{13}{16}\selectfont\sffamily\bfseries, visible on=<8->]
+    at (-7.2, 3.85) {What if the person itself isn't the information?};
+  \node[anchor=north west, text=hooknavy, font=\fontsize{23}{27}\selectfont\sffamily\bfseries, visible on=<8->]
+    at (-7.2, 3.25) {What if the \textcolor{hookorange}{\textbf{connections}} are?};
+
+  % ================= 2. BEAT 1: INITIAL TRUSTWORTHY PROFILE CARDS =================
+  \begin{scope}[visible on=<1>]
+    % Left Card: Verified Dossier
+    \fill[white, rounded corners=6pt] (-6.7, -1.95) rectangle (-2.3, 1.55);
+    \draw[hooknavy!20, line width=1pt, rounded corners=6pt] (-6.7, -1.95) rectangle (-2.3, 1.55);
+    
+    \node[anchor=center, fill=hooknavy, text=white, rounded corners=2.5pt, font=\fontsize{7}{8}\selectfont\twfont\bfseries, inner xsep=7pt, inner ysep=3pt]
+      at (-4.5, 1.55) {DOSSIER: NODE FEATURES};
+      
+    \node[anchor=center, text=hooknavy, font=\fontsize{12}{14}\selectfont\sffamily\bfseries]
+      at (-4.5, 1.05) {Kylian Mbappé};
+    \draw[hookorange, line width=1.5pt] (-6.1, 0.8) -- (-2.9, 0.8);
+
+    \node[anchor=north, text=hooknavy!85, font=\fontsize{8}{12}\selectfont\twfont, align=left]
+      at (-4.5, 0.65) {
+        \textbf{ROLE:} Elite Forward\\[2pt]
+        \textbf{RECORD:} 250+ Career Goals\\[2pt]
+        \textbf{HONORS:} World Cup Winner\\[2pt]
+        \textbf{FAIR PLAY:} 0 Red Cards
+      };
+      
+    \node[anchor=center, fill=hooknavy!8, draw=hooknavy!20, rounded corners=3pt, font=\fontsize{7}{8.5}\selectfont\twfont\bfseries\color{hooknavy}, inner xsep=8pt, inner ysep=3pt]
+      at (-4.5, -1.55) {VERIFIED ATHLETE DATA};
+
+    % Right Card: Evaluation in Isolation
+    \fill[white, rounded corners=6pt] (2.3, -1.95) rectangle (6.7, 1.55);
+    \draw[hooknavy!20, line width=1pt, rounded corners=6pt] (2.3, -1.95) rectangle (6.7, 1.55);
+    
+    \node[anchor=center, fill=hooknavy, text=white, rounded corners=2.5pt, font=\fontsize{7}{8}\selectfont\twfont\bfseries, inner xsep=7pt, inner ysep=3pt]
+      at (4.5, 1.55) {EVALUATION IN ISOLATION};
+      
+    \node[anchor=center, text=hooknavy, font=\fontsize{12}{14}\selectfont\sffamily\bfseries]
+      at (4.5, 0.95) {Model Citizen?};
+    \node[anchor=center, text=hookorange, font=\fontsize{11}{13}\selectfont\twfont\bfseries]
+      at (4.5, 0.5) {CONFIDENCE: 99.4\%};
+    \draw[hooknavy!15, line width=1pt] (2.9, 0.2) -- (6.1, 0.2);
+
+    \node[anchor=north, text=hooknavy!70, font=\fontsize{8}{11.5}\selectfont\sffamily, align=center]
+      at (4.5, -0.05) {
+        Individual node features\\
+        show zero anomalies or\\
+        suspicious behavior.
+      };
+      
+    \node[anchor=center, fill=hooknavy!8, draw=hooknavy!20, rounded corners=3pt, font=\fontsize{7}{8.5}\selectfont\twfont\bfseries\color{hooknavy}, inner xsep=8pt, inner ysep=3pt]
+      at (4.5, -1.55) {NODE CLASSIFICATION: BENIGN};
+  \end{scope}
+
+  % ================= 3. CENTRAL NODE: MBAPPÉ =================
+  \coordinate (C) at (0.0, -0.20);
+  \node[circle, minimum size=2.6cm, inner sep=0pt] (mb) at (C) {};
+
+  % Avatar photo inside circle (Flips to comedic military general on click 6)
   \begin{scope}
     \clip (C) circle (1.3cm);
-    \node[inner sep=0pt] at ($(C)+(0,-0.23)$) {\includegraphics[height=4.3cm]{mbappe_before_cutout.png}};
+    \node[inner sep=0pt, alt=<6>{invisible}{}] at ($(C)+(0,-0.22)$)
+      {\includegraphics[height=4.4cm]{mbappe_before_cutout.png}};
+    \node[inner sep=0pt, visible on=<6>] at ($(C)+(0,-0.22)$)
+      {\includegraphics[height=4.4cm]{mbappe_after_cutout.png}};
   \end{scope}
-  \node[visible on=<1-8>, circle, draw=hooknavy, line width=2pt, minimum size=2.6cm, inner sep=0pt] (mb) at (C) {};
-  \node[visible on=<9->,  circle, draw=hookorange, line width=2.6pt, minimum size=2.6cm, inner sep=0pt] at (C) {};
 
-  \node[anchor=north, fill=hooknavy, text=hookbg, rounded corners=3pt, inner xsep=9pt, inner ysep=3pt, align=center]
-    (pill) at (0, -0.3)
-    {{\fontsize{9}{11}\selectfont\sffamily\bfseries KYLIAN MBAPPÉ}\\[-1pt]
+  % Node border rings matching narrative state
+  \node[circle, draw=hooknavy, line width=2.4pt, minimum size=2.6cm, inner sep=0pt, visible on=<1-5>] at (C) {};
+  \node[circle, draw=hookred, line width=3.0pt, minimum size=2.6cm, inner sep=0pt, visible on=<6>] at (C) {};
+  \node[circle, draw=hooknavy, line width=2.4pt, minimum size=2.6cm, inner sep=0pt, visible on=<7>] at (C) {};
+  \node[circle, draw=hookorange, line width=3.2pt, minimum size=2.6cm, inner sep=0pt, visible on=<8->] at (C) {};
+
+  % Central node badge
+  \node[anchor=north, fill=hooknavy, text=white, rounded corners=3pt, inner xsep=9pt, inner ysep=3.5pt, align=center, visible on=<1-5>]
+    at ($(C)+(0,-1.45)$)
+    {{\fontsize{8.5}{10}\selectfont\sffamily\bfseries KYLIAN MBAPPÉ}\\[-1pt]
      {\fontsize{6.5}{8}\selectfont\twfont FORWARD $\cdot$ WORLD CUP WINNER}};
 
-  % ================= NEIGHBOUR 1: pitch staff (click 3) =================
+  \node[anchor=north, fill=hookred, text=white, rounded corners=4pt, inner xsep=10pt, inner ysep=3.5pt, align=center, visible on=<6>]
+    at ($(C)+(0,-1.45)$)
+    {{\fontsize{14}{16}\selectfont\dispfont DICTATOR?!}\\[1pt]
+     {\fontsize{7}{8.5}\selectfont\twfont\bfseries (OF THE PENALTY BOX)}};
+
+  \node[anchor=north, fill=hooknavy, text=white, rounded corners=3pt, inner xsep=9pt, inner ysep=3.5pt, align=center, visible on=<7>]
+    at ($(C)+(0,-1.45)$)
+    {{\fontsize{8.5}{10}\selectfont\sffamily\bfseries KYLIAN MBAPPÉ}\\[-1pt]
+     {\fontsize{6.5}{8}\selectfont\twfont FORWARD $\cdot$ WORLD CUP WINNER}};
+
+  \node[anchor=north, fill=hookorange, text=white, rounded corners=3pt, inner xsep=9pt, inner ysep=3.5pt, align=center, visible on=<8->]
+    at ($(C)+(0,-1.45)$)
+    {{\fontsize{8.5}{10}\selectfont\sffamily\bfseries KYLIAN MBAPPÉ}\\[-1pt]
+     {\fontsize{6.5}{8}\selectfont\twfont CENTRAL NODE}};
+
+  % ================= 4. NEIGHBOUR 1: PITCH STAFF (West) =================
+  \coordinate (P1) at (-5.5, -0.20);
+  \node[minimum width=2.8cm, minimum height=2.3cm, inner sep=0pt] (n1) at (P1) {};
+
+  \begin{scope}[visible on=<2->]
+    \begin{scope}
+      \clip[rounded corners=6pt] ($(P1)+(-1.4,-1.15)$) rectangle ($(P1)+(1.4,1.15)$);
+      \node[inner sep=0pt] at (P1) {\includegraphics[height=2.4cm]{cleaning.jpeg}};
+    \end{scope}
+  \end{scope}
+
+  \node[hphoto, minimum width=2.8cm, minimum height=2.3cm, visible on=<2-5>] at (P1) {};
+  \node[hphotoAlert, minimum width=2.8cm, minimum height=2.3cm, visible on=<6>] at (P1) {};
+  \node[hphoto, minimum width=2.8cm, minimum height=2.3cm, visible on=<7>] at (P1) {};
+  \node[hphotoHot, minimum width=2.8cm, minimum height=2.3cm, visible on=<8->] at (P1) {};
+
+  \node[hlabel, anchor=south, visible on=<2-5>] at ($(P1)+(0,1.2)$) {PITCH STAFF};
+  \node[hlabelAlert, anchor=south, visible on=<6>] at ($(P1)+(0,1.2)$) {PITCH STAFF};
+  \node[hlabel, anchor=south, visible on=<7>] at ($(P1)+(0,1.2)$) {PITCH STAFF};
+  \node[hlabelHot, anchor=south, visible on=<8->] at ($(P1)+(0,1.2)$) {PITCH STAFF};
+
+  % Relationship 1: Pitch Staff -> Mbappé (Collinear on y = -0.20)
+  \coordinate (R1) at (-2.75, -0.20);
+  \node[relpill, anchor=center, visible on=<2-5>] (rel1_norm) at (R1)
+    {{\fontsize{8}{9.5}\selectfont\twfont\bfseries\color{hookorange} COMMANDS}\\[-1pt]
+     {\fontsize{6.5}{8}\selectfont\sffamily\itshape Ordered to mop}};
+  \node[relpillAlert, anchor=center, visible on=<6>] (rel1_alert) at (R1)
+    {{\fontsize{8}{9.5}\selectfont\twfont\bfseries\color{hookred} COMMANDS}\\[-1pt]
+     {\fontsize{6.5}{8}\selectfont\sffamily\itshape Ordered to mop}};
+  \node[relpill, opacity=0.7, anchor=center, visible on=<7>] (rel1_dim) at (R1)
+    {{\fontsize{8}{9.5}\selectfont\twfont\bfseries\color{hookorange} COMMANDS}\\[-1pt]
+     {\fontsize{6.5}{8}\selectfont\sffamily\itshape Ordered to mop}};
+  \node[relpillHot, anchor=center, visible on=<8->] (rel1_hot) at (R1)
+    {{\fontsize{8.5}{10}\selectfont\twfont\bfseries\color{hookorange} COMMANDS}\\[-1pt]
+     {\fontsize{6.5}{8}\selectfont\sffamily\itshape Ordered to mop}};
+
+  % Flow 1: Staff -> Rel Pill -> Mbappé
+  \draw[hseg, visible on=<2-5>] (n1) -- (rel1_norm);
+  \draw[hedge, visible on=<2-5>] (rel1_norm) -- (mb);
+
+  \draw[hsegAlert, visible on=<6>] (n1) -- (rel1_alert);
+  \draw[hedgeAlert, visible on=<6>] (rel1_alert) -- (mb);
+
+  \draw[hsegDim, visible on=<7>] (n1) -- (rel1_dim);
+  \draw[hedgeDim, visible on=<7>] (rel1_dim) -- (mb);
+
+  \draw[hsegHot, visible on=<8->] (n1) -- (rel1_hot);
+  \draw[hedgeHot, visible on=<8->] (rel1_hot) -- (mb);
+
+  % ================= 5. NEIGHBOUR 2: THE REFEREE (North-East) =================
+  \coordinate (P2) at (5.5, 1.35);
+  \node[minimum width=2.8cm, minimum height=2.1cm, inner sep=0pt] (n2) at (P2) {};
+
   \begin{scope}[visible on=<3->]
-    \fill[hooknavy!8, rounded corners=5pt] (-6.155,-0.88) rectangle (-4.085,1.72);
     \begin{scope}
-      \clip[rounded corners=5pt] (-6.235,-0.8) rectangle (-4.165,1.8);
-      \node[inner sep=0pt] at (-5.2, 0.5) {\includegraphics[height=2.6cm]{cleaning.jpeg}};
+      \clip[rounded corners=6pt] ($(P2)+(-1.4,-1.05)$) rectangle ($(P2)+(1.4,1.05)$);
+      \node[inner sep=0pt] at (P2) {\includegraphics[height=2.2cm]{commanding_referee.jpeg}};
     \end{scope}
-    \node[hookphoto, minimum width=2.07cm, minimum height=2.6cm] (n1) at (-5.2, 0.5) {};
-    \node[hookname, anchor=south] at (-5.2, 1.85) {PITCH STAFF};
   \end{scope}
-  \draw[hookedge,   visible on=<3-8>] (n1) -- (mb);
-  \draw[hookedgeOn, visible on=<9->]  (n1) -- (mb);
-  \node[hookrel, visible on=<3->, anchor=south] at (-2.73, 0.8) {ordered to\\mop the pitch};
 
-  % ================= NEIGHBOUR 2: the referee (click 4) =================
+  \node[hphoto, minimum width=2.8cm, minimum height=2.1cm, visible on=<3-5>] at (P2) {};
+  \node[hphotoAlert, minimum width=2.8cm, minimum height=2.1cm, visible on=<6>] at (P2) {};
+  \node[hphoto, minimum width=2.8cm, minimum height=2.1cm, visible on=<7>] at (P2) {};
+  \node[hphotoHot, minimum width=2.8cm, minimum height=2.1cm, visible on=<8->] at (P2) {};
+
+  \node[hlabel, anchor=south, visible on=<3-5>] at ($(P2)+(0,1.1)$) {THE REFEREE};
+  \node[hlabelAlert, anchor=south, visible on=<6>] at ($(P2)+(0,1.1)$) {THE REFEREE};
+  \node[hlabel, anchor=south, visible on=<7>] at ($(P2)+(0,1.1)$) {THE REFEREE};
+  \node[hlabelHot, anchor=south, visible on=<8->] at ($(P2)+(0,1.1)$) {THE REFEREE};
+
+  % Relationship 2: Referee -> Mbappé (Mathematically collinear between (5.5, 1.35) and (0, -0.20))
+  \coordinate (R2) at (2.75, 0.575);
+  \node[relpill, anchor=center, visible on=<3-5>] (rel2_norm) at (R2)
+    {{\fontsize{8}{9.5}\selectfont\twfont\bfseries\color{hookorange} CONTROLS}\\[-1pt]
+     {\fontsize{6.5}{8}\selectfont\sffamily\itshape Tells how to referee}};
+  \node[relpillAlert, anchor=center, visible on=<6>] (rel2_alert) at (R2)
+    {{\fontsize{8}{9.5}\selectfont\twfont\bfseries\color{hookred} CONTROLS}\\[-1pt]
+     {\fontsize{6.5}{8}\selectfont\sffamily\itshape Tells how to referee}};
+  \node[relpill, opacity=0.7, anchor=center, visible on=<7>] (rel2_dim) at (R2)
+    {{\fontsize{8}{9.5}\selectfont\twfont\bfseries\color{hookorange} CONTROLS}\\[-1pt]
+     {\fontsize{6.5}{8}\selectfont\sffamily\itshape Tells how to referee}};
+  \node[relpillHot, anchor=center, visible on=<8->] (rel2_hot) at (R2)
+    {{\fontsize{8.5}{10}\selectfont\twfont\bfseries\color{hookorange} CONTROLS}\\[-1pt]
+     {\fontsize{6.5}{8}\selectfont\sffamily\itshape Tells how to referee}};
+
+  % Flow 2: Referee -> Rel Pill -> Mbappé (Continuous straight collinear line)
+  \draw[hseg, visible on=<3-5>] (n2) -- (rel2_norm);
+  \draw[hedge, visible on=<3-5>] (rel2_norm) -- (mb);
+
+  \draw[hsegAlert, visible on=<6>] (n2) -- (rel2_alert);
+  \draw[hedgeAlert, visible on=<6>] (rel2_alert) -- (mb);
+
+  \draw[hsegDim, visible on=<7>] (n2) -- (rel2_dim);
+  \draw[hedgeDim, visible on=<7>] (rel2_dim) -- (mb);
+
+  \draw[hsegHot, visible on=<8->] (n2) -- (rel2_hot);
+  \draw[hedgeHot, visible on=<8->] (rel2_hot) -- (mb);
+
+  % ================= 6. NEIGHBOUR 3: THE VIEWER / 4TH WALL (South-East) =================
+  \coordinate (P3) at (5.5, -1.75);
+  \node[minimum width=2.8cm, minimum height=2.1cm, inner sep=0pt] (n3) at (P3) {};
+
   \begin{scope}[visible on=<4->]
-    \fill[hooknavy!8, rounded corners=5pt] (3.785,0.37) rectangle (6.775,2.17);
     \begin{scope}
-      \clip[rounded corners=5pt] (3.705,0.45) rectangle (6.695,2.25);
-      \node[inner sep=0pt] at (5.2, 1.35) {\includegraphics[height=1.8cm]{commanding_referee.jpeg}};
+      \clip[rounded corners=6pt] ($(P3)+(-1.4,-1.05)$) rectangle ($(P3)+(1.4,1.05)$);
+      \node[inner sep=0pt] at (P3) {\includegraphics[height=2.2cm]{hook_4thwall.jpg}};
     \end{scope}
-    \node[hookphoto, minimum width=2.99cm, minimum height=1.8cm] (n2) at (5.2, 1.35) {};
-    \node[hookname, anchor=south] at (5.2, 2.3) {THE REFEREE};
   \end{scope}
-  \draw[hookedge,   visible on=<4-8>] (n2) -- (mb);
-  \draw[hookedgeOn, visible on=<9->]  (n2) -- (mb);
-  \node[hookrel, visible on=<4->, anchor=south] at (2.5, 1.28) {told how to\\referee};
 
-  % ================= NEIGHBOUR 3: the viewer / 4th wall (click 5) =================
-  \begin{scope}[visible on=<5->]
-    \fill[hooknavy!8, rounded corners=5pt] (4.182,-3.43) rectangle (6.378,-1.53);
-    \begin{scope}
-      \clip[rounded corners=5pt] (4.102,-3.35) rectangle (6.298,-1.45);
-      \node[inner sep=0pt] at (5.2, -2.4) {\includegraphics[height=1.9cm]{hook_4thwall.jpg}};
-    \end{scope}
-    \node[hookphoto, minimum width=2.196cm, minimum height=1.9cm] (n3) at (5.2, -2.4) {};
-    \node[hookname, anchor=south] at (5.2, -1.4) {YOU, THE VIEWER};
-  \end{scope}
-  \draw[hookedge,   visible on=<5-8>] (n3) -- (mb);
-  \draw[hookedgeOn, visible on=<9->]  (n3) -- (mb);
-  \node[hookrel, visible on=<5->, anchor=south west] at (2.75, -0.62) {stared down\\through the screen};
+  \node[hphoto, minimum width=2.8cm, minimum height=2.1cm, visible on=<4-5>] at (P3) {};
+  \node[hphotoAlert, minimum width=2.8cm, minimum height=2.1cm, visible on=<6>] at (P3) {};
+  \node[hphoto, minimum width=2.8cm, minimum height=2.1cm, visible on=<7>] at (P3) {};
+  \node[hphotoHot, minimum width=2.8cm, minimum height=2.1cm, visible on=<8->] at (P3) {};
 
-  % ================= INFERENCE: relationships -> information -> DICTATOR? =================
-  \draw[visible on=<7->, draw=hooknavy!55, line width=1.3pt, -{Stealth[length=7pt]}] (0,-1.3) -- (0,-1.8);
-  \node[visible on=<7->, anchor=east, text=hookorange, font=\fontsize{7}{8.5}\selectfont\twfont\bfseries]
-    at (-0.25,-1.55) {INFERRED FROM HIS CONNECTIONS};
+  \node[hlabel, anchor=south, visible on=<4-5>] at ($(P3)+(0,1.1)$) {THE VIEWER};
+  \node[hlabelAlert, anchor=south, visible on=<6>] at ($(P3)+(0,1.1)$) {THE VIEWER};
+  \node[hlabel, anchor=south, visible on=<7>] at ($(P3)+(0,1.1)$) {THE VIEWER};
+  \node[hlabelHot, anchor=south, visible on=<8->] at ($(P3)+(0,1.1)$) {THE VIEWER};
 
-  \node[visible on=<7-8>, anchor=north, text=hookred, font=\dispfont\fontsize{30}{32}\selectfont]
-    at (0,-1.8) {DICTATOR?};
-  \node[visible on=<9->, anchor=north, text=hookred!35, font=\dispfont\fontsize{30}{32}\selectfont]
-    at (0,-1.8) {DICTATOR?};
-  \node[visible on=<7->, anchor=north, text=hookred!70, font=\fontsize{7}{8.5}\selectfont\twfont\bfseries]
-    at (0,-2.8) {(OF THE PENALTY BOX)};
+  % Relationship 3: Viewer -> Mbappé (Mathematically collinear between (5.5, -1.75) and (0, -0.20))
+  \coordinate (R3) at (2.75, -0.975);
+  \node[relpill, anchor=center, visible on=<4-5>] (rel3_norm) at (R3)
+    {{\fontsize{8}{9.5}\selectfont\twfont\bfseries\color{hookorange} INTERACTS}\\[-1pt]
+     {\fontsize{6.5}{8}\selectfont\sffamily\itshape Stares down screen}};
+  \node[relpillAlert, anchor=center, visible on=<6>] (rel3_alert) at (R3)
+    {{\fontsize{8}{9.5}\selectfont\twfont\bfseries\color{hookred} INTERACTS}\\[-1pt]
+     {\fontsize{6.5}{8}\selectfont\sffamily\itshape Stares down screen}};
+  \node[relpill, opacity=0.7, anchor=center, visible on=<7>] (rel3_dim) at (R3)
+    {{\fontsize{8}{9.5}\selectfont\twfont\bfseries\color{hookorange} INTERACTS}\\[-1pt]
+     {\fontsize{6.5}{8}\selectfont\sffamily\itshape Stares down screen}};
+  \node[relpillHot, anchor=center, visible on=<8->] (rel3_hot) at (R3)
+    {{\fontsize{8.5}{10}\selectfont\twfont\bfseries\color{hookorange} INTERACTS}\\[-1pt]
+     {\fontsize{6.5}{8}\selectfont\sffamily\itshape Stares down screen}};
 
-  % ================= BOTTOM-LEFT NARRATION LINE =================
-  \node[visible on=<2-5>, anchor=south west, text=hooknavy!65, font=\fontsize{12}{15}\selectfont\sffamily\itshape]
-    at (-7.2,-3.95) {On his own, nothing looks suspicious.};
-  \node[visible on=<6->, anchor=south west, text=hooknavy, font=\fontsize{12}{15}\selectfont\sffamily\itshape]
-    at (-7.2,-3.95) {Wait\dots\ why is everyone taking orders from this guy?};
+  % Flow 3: Viewer -> Rel Pill -> Mbappé (Continuous straight collinear line)
+  \draw[hseg, visible on=<4-5>] (n3) -- (rel3_norm);
+  \draw[hedge, visible on=<4-5>] (rel3_norm) -- (mb);
+
+  \draw[hsegAlert, visible on=<6>] (n3) -- (rel3_alert);
+  \draw[hedgeAlert, visible on=<6>] (rel3_alert) -- (mb);
+
+  \draw[hsegDim, visible on=<7>] (n3) -- (rel3_dim);
+  \draw[hedgeDim, visible on=<7>] (rel3_dim) -- (mb);
+
+  \draw[hsegHot, visible on=<8->] (n3) -- (rel3_hot);
+  \draw[hedgeHot, visible on=<8->] (rel3_hot) -- (mb);
+
+  % ================= 7. BOTTOM NARRATION / INFERENCE TAKEAWAYS =================
+  \node[anchor=south, text=hooknavy!75, font=\fontsize{12}{15}\selectfont\sffamily\itshape, visible on=<1>]
+    at (0, -4.0) {Can we trust this person? On his own, isolated features look completely normal.};
+
+  \node[anchor=south, text=hooknavy!80, font=\fontsize{12}{15}\selectfont\sffamily\itshape, visible on=<2>]
+    at (0, -4.0) {Interaction 1: Pitch staff ordered to clean the grass.};
+
+  \node[anchor=south, text=hooknavy!80, font=\fontsize{12}{15}\selectfont\sffamily\itshape, visible on=<3>]
+    at (0, -4.0) {Interaction 2: The match referee is told how to officiate.};
+
+  \node[anchor=south, text=hooknavy!80, font=\fontsize{12}{15}\selectfont\sffamily\itshape, visible on=<4>]
+    at (0, -4.0) {Interaction 3: Breaking the fourth wall directly at the audience.};
+
+  \node[anchor=south, text=hooknavy, font=\fontsize{13.5}{17}\selectfont\sffamily\bfseries, visible on=<5>]
+    at (0, -4.0) {Wait\dots\ why is everyone being commanded by this guy?};
+
+  \node[anchor=south, text=hookred, font=\fontsize{12}{15}\selectfont\sffamily\bfseries, align=center, text width=14.5cm, visible on=<6>]
+    at (0, -4.0) {We didn't classify him from his stats. We classified him from his interactions.};
+
+  \node[anchor=south, fill=white, draw=hooknavy!25, line width=1.1pt, rounded corners=5pt, inner xsep=18pt, inner ysep=6pt, visible on=<7>]
+    at (0, -4.05)
+    {\fontsize{9}{11.5}\selectfont\twfont
+     \mbox{[OTHER PERSON]} \,\,$\xrightarrow{\textbf{\color{hookorange}relationship}}$\,\, \mbox{[\textbf{MBAPPÉ}]} \,\,$\xrightarrow{\textbf{\color{hookorange}inference}}$\,\, \mbox{[\textbf{\color{hookred}CLASSIFICATION}]}};
+
+  \node[anchor=south, fill=white, draw=hooknavy!25, line width=1.1pt, rounded corners=5pt, inner xsep=18pt, inner ysep=6pt, visible on=<8->]
+    at (0, -4.05)
+    {\fontsize{9}{11.5}\selectfont\twfont
+     \mbox{[OTHER PERSON]} \,\,$\xrightarrow{\textbf{\color{hookorange}relationship}}$\,\, \mbox{[\textbf{MBAPPÉ}]} \,\,$\xrightarrow{\textbf{\color{hookorange}inference}}$\,\, \mbox{[\textbf{\color{hookred}CLASSIFICATION}]}};
 
 \end{tikzpicture}
 \end{frame}
-}
-
 % --- 2.1: CNN Example · Predictable Grid ---
 \begin{frame}[plain]
 \kicker{SCENE 02 / 17 \quad THE CNN EXAMPLE}
@@ -469,45 +673,22 @@
 \end{tikzpicture}
 \end{frame}
 
-% --- 6.3: The Failure · Two fillings of the same molecule, and the Red X ---
-% Each side shows the adjacency matrix produced by that numbering (filled cell = bond).
-% Numbering A bonds: 1-2 2-3 3-4 4-5 5-6 6-1 1-4
-% Numbering B bonds: 4-1 1-6 6-2 2-5 5-3 3-4 4-2  (same molecule, atoms relabelled)
-\newcommand{\adjgrid}[1]{% #1 = list of filled cells as row/col
-  \foreach \c in {1,...,6} {
-    \node[anchor=south, text=dimtext, font=\fontsize{5.5}{6}\selectfont\twfont] at ({-0.99+(\c-0.5)*0.33}, 1.42) {\c};
-  }
-  \foreach \r in {1,...,6} {
-    \node[anchor=east, text=dimtext, font=\fontsize{5.5}{6}\selectfont\twfont] at (-1.03, {1.4-(\r-0.5)*0.33}) {\r};
-    \foreach \c in {1,...,6} {
-      \draw[draw=brass!35, fill=boardmid, line width=0.4pt]
-        ({-0.99+(\c-1)*0.33}, {1.4-(\r-1)*0.33}) rectangle ++(0.33,-0.33);
-    }
-  }
-  \foreach \r/\c in {#1} {
-    \fill[ink!75] ({-0.99+(\c-1)*0.33+0.04}, {1.4-(\r-1)*0.33-0.04}) rectangle ++(0.25,-0.25);
-  }
-}
+% --- 6.3: The Failure · The Red X Stamp ---
 \begin{frame}[plain]
 \kicker{SCENE 06 / 17 \quad THE FAILURE}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
   \begin{scope}[shift={(-3.2, 0.5)}]
-    \node[anchor=north, text=brass, font=\fontsize{8}{9}\selectfont\twfont] at (0, 2.25) {NUMBERING A $\cdot$ ADJACENCY MATRIX};
-    \adjgrid{1/2,1/4,1/6, 2/1,2/3, 3/2,3/4, 4/1,4/3,4/5, 5/4,5/6, 6/1,6/5}
+    \node[anchor=north, text=brass, font=\fontsize{8}{9}\selectfont\twfont] at (0, 1.6) {NUMBERING A};
     \fill[papercream, rounded corners=2pt] (-1.6,-1.4) rectangle (1.6,-0.7);
     \node[anchor=center, text=biogreen!80!ink, font=\fontsize{9}{10}\selectfont\twfont\bfseries] at (0, -1.05) {Toxicity: 0.83};
   \end{scope}
 
-  \node[anchor=center, text=dimtext, font=\fontsize{8}{10}\selectfont\twfont\bfseries, align=center]
-    at (0, 0.85) {SAME BONDS\\DIFFERENT FILLING};
-
   \begin{scope}[shift={(3.2, 0.5)}]
-    \node[anchor=north, text=brass, font=\fontsize{8}{9}\selectfont\twfont] at (0, 2.25) {NUMBERING B $\cdot$ ADJACENCY MATRIX};
-    \adjgrid{1/4,1/6, 2/4,2/5,2/6, 3/4,3/5, 4/1,4/2,4/3, 5/2,5/3, 6/1,6/2}
+    \node[anchor=north, text=brass, font=\fontsize{8}{9}\selectfont\twfont] at (0, 1.6) {NUMBERING B};
     \fill[papercream, rounded corners=2pt] (-1.6,-1.4) rectangle (1.6,-0.7);
     \node[anchor=center, text=crimson, font=\fontsize{9}{10}\selectfont\twfont\bfseries] at (0, -1.05) {Toxicity: 0.11};
-    \draw[crimson, line width=6pt, cap=round, visible on=<2->] (-2.0, 1.8) -- (2.0, -1.55);
-    \draw[crimson, line width=6pt, cap=round, visible on=<2->] (-2.0, -1.55) -- (2.0, 1.8);
+    \draw[crimson, line width=6pt, cap=round, visible on=<2->] (-2.2, 1.4) -- (2.2, -1.4);
+    \draw[crimson, line width=6pt, cap=round, visible on=<2->] (-2.2, -1.4) -- (2.2, 1.4);
   \end{scope}
 
   \node[visible on=<3->, anchor=north, text=gold, font=\fontsize{15}{18}\selectfont\sffamily\bfseries, align=center]
@@ -639,7 +820,7 @@
 % ACT II-A: RUN ONE LAYER BY HAND (ALICE'S GRAPH, REAL NUMBERS)
 % =============================================================
 
-% --- 9.0: The data on the table (static) ---
+% --- 9.0: The data on the table ---
 \begin{frame}[plain]
 \kicker{SCENE 09 / 17 \quad RUN IT BY HAND $\cdot$ SETUP}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
@@ -659,38 +840,42 @@
     \node[pcard] at ( 2.5,-1.9) {\pbody{Eve}{0.80}{0.00}{ink!55}};
     \node[pcardHot] at (0,0) {\pbody{ALICE}{0.80}{0.00}{crimson}};
 
-    \node[anchor=north, text=crimson, font=\fontsize{6.5}{8}\selectfont\twfont\bfseries]
+    \node[visible on=<4->, anchor=north, text=crimson, font=\fontsize{6.5}{8}\selectfont\twfont\bfseries]
       at (0,-0.78) {TOPIC X UNKNOWN};
   \end{scope}
 
   % ---------- the worksheet (right) ----------
-  \draw[sheet] (0.0,-2.4) rectangle (7.6, 3.0);
+  \draw[sheet] (0.0,-3.45) rectangle (7.6, 3.0);
 
-  \node[shead]    at (0.3, 2.70) {SLOT 1 \quad ACTIVITY};
-  \node[slineDim] at (0.65, 2.32) {how much they post};
-  \node[slineDim] at (0.65, 2.02) {0 = never \quad 1 = constantly};
+  \node[shead] at (0.3, 2.78) {THE DATA};
 
-  \node[shead]    at (0.3, 1.45) {SLOT 2 \quad TOPIC X};
-  \node[slineDim] at (0.65, 1.07) {how much they engage with Topic X};
-  \node[slineDim] at (0.65, 0.77) {0 = never \quad 1 = all the time};
 
-  \node[shead]    at (0.3, 0.20) {THE FIVE CARDS};
-  \node[sline]    at (0.65,-0.20) {Bob \ \ \ [ 0.60 , 1.00 ]};
-  \node[sline]    at (0.65,-0.55) {Carol \ [ 0.40 , 1.00 ]};
-  \node[sline]    at (0.65,-0.90) {David \ [ 0.20 , 0.00 ]};
-  \node[sline]    at (0.65,-1.25) {Eve \ \ \ [ 0.80 , 0.00 ]};
-  \node[slineHot] at (0.65,-1.62) {Alice \ [ 0.80 , 0.00 ]};
+  \node[visible on=<2->, shead]    at (0.3, 1.62) {SLOT 1 \quad ACTIVITY};
+  \node[visible on=<2->, slineDim] at (0.65, 1.30) {how much they post};
+  \node[visible on=<2->, slineDim] at (0.65, 1.02) {0 = never \quad 1 = constantly};
+  \node[visible on=<2->, shead]    at (0.3, 0.62) {SLOT 2 \quad TOPIC X};
+  \node[visible on=<2->, slineDim] at (0.65, 0.30) {how much they engage with Topic X};
+  \node[visible on=<2->, slineDim] at (0.65, 0.02) {0 = never \quad 1 = all the time};
+
+  \node[visible on=<3->, shead] at (0.3,-0.44) {THE FIVE CARDS};
+  \node[visible on=<3->, sline] at (0.65,-0.80) {Bob \ \ \ [ 0.60 , 1.00 ]};
+  \node[visible on=<3->, sline] at (0.65,-1.10) {Carol \ [ 0.40 , 1.00 ]};
+  \node[visible on=<3->, sline] at (0.65,-1.40) {David \ [ 0.20 , 0.00 ]};
+  \node[visible on=<3->, sline] at (0.65,-1.70) {Eve \ \ \ [ 0.80 , 0.00 ]};
+  \node[visible on=<3->, slineHot] at (0.65,-2.02) {Alice \ [ 0.80 , 0.00 ]};
+
+
 
   % ---------- progress strip ----------
-  \node[gstep] at (-2.6,-3.3) {1. GATHER};
-  \node[gstep] at ( 0.0,-3.3) {2. AGGREGATE};
-  \node[gstep] at ( 2.6,-3.3) {3. UPDATE};
-  \node[anchor=center, text=gold, font=\fontsize{8}{10}\selectfont\twfont\bfseries]
-    at (5.3,-3.3) {= ONE LAYER};
+  \node[gstep] at (-2.6,-3.95) {1. GATHER};
+  \node[gstep] at ( 0.0,-3.95) {2. AGGREGATE};
+  \node[gstep] at ( 2.6,-3.95) {3. UPDATE};
+  \node[visible on=<5->, anchor=center, text=gold, font=\fontsize{8}{10}\selectfont\twfont\bfseries]
+    at (5.3,-3.95) {= ONE LAYER};
 \end{tikzpicture}
 \end{frame}
 
-% --- 9.1: STEP 1 - GATHER (static) ---
+% --- 9.1: STEP 1 - GATHER ---
 \begin{frame}[plain]
 \kicker{SCENE 09 / 17 \quad RUN IT BY HAND $\cdot$ STEP 1}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
@@ -698,41 +883,55 @@
     at (0, 3.85) {Step 1 of 3 --- \textcolor{gold}{GATHER}};
 
   \begin{scope}[shift={(-4.05, 0.15)}]
-    \draw[gedgeHot, -{Latex[length=6pt]}] (-2.2,1.9) -- (0,0);
-    \draw[gedgeHot, -{Latex[length=6pt]}] ( 2.2,1.9) -- (0,0);
-    \draw[gedgeDim] (-2.2,1.9) -- (-2.5,-1.9);
-    \draw[gedgeDim] ( 2.2,1.9) -- ( 2.5,-1.9);
+    \draw[gedge, visible on=<1>] (0,0) -- (-2.2,1.9);
+    \draw[gedge, visible on=<1>] (0,0) -- ( 2.2,1.9);
+    \draw[gedgeHot, -{Latex[length=6pt]}, visible on=<2->] (-2.2,1.9) -- (0,0);
+    \draw[gedgeHot, -{Latex[length=6pt]}, visible on=<2->] ( 2.2,1.9) -- (0,0);
+    \draw[gedge,    visible on=<1-2>] (-2.2,1.9) -- (-2.5,-1.9);
+    \draw[gedge,    visible on=<1-2>] ( 2.2,1.9) -- ( 2.5,-1.9);
+    \draw[gedgeDim, visible on=<3->]  (-2.2,1.9) -- (-2.5,-1.9);
+    \draw[gedgeDim, visible on=<3->]  ( 2.2,1.9) -- ( 2.5,-1.9);
 
-    \node[pcardHot] at (-2.2, 1.9) {\pbody{Bob}{0.60}{1.00}{biogreen!70!ink}};
-    \node[pcardHot] at ( 2.2, 1.9) {\pbody{Carol}{0.40}{1.00}{biogreen!70!ink}};
-    \node[pcardDim] at (-2.5,-1.9) {\pbody{David}{0.20}{0.00}{ink!60}};
-    \node[pcardDim] at ( 2.5,-1.9) {\pbody{Eve}{0.80}{0.00}{ink!60}};
+    \node[visible on=<1>,   pcard]    at (-2.2, 1.9) {\pbody{Bob}{0.60}{1.00}{biogreen!70!ink}};
+    \node[visible on=<2->,  pcardHot] at (-2.2, 1.9) {\pbody{Bob}{0.60}{1.00}{biogreen!70!ink}};
+    \node[visible on=<1>,   pcard]    at ( 2.2, 1.9) {\pbody{Carol}{0.40}{1.00}{biogreen!70!ink}};
+    \node[visible on=<2->,  pcardHot] at ( 2.2, 1.9) {\pbody{Carol}{0.40}{1.00}{biogreen!70!ink}};
+    \node[visible on=<1-2>, pcard]    at (-2.5,-1.9) {\pbody{David}{0.20}{0.00}{ink!55}};
+    \node[visible on=<3->,  pcardDim] at (-2.5,-1.9) {\pbody{David}{0.20}{0.00}{ink!60}};
+    \node[visible on=<1-2>, pcard]    at ( 2.5,-1.9) {\pbody{Eve}{0.80}{0.00}{ink!55}};
+    \node[visible on=<3->,  pcardDim] at ( 2.5,-1.9) {\pbody{Eve}{0.80}{0.00}{ink!60}};
     \node[pcardHot] at (0,0) {\pbody{ALICE}{0.80}{0.00}{crimson}};
 
-    \node[fill=gold, text=ink, rounded corners=2pt, inner xsep=3pt, inner ysep=2pt,
+    \node[visible on=<4->, fill=gold, text=ink, rounded corners=2pt, inner xsep=3pt, inner ysep=2pt,
           font=\fontsize{6.5}{7.5}\selectfont\twfont\bfseries] at (-1.1, 0.95) {0.60 , 1.00};
-    \node[fill=gold, text=ink, rounded corners=2pt, inner xsep=3pt, inner ysep=2pt,
+    \node[visible on=<5->, fill=gold, text=ink, rounded corners=2pt, inner xsep=3pt, inner ysep=2pt,
           font=\fontsize{6.5}{7.5}\selectfont\twfont\bfseries] at ( 1.1, 0.95) {0.40 , 1.00};
   \end{scope}
 
-  \draw[sheet] (0.0,-2.4) rectangle (7.6, 3.0);
+  \draw[sheet] (0.0,-3.45) rectangle (7.6, 3.0);
 
-  \node[shead]    at (0.3, 2.70) {STEP 1 \quad GATHER};
-  \node[slineHot] at (0.3, 1.95) {N(Alice) = \{ Bob , Carol \}};
+  \node[shead] at (0.3, 2.78) {STEP 1 \quad GATHER};
 
-  \node[shead]    at (0.3, 1.05) {WHAT IS A MESSAGE?};
-  \node[sline]    at (0.65, 0.60) {Bob \ \ sends \ [ 0.60 , 1.00 ]};
-  \node[sline]    at (0.65, 0.20) {Carol sends \ [ 0.40 , 1.00 ]};
 
-  \node[slineHot] at (0.3,-0.85) {Gathering = Copying messages};
+  \node[visible on=<2->, slineHot] at (0.3, 1.62) {N(Alice) = \{ Bob , Carol \}};
 
-  \node[gstepon] at (-2.6,-3.3) {1. GATHER};
-  \node[gstep]   at ( 0.0,-3.3) {2. AGGREGATE};
-  \node[gstep]   at ( 2.6,-3.3) {3. UPDATE};
+
+
+  \node[visible on=<4->, shead] at (0.3, 0.40) {WHAT IS A MESSAGE?};
+
+
+  \node[visible on=<4->, sline] at (0.65,-0.74) {Bob \ \ sends \ [ 0.60 , 1.00 ]};
+  \node[visible on=<5->, sline] at (0.65,-1.04) {Carol sends \ [ 0.40 , 1.00 ]};
+
+  \node[visible on=<6->, slineHot] at (0.3,-2.20) {Gathering = Copying messages};
+
+  \node[gstepon] at (-2.6,-3.95) {1. GATHER};
+  \node[gstep]   at ( 0.0,-3.95) {2. AGGREGATE};
+  \node[gstep]   at ( 2.6,-3.95) {3. UPDATE};
 \end{tikzpicture}
 \end{frame}
 
-% --- 9.2: STEP 2 - AGGREGATE (static) ---
+% --- 9.2: STEP 2 - AGGREGATE ---
 \begin{frame}[plain]
 \kicker{SCENE 09 / 17 \quad RUN IT BY HAND $\cdot$ STEP 2}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
@@ -751,34 +950,41 @@
     \node[pcardDim] at ( 2.5,-1.9) {\pbody{Eve}{0.80}{0.00}{ink!60}};
     \node[pcardHot] at (0,0) {\pbody{ALICE}{0.80}{0.00}{crimson}};
 
-    \node[draw=gold, fill=gold!25, text=ink, rounded corners=2pt, line width=1.2pt,
+    \node[visible on=<6->, draw=gold, fill=gold!25, text=ink, rounded corners=2pt, line width=1.2pt,
           inner xsep=5pt, inner ysep=3pt, align=center,
           font=\fontsize{6.5}{8}\selectfont\twfont\bfseries]
       at (0,-1.22) {NEIGHBOURHOOD\\[1pt][ 0.50 , 1.00 ]};
   \end{scope}
 
-  \draw[sheet] (0.0,-2.4) rectangle (7.6, 3.0);
+  \draw[sheet] (0.0,-3.45) rectangle (7.6, 3.0);
 
-  \node[shead]    at (0.3, 2.70) {STEP 2 \quad AGGREGATE};
-  \node[sline]    at (0.65, 2.25) {Bob \ \ \ [ 0.60 , 1.00 ]};
-  \node[sline]    at (0.65, 1.92) {Carol \ [ 0.40 , 1.00 ]};
+  \node[shead] at (0.3, 2.78) {STEP 2 \quad AGGREGATE};
 
-  \node[slineHot] at (0.3, 1.40) {Rule: average them, slot by slot.};
-  \node[sline]    at (0.65, 0.95) {ACTIVITY \ (0.60 + 0.40) / 2 = 0.50};
-  \node[sline]    at (0.65, 0.62) {TOPIC X \ \ (1.00 + 1.00) / 2 = 1.00};
-  \node[slineHot] at (0.3, 0.12) {m(Alice) = [ 0.50 , 1.00 ]};
 
-  \node[shead]    at (0.3,-0.55) {ORDER INVARIANCE};
-  \node[sline]    at (0.65,-0.95) {mean(Bob, Carol) = mean(Carol, Bob)};
-  \node[slineHot] at (0.3,-1.55) {Order Invariant Aggregation};
+  \node[visible on=<2->, sline] at (0.65, 1.62) {Bob \ \ \ [ 0.60 , 1.00 ]};
+  \node[visible on=<2->, sline] at (0.65, 1.32) {Carol \ [ 0.40 , 1.00 ]};
 
-  \node[gstep]   at (-2.6,-3.3) {1. GATHER};
-  \node[gstepon] at ( 0.0,-3.3) {2. AGGREGATE};
-  \node[gstep]   at ( 2.6,-3.3) {3. UPDATE};
+  \node[visible on=<3->, slineHot] at (0.3, 0.86) {Rule: average them, slot by slot.};
+
+  \node[visible on=<4->, sline] at (0.65, 0.38) {ACTIVITY \ (0.60 + 0.40) / 2 = 0.50};
+  \node[visible on=<5->, sline] at (0.65, 0.03) {TOPIC X \ \ (1.00 + 1.00) / 2 = 1.00};
+
+  \node[visible on=<6->, slineHot] at (0.3,-0.50) {m(Alice) = [ 0.50 , 1.00 ]};
+
+  \node[visible on=<7->, shead] at (0.3,-1.08) {ORDER INVARIANCE};
+  \node[visible on=<7->, slineHot] at (0.3,-1.50) {mean(Bob, Carol) = mean(Carol, Bob) = 0.50};
+
+  \node[visible on=<8->, slineHot] at (0.3,-2.00) {Order Invariant Aggregation};
+
+
+
+  \node[gstep]   at (-2.6,-3.95) {1. GATHER};
+  \node[gstepon] at ( 0.0,-3.95) {2. AGGREGATE};
+  \node[gstep]   at ( 2.6,-3.95) {3. UPDATE};
 \end{tikzpicture}
 \end{frame}
 
-% --- 9.3: STEP 3 - UPDATE (static) ---
+% --- 9.3: STEP 3 - UPDATE ---
 \begin{frame}[plain]
 \kicker{SCENE 09 / 17 \quad RUN IT BY HAND $\cdot$ STEP 3}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
@@ -796,72 +1002,84 @@
     \node[pcardDim] at (-2.5,-1.9) {\pbody{David}{0.20}{0.00}{ink!60}};
     \node[pcardDim] at ( 2.5,-1.9) {\pbody{Eve}{0.80}{0.00}{ink!60}};
 
-    \node[pcardHot, fill=gold!35] at (0,0) {\pbody{ALICE}{0.65}{0.50}{biogreen!65!ink}};
-    \node[anchor=north, text=gold, font=\fontsize{6.5}{8}\selectfont\twfont\bfseries]
+    \node[visible on=<1-6>, pcardHot] at (0,0) {\pbody{ALICE}{0.80}{0.00}{crimson}};
+    \node[visible on=<7->, pcardHot, fill=gold!35] at (0,0) {\pbody{ALICE}{0.65}{0.50}{biogreen!65!ink}};
+
+    \node[visible on=<1-6>, draw=gold, fill=gold!25, text=ink, rounded corners=2pt, line width=1.2pt,
+          inner xsep=5pt, inner ysep=3pt, align=center,
+          font=\fontsize{6.5}{8}\selectfont\twfont\bfseries]
+      at (0,-1.22) {NEIGHBOURHOOD\\[1pt][ 0.50 , 1.00 ]};
+    \node[visible on=<7->, anchor=north, text=gold, font=\fontsize{6.5}{8}\selectfont\twfont\bfseries]
       at (0,-0.78) {CARD REWRITTEN};
   \end{scope}
 
-  \draw[sheet] (0.0,-2.4) rectangle (7.6, 3.0);
+  \draw[sheet] (0.0,-3.45) rectangle (7.6, 3.0);
 
-  \node[shead]    at (0.3, 2.70) {STEP 3 \quad UPDATE};
-  \node[sline]    at (0.65, 2.25) {mine \ \ \ [ 0.80 , 0.00 ]};
-  \node[sline]    at (0.65, 1.92) {theirs \ [ 0.50 , 1.00 ]};
+  \node[shead] at (0.3, 2.78) {STEP 3 \quad UPDATE};
 
-  \node[slineHot] at (0.3, 1.40) {new = 0.5 x mine + 0.5 x theirs};
 
-  \node[sline]    at (0.65, 0.80) {ACTIVITY \ 0.5(0.80) + 0.5(0.50)};
-  \node[sline]    at (0.65, 0.48) {\ \ \ \ \ \ \ \ \ = 0.40 + 0.25 = 0.65};
-  \node[sline]    at (0.65, 0.00) {TOPIC X \ \ 0.5(0.00) + 0.5(1.00)};
-  \node[sline]    at (0.65,-0.32) {\ \ \ \ \ \ \ \ \ = 0.00 + 0.50 = 0.50};
+  \node[visible on=<2->, sline] at (0.65, 1.62) {mine \ \ \ [ 0.80 , 0.00 ]};
+  \node[visible on=<2->, sline] at (0.65, 1.32) {theirs \ [ 0.50 , 1.00 ]};
 
-  \node[slineHot] at (0.3,-1.20) {h'(Alice) = [ 0.65 , 0.50 ]};
+  \node[visible on=<3->, slineHot] at (0.3, 0.86) {new = 0.5 x mine + 0.5 x theirs};
 
-  \node[gstep]   at (-2.6,-3.3) {1. GATHER};
-  \node[gstep]   at ( 0.0,-3.3) {2. AGGREGATE};
-  \node[gstepon] at ( 2.6,-3.3) {3. UPDATE};
+
+  \node[visible on=<4->, sline] at (0.65,-0.52) {ACTIVITY \ 0.5(0.80) + 0.5(0.50)};
+  \node[visible on=<4->, sline] at (0.65,-0.82) {\ \ \ \ \ \ \ \ \ = 0.40 + 0.25 = 0.65};
+
+  \node[visible on=<5->, sline] at (0.65,-1.24) {TOPIC X \ \ 0.5(0.00) + 0.5(1.00)};
+  \node[visible on=<5->, sline] at (0.65,-1.54) {\ \ \ \ \ \ \ \ \ = 0.00 + 0.50 = 0.50};
+
+
+
+  \node[visible on=<7->, slineHot] at (0.3,-3.04) {h'(Alice) = [ 0.65 , 0.50 ]};
+
+  \node[gstep]   at (-2.6,-3.95) {1. GATHER};
+  \node[gstep]   at ( 0.0,-3.95) {2. AGGREGATE};
+  \node[gstepon] at ( 2.6,-3.95) {3. UPDATE};
 \end{tikzpicture}
 \end{frame}
 
-% --- 9.4: What that one number bought us (static) ---
+% --- 9.4: What that one number bought us ---
 \begin{frame}[plain]
 \kicker{SCENE 09 / 17 \quad RUN IT BY HAND $\cdot$ THE ANSWER}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
   \node[anchor=north, text=chalk, font=\fontsize{12.5}{15}\selectfont\sffamily\bfseries]
     at (0, 3.9) {One blank slot, filled in by the neighbourhood.};
 
-  \node[pcard, minimum width=2.4cm] (before) at (-3.4, 1.6) {\pbody{ALICE}{0.80}{0.00}{crimson}};
-  \node[anchor=south, text=brass, font=\fontsize{7.5}{9}\selectfont\twfont\bfseries] at ([yshift=3pt]before.north) {BEFORE};
+  \node[anchor=north, text=brass, font=\fontsize{7.5}{9}\selectfont\twfont\bfseries] at (-3.4, 2.75) {BEFORE};
+  \node[pcard, minimum width=2.4cm] at (-3.4, 1.8) {\pbody{ALICE}{0.80}{0.00}{crimson}};
 
-  \draw[-{Latex[length=7pt]}, gold, line width=2pt] (-1.9, 1.6) -- (-0.5, 1.6);
+  \draw[-{Latex[length=7pt]}, gold, line width=2pt, visible on=<2->] (-1.9, 1.8) -- (-0.5, 1.8);
 
-  \node[pcardHot, fill=gold!35, minimum width=2.4cm] (after) at (1.0, 1.6) {\pbody{ALICE}{0.65}{0.50}{biogreen!65!ink}};
-  \node[anchor=south, text=gold, font=\fontsize{7.5}{9}\selectfont\twfont\bfseries] at ([yshift=3pt]after.north) {AFTER ONE LAYER};
+  \node[visible on=<2->, anchor=north, text=gold, font=\fontsize{7.5}{9}\selectfont\twfont\bfseries] at (1.0, 2.75) {AFTER ONE LAYER};
+  \node[visible on=<2->, pcardHot, fill=gold!35, minimum width=2.4cm] at (1.0, 1.8) {\pbody{ALICE}{0.65}{0.50}{biogreen!65!ink}};
 
-  \node[anchor=west, text=chalk, font=\fontsize{10}{12}\selectfont\sffamily, align=left]
-    at (2.8, 1.6) {TOPIC X: \ \textcolor{crimson}{0.00} $\rightarrow$ \textcolor{gold}{\bfseries 0.50}};
+  \node[visible on=<2->, anchor=west, text=chalk, font=\fontsize{10}{12}\selectfont\sffamily, align=left]
+    at (2.8, 1.8) {TOPIC X: \ \textcolor{crimson}{0.00} $\rightarrow$ \textcolor{gold}{\bfseries 0.50}};
 
-  \node[anchor=north, text=dimtext, font=\fontsize{8.5}{10}\selectfont\twfont\bfseries, align=center]
+  \node[visible on=<3->, anchor=north, text=dimtext, font=\fontsize{8.5}{10}\selectfont\twfont\bfseries, align=center]
     at (0, -0.1) {READOUT LAYER};
-  \node[anchor=north, text=chalk, font=\fontsize{13}{16}\selectfont]
-    at (0, -0.65) {$p = \sigma\!\left(6 \times 0.50 - 0.9\right) = \sigma(2.1) = 0.89$};
+  \node[visible on=<4->, anchor=north, text=chalk, font=\fontsize{13}{16}\selectfont]
+    at (0, -0.7) {$p = \sigma\!\left(6 \times 0.50 - 0.9\right) = \sigma(2.1) = 0.89$};
 
-  \node[draw=gold, fill=boardmid, line width=1.5pt, rounded corners=3pt,
+  \node[visible on=<5->, draw=gold, fill=boardmid, line width=1.5pt, rounded corners=3pt,
         text=gold, inner xsep=16pt, inner ysep=7pt, font=\dispfont\fontsize{22}{24}\selectfont]
     at (0, -2.2) {LIKELY INTERESTED \quad 89\%};
 
-  \node[anchor=south, text=gold, font=\fontsize{10.5}{13}\selectfont\twfont\bfseries, align=center]
+  \node[visible on=<6->, anchor=south, text=gold, font=\fontsize{10.5}{13}\selectfont\twfont\bfseries, align=center]
     at (0, -3.8) {PREDICTION DERIVED FROM CONNECTIONS};
 \end{tikzpicture}
 \end{frame}
 
-% --- 9.5: Every node did this at once (static) ---
+% --- 9.5: Every node did this at once ---
 \begin{frame}[plain]
 \kicker{SCENE 09 / 17 \quad RUN IT BY HAND $\cdot$ ALL AT ONCE}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
   \node[anchor=north, text=chalk, font=\fontsize{12.5}{15}\selectfont\sffamily\bfseries]
     at (0, 3.85) {Alice was not special. Every node ran the same three steps.};
 
-  \node[anchor=north east, text=gold, font=\fontsize{8}{10}\selectfont\twfont\bfseries]
+  \node[visible on=<2->, anchor=north east, text=gold, font=\fontsize{8}{10}\selectfont\twfont\bfseries]
     at (7.3, 3.05) {ROUND 1 COMPLETE};
 
   \begin{scope}[shift={(0, 0.35)}]
@@ -870,17 +1088,23 @@
     \draw[gedgeHot] (-3.3,2.0) -- (-5.0,-0.9);
     \draw[gedgeHot] ( 3.3,2.0) -- ( 5.0,-0.9);
 
-    \node[pcardHot, fill=gold!35] at (-3.3, 2.0) {\pbody{Bob}{0.55}{0.50}{biogreen!65!ink}};
-    \node[pcardHot, fill=gold!35] at ( 3.3, 2.0) {\pbody{Carol}{0.60}{0.50}{biogreen!65!ink}};
-    \node[pcardHot, fill=gold!35] at (-5.0,-0.9) {\pbody{David}{0.40}{0.50}{biogreen!65!ink}};
-    \node[pcardHot, fill=gold!35] at ( 5.0,-0.9) {\pbody{Eve}{0.60}{0.50}{biogreen!65!ink}};
-    \node[pcardHot, fill=gold!35] at (0, 0.3) {\pbody{ALICE}{0.65}{0.50}{biogreen!65!ink}};
+    \node[visible on=<1>, pcard] at (-3.3, 2.0) {\pbody{Bob}{0.60}{1.00}{biogreen!70!ink}};
+    \node[visible on=<1>, pcard] at ( 3.3, 2.0) {\pbody{Carol}{0.40}{1.00}{biogreen!70!ink}};
+    \node[visible on=<1>, pcard] at (-5.0,-0.9) {\pbody{David}{0.20}{0.00}{ink!55}};
+    \node[visible on=<1>, pcard] at ( 5.0,-0.9) {\pbody{Eve}{0.80}{0.00}{ink!55}};
+    \node[visible on=<1>, pcardHot] at (0, 0.3) {\pbody{ALICE}{0.80}{0.00}{crimson}};
+
+    \node[visible on=<2->, pcardHot, fill=gold!35] at (-3.3, 2.0) {\pbody{Bob}{0.55}{0.50}{biogreen!65!ink}};
+    \node[visible on=<2->, pcardHot, fill=gold!35] at ( 3.3, 2.0) {\pbody{Carol}{0.60}{0.50}{biogreen!65!ink}};
+    \node[visible on=<2->, pcardHot, fill=gold!35] at (-5.0,-0.9) {\pbody{David}{0.40}{0.50}{biogreen!65!ink}};
+    \node[visible on=<2->, pcardHot, fill=gold!35] at ( 5.0,-0.9) {\pbody{Eve}{0.60}{0.50}{biogreen!65!ink}};
+    \node[visible on=<2->, pcardHot, fill=gold!35] at (0, 0.3) {\pbody{ALICE}{0.65}{0.50}{biogreen!65!ink}};
   \end{scope}
 
-  \node[anchor=north, text=gold, font=\fontsize{9.5}{11}\selectfont\twfont\bfseries, align=center]
-    at (0,-2.75) {ALL NODES CONVERGE TOWARD 0.50 IN SLOT 2};
-  \node[anchor=north, text=crimson, font=\fontsize{10}{12}\selectfont\twfont\bfseries, align=center]
-    at (0,-3.35) {POTENTIAL BOTTLENECK: OVER-SMOOTHING};
+  \node[visible on=<4->, anchor=north, text=gold, font=\fontsize{9.5}{11}\selectfont\twfont\bfseries, align=center]
+    at (0,-3.2) {ALL NODES CONVERGE TOWARD 0.50 IN SLOT 2};
+  \node[visible on=<5->, anchor=north, text=crimson, font=\fontsize{10}{12}\selectfont\twfont\bfseries, align=center]
+    at (0,-3.75) {POTENTIAL BOTTLENECK: OVER-SMOOTHING};
 \end{tikzpicture}
 \end{frame}
 
@@ -888,77 +1112,59 @@
 % ACT II-B: THE EQUATION & WHAT YOU DO WITH THE OUTPUT
 % =============================================================
 
-% The equation is split across two static slides so the callouts never stack:
-%   Part 1 = the neighbours' side, Part 2 = Alice's own side and the result.
-\newcommand{\gnnequation}[2]{% #1 = colour of Alice's own terms, #2 = colour of the neighbour terms
-  \begin{scope}[font=\fontsize{13}{16}\selectfont]
-    \node[anchor=base west, text=#1] (lhs)   at (-6.0, 0.5) {$h_v^{(k+1)}$};
-    \node[anchor=base west, text=#1] (sig)   at ([xshift=5pt]lhs.base east) {$=\ \sigma\Bigl($};
-    \node[anchor=base west, text=#1] (wself) at ([xshift=3pt]sig.base east) {$W_{\text{self}}\,h_v^{(k)}$};
-    \node[anchor=base west, text=chalk] (plus) at ([xshift=4pt]wself.base east) {$+$};
-    \node[anchor=base west, text=#2] (wnbr)  at ([xshift=4pt]plus.base east) {$W_{\text{nbr}}$};
-    \node[anchor=base west, text=#2] (agg)   at ([xshift=4pt]wnbr.base east) {$\text{AGG}$};
-    \node[anchor=base west, text=#2] (nb)    at ([xshift=1pt]agg.base east) {$\bigl(\{\,h_u^{(k)} : u \in \mathcal{N}(v)\,\}\bigr)$};
-    \node[anchor=base west, text=#1] (cls)   at ([xshift=1pt]nb.base east) {$\Bigr)$};
-  \end{scope}}
-
-% --- 10.1: The equation, part 1 - what the neighbours contribute (static) ---
+% --- 10.1-10.2: The equation, one symbol at a time, bound to Alice's numbers ---
 \begin{frame}[plain]
-\kicker{SCENE 10 / 17 \quad THE EQUATION $\cdot$ PART 1}
+\kicker{SCENE 10 / 17 \quad THE EQUATION}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
-  \node[anchor=north, text=chalk, font=\fontsize{12.5}{15}\selectfont\sffamily\bfseries]
-    at (0, 3.85) {What the \textcolor{gold}{neighbours} contribute};
 
-  \gnnequation{dimtext!55}{chalk}
 
-  \node[text=chalk!70, font=\fontsize{7.5}{9}\selectfont\twfont, align=center] (cnb)
-    at (4.6, -2.3) {my neighbours\\\textcolor{gold}{\{ Bob , Carol \}}};
-  \draw[-{Latex[length=4pt]}, chalk!50] (cnb.north) to[bend left=12] ([xshift=22pt]nb.south);
+  % ---- the equation, built from separately anchored pieces ----
+  \begin{scope}[text=chalk, font=\fontsize{13}{16}\selectfont]
+    \node[anchor=base west] (lhs)   at (-6.0, 0.5) {$h_v^{(k+1)}$};
+    \node[anchor=base west] (sig)   at ([xshift=5pt]lhs.base east) {$=\ \sigma\Bigl($};
+    \node[anchor=base west] (wself) at ([xshift=3pt]sig.base east) {$W_{\text{self}}\,h_v^{(k)}$};
+    \node[anchor=base west] (plus)  at ([xshift=4pt]wself.base east) {$+$};
+    \node[anchor=base west] (wnbr)  at ([xshift=4pt]plus.base east) {$W_{\text{nbr}}$};
+    \node[anchor=base west] (agg)   at ([xshift=4pt]wnbr.base east) {$\text{AGG}$};
+    \node[anchor=base west] (nb)    at ([xshift=1pt]agg.base east) {$\bigl(\{\,h_u^{(k)} : u \in \mathcal{N}(v)\,\}\bigr)$};
+    \node[anchor=base west] (cls)   at ([xshift=1pt]nb.base east) {$\Bigr)$};
+  \end{scope}
 
-  \node[text=chalk!70, font=\fontsize{7.5}{9}\selectfont\twfont, align=center] (chu)
+  % ---- callouts, revealed one at a time ----
+  \node[visible on=<2->, text=chalk!70, font=\fontsize{7.5}{9}\selectfont\twfont, align=center] (cnb)
+    at (4.6, -2.5) {my neighbours\\\textcolor{gold}{\{ Bob , Carol \}}};
+  \draw[-{Latex[length=4pt]}, chalk!50, visible on=<2->] (cnb.north) to[bend left=12] ([xshift=22pt]nb.south);
+
+  \node[visible on=<3->, text=chalk!70, font=\fontsize{7.5}{9}\selectfont\twfont, align=center] (chu)
     at (0.4, -1.6) {each neighbour's current card\\\textcolor{gold}{Bob = [ 0.60 , 1.00 ]}};
-  \draw[-{Latex[length=4pt]}, chalk!50] (chu.north) to[bend right=10] ([xshift=-32pt]nb.south);
+  \draw[-{Latex[length=4pt]}, chalk!50, visible on=<3->] (chu.north) to[bend right=10] ([xshift=-32pt]nb.south);
 
-  \node[text=skyblue, font=\fontsize{7.5}{9}\selectfont\twfont, align=center] (cagg)
-    at (4.7, 2.55) {the shuffle-proof combiner\\\textcolor{gold}{average = [ 0.50 , 1.00 ]}};
-  \draw[-{Latex[length=4pt]}, skyblue!80] (cagg.south) to[bend left=12] (agg.north);
+  \node[visible on=<4->, text=skyblue, font=\fontsize{7.5}{9}\selectfont\twfont, align=center] (cagg)
+    at (4.4, 2.95) {the shuffle-proof combiner\\\textcolor{gold}{average = [ 0.50 , 1.00 ]}};
+  \draw[-{Latex[length=4pt]}, skyblue!80, visible on=<4->] (cagg.south) to[bend left=12] (agg.north);
 
-  \node[text=gold, font=\fontsize{7.5}{9}\selectfont\twfont, align=center] (cwn)
-    at (-0.4, 2.05) {how much of them\\\textcolor{gold}{0.5}};
-  \draw[-{Latex[length=4pt]}, gold!70] (cwn.south) to[bend right=8] (wnbr.north);
+  \node[visible on=<5->, text=gold, font=\fontsize{7.5}{9}\selectfont\twfont, align=center] (cwn)
+    at (1.5, 2.05) {how much of them\\\textcolor{gold}{0.5}};
+  \draw[-{Latex[length=4pt]}, gold!70, visible on=<5->] (cwn.south) to[bend right=8] (wnbr.north);
 
-  \node[anchor=south, text=gold, font=\fontsize{11}{13}\selectfont\sffamily\bfseries, align=center]
-    at (0,-3.9) {Gather \quad$\cdot$\quad Aggregate};
-\end{tikzpicture}
-\end{frame}
+  \node[visible on=<6->, text=gold, font=\fontsize{7.5}{9}\selectfont\twfont, align=center] (cws)
+    at (-2.4, 2.95) {how much of me\\\textcolor{gold}{0.5 $\times$ [ 0.80 , 0.00 ]}};
+  \draw[-{Latex[length=4pt]}, gold!70, visible on=<6->] (cws.south) to[bend right=10] (wself.north);
 
-% --- 10.2: The equation, part 2 - what Alice keeps, and the result (static) ---
-\begin{frame}[plain]
-\kicker{SCENE 10 / 17 \quad THE EQUATION $\cdot$ PART 2}
-\begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
-  \node[anchor=north, text=chalk, font=\fontsize{12.5}{15}\selectfont\sffamily\bfseries]
-    at (0, 3.85) {What \textcolor{gold}{Alice} keeps, and the new card};
-
-  \gnnequation{chalk}{dimtext!55}
-
-  \node[text=gold, font=\fontsize{7.5}{9}\selectfont\twfont, align=center] (cws)
-    at (-2.2, 2.35) {how much of me\\\textcolor{gold}{0.5 $\times$ [ 0.80 , 0.00 ]}};
-  \draw[-{Latex[length=4pt]}, gold!70] (cws.south) to[bend right=10] (wself.north);
-
-  \node[text=brass, font=\fontsize{7.5}{9}\selectfont\twfont, align=center] (csig)
+  \node[visible on=<7->, text=brass, font=\fontsize{7.5}{9}\selectfont\twfont, align=center] (csig)
     at (-5.4, 2.05) {squash it back\\into range};
-  \draw[-{Latex[length=4pt]}, brass!70] (csig.south) to[bend left=10] (sig.north);
+  \draw[-{Latex[length=4pt]}, brass!70, visible on=<7->] (csig.south) to[bend left=10] (sig.north);
 
-  \node[text=gold, font=\fontsize{7.5}{9}\selectfont\twfont, align=center] (clhs)
+  \node[visible on=<8->, text=gold, font=\fontsize{7.5}{9}\selectfont\twfont, align=center] (clhs)
     at (-5.3, -1.8) {Alice's new card\\\textcolor{gold}{[ 0.65 , 0.50 ]}};
-  \draw[-{Latex[length=4pt]}, gold!70] (clhs.north) to[bend right=12] (lhs.south);
+  \draw[-{Latex[length=4pt]}, gold!70, visible on=<8->] (clhs.north) to[bend right=12] (lhs.south);
 
-  \node[anchor=south, text=gold, font=\fontsize{13}{15}\selectfont\sffamily\bfseries, align=center]
+  \node[visible on=<9->, anchor=south, text=gold, font=\fontsize{13}{15}\selectfont\sffamily\bfseries, align=center]
     at (0,-3.9) {Gather \quad$\cdot$\quad Aggregate \quad$\cdot$\quad Update};
 \end{tikzpicture}
 \end{frame}
 
-% --- 10.3: Problem Solving · From Embeddings to Decisions (static) ---
+% --- 10.3: Problem Solving · From Embeddings to Decisions ---
 \begin{frame}[plain]
 \kicker{HOW A GNN SOLVES REAL PROBLEMS}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
@@ -969,18 +1175,18 @@
         minimum width=3.0cm, minimum height=1.2cm, align=center] (b1) at (-4.2, 0.5)
     {\textbf{Raw Input $x_v$}\\[2pt]\fontsize{7}{8}\selectfont Age, Location, Posts};
 
-  \node[draw=gold, fill=boardmid, text=gold, rounded corners=2pt, line width=1.2pt,
+  \node[visible on=<2->, draw=gold, fill=boardmid, text=gold, rounded corners=2pt, line width=1.2pt,
         minimum width=3.4cm, minimum height=1.2cm, align=center] (b2) at (0.0, 0.5)
     {\textbf{K-Layer GNN}\\[2pt]\fontsize{7}{8}\selectfont Gather $\to$ Aggregate $\to$ Update};
 
-  \node[draw=biogreen, fill=boardmid, text=chalk, rounded corners=2pt,
+  \node[visible on=<3->, draw=biogreen, fill=boardmid, text=chalk, rounded corners=2pt,
         minimum width=3.0cm, minimum height=1.2cm, align=center] (b3) at (4.2, 0.5)
     {\textbf{Final Vector $h_v^{(K)}$}\\[2pt]\fontsize{7}{8}\selectfont Rich Relational Context};
 
-  \draw[-{Latex[length=5pt]}, brass, line width=1pt] (b1) -- (b2);
-  \draw[-{Latex[length=5pt]}, gold, line width=1.2pt] (b2) -- (b3);
+  \draw[-{Latex[length=5pt]}, brass, line width=1pt, visible on=<2->] (b1) -- (b2);
+  \draw[-{Latex[length=5pt]}, gold, line width=1.2pt, visible on=<3->] (b2) -- (b3);
 
-  \node[anchor=north, text=gold, font=\fontsize{9.5}{11}\selectfont\twfont\bfseries, align=center]
+  \node[visible on=<4->, anchor=north, text=gold, font=\fontsize{9.5}{11}\selectfont\twfont\bfseries, align=center]
     at (0, -1.4) {$k$-HOP NEIGHBORHOOD EMBEDDINGS};
 \end{tikzpicture}
 \end{frame}
@@ -1404,14 +1610,49 @@
 \end{tikzpicture}
 \end{frame}
 
-% --- 17: Final Close · Thank You ---
+% --- 17.1: Final Close · Network Illuminated ---
 \begin{frame}[plain]
 \kicker{SCENE 17 / 17 \quad FINAL CLOSE}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
-  \node[anchor=center, text=gold, font=\dispfont\fontsize{52}{46}\selectfont]
+  \fill[papercream, rounded corners=3pt, draw=brass!40, line width=0.6pt] (-4.1,0.5) rectangle (4.1,3.4);
+  \fill[paperdark, rounded corners=3pt, opacity=0.45] (-4.1,0.5) rectangle (4.1,1.4);
+  \fill[gold] (0,3.4) circle (5pt);
+
+  % Person portrait photo on left
+  \node[anchor=center, draw=ink!40, line width=0.8pt, inner sep=0pt, rounded corners=2pt]
+    at (-2.6, 2.4) {\includegraphics[width=1.7cm,height=1.7cm]{person_profile.jpg}};
+
+  % Profile details on right
+  \node[anchor=west, text=ink!70, font=\fontsize{6.5}{8}\selectfont\twfont\bfseries] at (-1.2,3.10) {PROFILE FILE $\cdot$ TARGET \#4091};
+  \node[anchor=west, text=ink, font=\dispfont\Large\bfseries] at (-1.2,2.70) {PERSON OF INTEREST};
+  \node[anchor=west, text=ink!80!boardbg, font=\fontsize{7}{8.5}\selectfont\twfont] at (-1.2,2.25) {LOCATION: DHAKA, BD \quad AGE: 24};
+  \node[anchor=west, text=ink!80!boardbg, font=\fontsize{7}{8.5}\selectfont\twfont] at (-1.2,1.95) {POSTS: 17 \quad STATUS: NORMAL USER};
+  \draw[ink!20, line width=0.5pt] (-1.2,1.68) -- (3.6,1.68);
+
+  \node[anchor=center, text=ink!90, font=\fontsize{7.5}{9}\selectfont\twfont\bfseries, align=center]
+    at (0,0.95) {IDENTITY RESOLVED THROUGH CONNECTIONS};
+
+  \node[visible on=<2->, bankbadge] (bank2) at ( 0.0, 4.0) {VERIFIED BANK};
+  \node[visible on=<2->, scambadge] (sl2)   at (-4.8, 0.0) {FLAGGED SCAM OPERATOR};
+  \node[visible on=<2->, scambadge] (sr2)   at ( 4.8, 0.0) {FLAGGED FRAUD RING};
+  \draw[gold, line width=1.4pt, visible on=<2->] (0,3.4)     -- (bank2.south);
+  \draw[gold, line width=1.4pt, visible on=<2->] (-1.8,0.5)  -- (sl2.north east);
+  \draw[gold, line width=1.4pt, visible on=<2->] ( 1.8,0.5)  -- (sr2.north west);
+
+  \node[visible on=<3->, anchor=north, text=gold, font=\fontsize{13}{16}\selectfont\sffamily\bfseries,
+        align=center] at (0,-1.0)
+    {The Answer Was in the Connections.};
+\end{tikzpicture}
+\end{frame}
+
+% --- 17.2: Final Close · The Takeaway & Thank You ---
+\begin{frame}[plain]
+\kicker{SCENE 17 / 17 \quad FINAL CLOSE}
+\begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
+  \node[visible on=<2->, anchor=center, text=gold, font=\dispfont\fontsize{52}{46}\selectfont]
     at (0, 0.0) {Thank you.};
 
-  \node[anchor=south, text=dimtext, font=\fontsize{9}{11}\selectfont\twfont, align=center]
+  \node[visible on=<2->, anchor=south, text=dimtext, font=\fontsize{9}{11}\selectfont\twfont, align=center]
     at (0, -2.0) {QUESTIONS \& DISCUSSION};
 \end{tikzpicture}
 \end{frame}
