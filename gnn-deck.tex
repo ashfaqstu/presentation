@@ -7,11 +7,12 @@
 \usepackage{fontspec}
 \usepackage{graphicx}
 \usepackage{tikz}
+\usepackage{fontawesome5}
 \usepackage{amsmath,amssymb}
 \usepackage{ulem} % for \sout
 
 % TikZ Libraries
-\usetikzlibrary{arrows.meta,calc,positioning,shapes.geometric,backgrounds,fit,overlay-beamer-styles}
+\usetikzlibrary{arrows.meta,calc,positioning,shapes.geometric,backgrounds,fit,overlay-beamer-styles,decorations.pathmorphing}
 
 % ─────────────────────────────────────────────────────────────
 % Color Palette: White Mode / Editorial Dossier Aesthetic
@@ -158,7 +159,7 @@
 
 % ---------------- 1.A: Mbappé alone ----------------
 \begin{frame}[plain]
-\kicker{SCENE 01 / 17 \quad COLD OPEN}
+\kicker{COLD OPEN}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
   \node[anchor=south west, text=chalk, font=\fontsize{23}{27}\selectfont\sffamily\bfseries]
     at (-7.2, 2.75) {Can we trust this person?};
@@ -176,7 +177,7 @@
 
 % ---------------- 1.B: the three interactions ----------------
 \begin{frame}[plain]
-\kicker{SCENE 01 / 17 \quad COLD OPEN}
+\kicker{COLD OPEN}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
   \node[anchor=south west, text=chalk, font=\fontsize{23}{27}\selectfont\sffamily\bfseries]
     at (-7.2, 2.75) {Can we trust this person?};
@@ -236,7 +237,7 @@
 
 % ---------------- 1.C: the inference, then the two questions ----------------
 \begin{frame}[plain]
-\kicker{SCENE 01 / 17 \quad COLD OPEN}
+\kicker{COLD OPEN}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
   \node[anchor=south west, text=chalk, font=\fontsize{23}{27}\selectfont\sffamily\bfseries]
     at (-7.2, 2.75) {Can we trust this person?};
@@ -278,7 +279,7 @@
 
 % --- 2.1: CNN Example · Predictable Grid ---
 \begin{frame}[plain]
-\kicker{SCENE 02 / 17 \quad THE CNN EXAMPLE}
+\kicker{THE CNN EXAMPLE}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
   \foreach \r in {0,...,4} {
     \foreach \c in {0,...,4} {
@@ -298,7 +299,7 @@
 
 % --- 2.2-2.3: CNN Example · The hierarchy builds one rung at a time ---
 \begin{frame}[plain]
-\kicker{SCENE 02 / 17 \quad THE CNN EXAMPLE}
+\kicker{THE CNN EXAMPLE}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
   \begin{scope}[shift={(-3.8,0.2)}]
     \foreach \r in {0,...,4} {
@@ -338,7 +339,7 @@
 
 % --- 3.1: Name the CNN ---
 \begin{frame}[plain]
-\kicker{SCENE 03 / 17 \quad NAME THE CNN}
+\kicker{NAME THE CNN}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
   \draw[brass, line width=0.8pt] (-5.5, 2.4) -- (5.5, 2.4);
   \node[anchor=center, text=chalk, font=\dispfont\fontsize{46}{42}\selectfont, align=center]
@@ -353,7 +354,7 @@
 
 % --- 4.1-4.2: Grid vs Graph ---
 \begin{frame}[plain]
-\kicker{SCENE 04 / 17 \quad GRID VS.\ GRAPH}
+\kicker{GRID VS.\ GRAPH}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
   \begin{scope}[shift={(-3.4, 0.4)}]
     \foreach \r in {0,...,4} {
@@ -404,7 +405,7 @@
 
 % --- 5.1-5.2: Two obvious solutions ---
 \begin{frame}[plain]
-\kicker{SCENE 05 / 17 \quad OBVIOUS SOLUTIONS}
+\kicker{OBVIOUS SOLUTIONS}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
   \node[anchor=north, text=brass, font=\fontsize{9}{11}\selectfont\twfont\bfseries, align=center]
     at (-3.0, 2.95) {SOLUTION 1:\\DISCARD THE EDGES};
@@ -449,7 +450,7 @@
 
 % --- 6.1-6.2: The Failure · Renumber the same molecule ---
 \begin{frame}[plain]
-\kicker{SCENE 06 / 17 \quad THE FAILURE}
+\kicker{THE FAILURE}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
   \node[anchor=north, text=brass, font=\fontsize{8.5}{10}\selectfont\twfont\bfseries]
     at (0, 3.35) {TASK: PREDICT WHETHER THIS MOLECULE IS TOXIC};
@@ -522,7 +523,7 @@
   }
 }
 \begin{frame}[plain]
-\kicker{SCENE 06 / 17 \quad THE FAILURE}
+\kicker{THE FAILURE}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
   \begin{scope}[shift={(-3.2, 0.5)}]
     \node[anchor=north, text=brass, font=\fontsize{8}{9}\selectfont\twfont] at (0, 2.25) {NUMBERING A $\cdot$ ADJACENCY MATRIX};
@@ -556,7 +557,7 @@
 
 % --- 7.1-7.3: The Pivotal Question · What is it -> what is connected -> who influences it ---
 \begin{frame}[plain]
-\kicker{SCENE 07 / 17 \quad THE PIVOTAL QUESTION}
+\kicker{THE PIVOTAL QUESTION}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
   % ---- LEFT: the three questions, each earlier one fades as the next arrives ----
   \node[visible on=<1>,  anchor=west, text=chalk,  font=\fontsize{19}{23}\selectfont\sffamily\bfseries]
@@ -608,7 +609,7 @@
 
 % --- 8.1-8.6: The GNN Idea · neighbourhood -> GNN -> message passing -> Gather, Aggregate, Update ---
 \begin{frame}[plain]
-\kicker{SCENE 08 / 17 \quad THE GNN IDEA}
+\kicker{THE GNN IDEA}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
   \coordinate (c)  at ( 0.0,  0.7);
   \coordinate (n1) at (-3.2,  2.4);
@@ -670,7 +671,7 @@
 
 % --- 8.7: The Key Difference · the one thing a GNN fixes (static, minimal) ---
 \begin{frame}[plain]
-\kicker{SCENE 08 / 17 \quad THE KEY DIFFERENCE}
+\kicker{THE KEY DIFFERENCE}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
   \node[anchor=north, text=chalk, font=\fontsize{17}{20}\selectfont\sffamily\bfseries]
     at (0, 3.3) {What went wrong, and how a \textcolor{gold}{GNN} fixes it};
@@ -705,13 +706,80 @@
 \end{tikzpicture}
 \end{frame}
 
+% --- Catchphrase slide: dark background, faint chalk scribbles, one line ---
+% \catchphrase{random seed}{font size}{line}
+\definecolor{catchbg}{HTML}{15120F}
+\definecolor{catchchalk}{HTML}{EDE6D6}
+\definecolor{catchgold}{HTML}{F29A3A}
+\newcommand{\catchphrase}[3]{%
+{\setbeamercolor{background canvas}{bg=catchbg}
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture,overlay,shift={(current page.center)},
+    sketch/.style={decorate, decoration={random steps, segment length=5pt, amplitude=0.6pt}}]
+  \pgfmathsetseed{#1}
+
+  % freehand loops and squiggles
+  \foreach \i in {1,...,38} {
+    \pgfmathsetmacro{\sx}{rand*7.7}
+    \pgfmathsetmacro{\sy}{rand*4.3}
+    \pgfmathsetmacro{\ax}{rand*1.8}
+    \pgfmathsetmacro{\ay}{rand*1.8}
+    \pgfmathsetmacro{\bx}{rand*1.8}
+    \pgfmathsetmacro{\by}{rand*1.8}
+    \pgfmathsetmacro{\ex}{rand*2.2}
+    \pgfmathsetmacro{\ey}{rand*1.4}
+    \draw[catchchalk, opacity=0.11, line width=0.9pt, sketch]
+      (\sx,\sy) .. controls ++(\ax,\ay) and ++(\bx,\by) .. ++(\ex,\ey);
+  }
+
+  % little node-and-edge doodles
+  \foreach \i in {1,...,10} {
+    \pgfmathsetmacro{\gx}{rand*7.0}
+    \pgfmathsetmacro{\gy}{rand*3.8}
+    \pgfmathsetmacro{\px}{\gx+0.55+rand*0.2}
+    \pgfmathsetmacro{\py}{\gy+0.35+rand*0.2}
+    \pgfmathsetmacro{\qx}{\gx+0.2+rand*0.2}
+    \pgfmathsetmacro{\qy}{\gy-0.5+rand*0.15}
+    \pgfmathsetmacro{\rx}{\gx-0.5+rand*0.15}
+    \pgfmathsetmacro{\ry}{\gy+0.1+rand*0.2}
+    \draw[catchgold, opacity=0.2, line width=0.8pt, sketch] (\gx,\gy) -- (\px,\py) (\gx,\gy) -- (\qx,\qy) (\gx,\gy) -- (\rx,\ry) (\px,\py) -- (\qx,\qy);
+    \foreach \nx/\ny in {\gx/\gy, \px/\py, \qx/\qy, \rx/\ry} {
+      \draw[catchgold, opacity=0.24, line width=0.8pt] (\nx,\ny) circle (0.09);
+    }
+  }
+
+  % chalk symbols and arrows around the edges
+  \foreach \sym/\x/\y/\r in {?/-6.6/2.9/12, ?/6.4/-2.7/-10, $\Sigma$/5.9/2.6/8, $h_v$/-5.8/-2.9/-6,
+                             $\bar{x}$/-2.6/3.4/5, $0.50$/2.9/-3.5/-4, ?/-1.2/-3.6/15, $\sigma$/6.9/0.4/-12} {
+    \node[text=catchchalk, opacity=0.2, rotate=\r, font=\fontsize{20}{22}\selectfont\sffamily\itshape] at (\x,\y) {\sym};
+  }
+  \draw[catchchalk, opacity=0.16, line width=1pt, sketch, -{Stealth[length=6pt]}] (-7.2,0.9) .. controls (-6.2,1.9) and (-5.1,1.6) .. (-4.6,2.4);
+  \draw[catchchalk, opacity=0.16, line width=1pt, sketch, -{Stealth[length=6pt]}] (7.2,-0.8) .. controls (6.4,-1.8) and (5.2,-1.5) .. (4.7,-2.3);
+  \draw[catchchalk, opacity=0.14, line width=1pt, sketch] (0,0) ++(-3.8,-2.6) arc (200:340:4.1 and 1.1);
+
+  % soft dark pool behind the text so it always reads
+  \foreach \k in {1,...,6} {
+    \fill[catchbg, opacity=0.2] (0,0.05) ellipse ({3.6+0.55*\k} and {0.55+0.2*\k});
+  }
+
+  % the line
+  \node[text=white, font=\fontsize{#2}{#2}\selectfont\sffamily\bfseries] (cp) at (0,0.1) {#3};
+  \draw[catchgold, line width=2.4pt, line cap=round, sketch]
+    ([xshift=8pt,yshift=-5pt]cp.south west) .. controls ([xshift=-40pt,yshift=-12pt]cp.south) and ([xshift=40pt,yshift=-2pt]cp.south) .. ([xshift=-6pt,yshift=-7pt]cp.south east);
+\end{tikzpicture}
+\end{frame}
+}}
+
+% --- Catchphrase 1 ---
+\catchphrase{11}{27}{Now watch five people \textcolor{catchgold}{gossip}.}
+
 % =============================================================
 % ACT II-A: RUN ONE LAYER BY HAND (ALICE'S GRAPH, REAL NUMBERS)
 % =============================================================
 
 % --- 9.0: The data on the table (static) ---
 \begin{frame}[plain]
-\kicker{SCENE 09 / 17 \quad RUN IT BY HAND $\cdot$ SETUP}
+\kicker{RUN IT BY HAND $\cdot$ SETUP}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
   \node[anchor=north, text=chalk, font=\fontsize{12.5}{15}\selectfont\sffamily\bfseries]
     at (0, 3.85) {Is Alice likely to be interested in Topic X?};
@@ -762,7 +830,7 @@
 
 % --- 9.1: STEP 1 - GATHER (static) ---
 \begin{frame}[plain]
-\kicker{SCENE 09 / 17 \quad RUN IT BY HAND $\cdot$ STEP 1}
+\kicker{RUN IT BY HAND $\cdot$ STEP 1}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
   \node[anchor=north, text=chalk, font=\fontsize{12.5}{15}\selectfont\sffamily\bfseries]
     at (0, 3.85) {Step 1 of 3 --- \textcolor{gold}{GATHER}};
@@ -804,7 +872,7 @@
 
 % --- 9.2: STEP 2 - AGGREGATE (static) ---
 \begin{frame}[plain]
-\kicker{SCENE 09 / 17 \quad RUN IT BY HAND $\cdot$ STEP 2}
+\kicker{RUN IT BY HAND $\cdot$ STEP 2}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
   \node[anchor=north, text=chalk, font=\fontsize{12.5}{15}\selectfont\sffamily\bfseries]
     at (0, 3.85) {Step 2 of 3 --- \textcolor{gold}{AGGREGATE}};
@@ -850,7 +918,7 @@
 
 % --- 9.3: STEP 3 - UPDATE (static) ---
 \begin{frame}[plain]
-\kicker{SCENE 09 / 17 \quad RUN IT BY HAND $\cdot$ STEP 3}
+\kicker{RUN IT BY HAND $\cdot$ STEP 3}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
   \node[anchor=north, text=chalk, font=\fontsize{12.5}{15}\selectfont\sffamily\bfseries]
     at (0, 3.85) {Step 3 of 3 --- \textcolor{gold}{UPDATE}};
@@ -894,7 +962,7 @@
 
 % --- 9.4: What that one number bought us (static) ---
 \begin{frame}[plain]
-\kicker{SCENE 09 / 17 \quad RUN IT BY HAND $\cdot$ THE ANSWER}
+\kicker{RUN IT BY HAND $\cdot$ THE ANSWER}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
   \node[anchor=north, text=chalk, font=\fontsize{12.5}{15}\selectfont\sffamily\bfseries]
     at (0, 3.9) {One blank slot, filled in by the neighbourhood.};
@@ -926,7 +994,7 @@
 
 % --- 9.5: Every node did this at once (static) ---
 \begin{frame}[plain]
-\kicker{SCENE 09 / 17 \quad RUN IT BY HAND $\cdot$ ALL AT ONCE}
+\kicker{RUN IT BY HAND $\cdot$ ALL AT ONCE}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
   \node[anchor=north, text=chalk, font=\fontsize{12.5}{15}\selectfont\sffamily\bfseries]
     at (0, 3.85) {Alice was not special. Every node ran the same three steps.};
@@ -974,7 +1042,7 @@
 
 % --- 10.1: The equation, part 1 - what the neighbours contribute (static) ---
 \begin{frame}[plain]
-\kicker{SCENE 10 / 17 \quad THE EQUATION $\cdot$ PART 1}
+\kicker{THE EQUATION $\cdot$ PART 1}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
   \node[anchor=north, text=chalk, font=\fontsize{12.5}{15}\selectfont\sffamily\bfseries]
     at (0, 3.85) {What the \textcolor{gold}{neighbours} contribute};
@@ -1004,7 +1072,7 @@
 
 % --- 10.2: The equation, part 2 - what Alice keeps, and the result (static) ---
 \begin{frame}[plain]
-\kicker{SCENE 10 / 17 \quad THE EQUATION $\cdot$ PART 2}
+\kicker{THE EQUATION $\cdot$ PART 2}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
   \node[anchor=north, text=chalk, font=\fontsize{12.5}{15}\selectfont\sffamily\bfseries]
     at (0, 3.85) {What \textcolor{gold}{Alice} keeps, and the new card};
@@ -1055,6 +1123,9 @@
 \end{tikzpicture}
 \end{frame}
 
+% --- Catchphrase 2 ---
+\catchphrase{29}{21}{Fraud. Superbugs. \textcolor{catchgold}{The entire planet.}}
+
 % --- 10.4: Problem Solving · Solving the Cold Open ---
 \begin{frame}[plain]
 \kicker{SOLVING THE CRIME \quad FRAUD DETECTION}
@@ -1066,6 +1137,7 @@
     \fill[papercream, rounded corners=3pt] (-2.4,-1.4) rectangle (2.4,1.3);
     \node[anchor=north, text=ink!70, font=\fontsize{6.5}{7.5}\selectfont\twfont\bfseries] at (0, 1.15) {SUSPECT EMBEDDING $h_{\text{target}}$};
     \node[anchor=north, text=ink, font=\dispfont\Large\bfseries] at (0, 0.85) {Target \#4091};
+    \node[text=ink!55, font=\fontsize{15}{15}\selectfont] at (-1.95, 0.6) {\faUserSecret};
     \node[visible on=<2->, anchor=north, text=ink!80, font=\fontsize{7}{8}\selectfont\twfont] at (0, 0.35) {Contains: Bank connection};
     \node[visible on=<2->, anchor=north, text=ink!80, font=\fontsize{7}{8}\selectfont\twfont] at (0, 0.05) {Contains: 2 Scam Rings};
     \node[visible on=<2->, anchor=north, text=crimson, font=\fontsize{7}{8}\selectfont\twfont\bfseries, align=center] at (0,-0.4) {PURE RELATIONAL SIGNAL};
@@ -1077,6 +1149,7 @@
   \begin{scope}[shift={(3.6, 0.3)}]
     \fill[boardmid, draw=crimson, line width=1.5pt, rounded corners=3pt, visible on=<3->] (-2.4,-1.4) rectangle (2.4,1.3);
     \node[visible on=<3->, anchor=north, text=chalk, font=\fontsize{7.5}{9}\selectfont\twfont\bfseries] at (0, 1.15) {PREDICTION OUTPUT};
+    \node[visible on=<4->, text=crimson, font=\fontsize{15}{15}\selectfont] at (1.95, 0.9) {\faExclamationTriangle};
     \node[visible on=<4->, anchor=center, text=crimson, font=\dispfont\LARGE\bfseries] at (0, 0.2) {FRAUDULENT};
     \node[visible on=<4->, anchor=south, text=gold, font=\fontsize{8}{9}\selectfont\twfont] at (0, -0.6) {Confidence: 94.2\%};
     \node[visible on=<4->, anchor=south, text=dimtext, font=\fontsize{7}{8}\selectfont\twfont] at (0, -1.2) {Legitimate: 5.8\%};
@@ -1093,6 +1166,7 @@
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
   \fill[papercream, rounded corners=3pt] (-5.6,-1.4) rectangle (-2.0,1.8);
   \node[anchor=north, text=brass!80!ink, font=\fontsize{7.5}{9}\selectfont\twfont\bfseries] at (-3.8, 1.6) {NODE LEVEL};
+  \node[text=gold, font=\fontsize{18}{18}\selectfont] at (-3.8, 2.3) {\faUser};
   \node[anchor=north, text=ink, font=\dispfont\large\bfseries] at (-3.8, 1.15) {Classification};
   \node[anchor=north, text=ink!80, font=\fontsize{7.5}{9}\selectfont\sffamily, align=center] at (-3.8, 0.5) {
     Is this account\\a scammer?\\
@@ -1102,6 +1176,7 @@
 
   \fill[papercream, rounded corners=3pt, visible on=<2->] (-1.8,-1.4) rectangle (1.8,1.8);
   \node[visible on=<2->, anchor=north, text=brass!80!ink, font=\fontsize{7.5}{9}\selectfont\twfont\bfseries] at (0, 1.6) {EDGE LEVEL};
+  \node[visible on=<2->, text=gold, font=\fontsize{18}{18}\selectfont] at (0, 2.3) {\faLink};
   \node[visible on=<2->, anchor=north, text=ink, font=\dispfont\large\bfseries] at (0, 1.15) {Link Prediction};
   \node[visible on=<2->, anchor=north, text=ink!80, font=\fontsize{7.5}{9}\selectfont\sffamily, align=center] at (0, 0.5) {
     Will these two nodes\\become connected?\\
@@ -1111,6 +1186,7 @@
 
   \fill[papercream, rounded corners=3pt, visible on=<3->] (2.0,-1.4) rectangle (5.6,1.8);
   \node[visible on=<3->, anchor=north, text=brass!80!ink, font=\fontsize{7.5}{9}\selectfont\twfont\bfseries] at (3.8, 1.6) {GRAPH LEVEL};
+  \node[visible on=<3->, text=gold, font=\fontsize{18}{18}\selectfont] at (3.8, 2.3) {\faProjectDiagram};
   \node[visible on=<3->, anchor=north, text=ink, font=\dispfont\large\bfseries] at (3.8, 1.15) {Property Test};
   \node[visible on=<3->, anchor=north, text=ink!80, font=\fontsize{7.5}{9}\selectfont\sffamily, align=center] at (3.8, 0.5) {
     Is this entire molecule\\toxic or curative?\\
@@ -1131,10 +1207,11 @@
 
 % --- 11.1-11.2: Depth = Reach ---
 \begin{frame}[plain]
-\kicker{SCENE 11 / 17 \quad DEPTH = REACH}
+\kicker{DEPTH = REACH}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
   \node[visible on=<2>,  anchor=north east, text=gold, font=\fontsize{18}{20}\selectfont\twfont\bfseries] at (5.5, 3.2) {LAYER 1};
   \node[visible on=<3->, anchor=north east, text=gold, font=\fontsize{18}{20}\selectfont\twfont\bfseries] at (5.5, 3.2) {LAYER 2};
+  \node[visible on=<2->, anchor=east, text=gold, font=\fontsize{17}{17}\selectfont] at (2.5, 2.85) {\faLayerGroup};
 
   \begin{scope}[shift={(0, 0.3)}]
     \draw[gedgeVisible] (0,0) -- (1.5,0.8);
@@ -1178,9 +1255,10 @@
 
 % --- 11.3: Over-Smoothing · Disaster at Layer 6 ---
 \begin{frame}[plain]
-\kicker{SCENE 11 / 17 \quad OVER-SMOOTHING}
+\kicker{OVER-SMOOTHING}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
   \node[anchor=north east, text=crimson, font=\fontsize{18}{20}\selectfont\twfont\bfseries] at (5.5, 3.2) {LAYER 6};
+  \node[anchor=east, text=crimson, font=\fontsize{17}{17}\selectfont] at (2.5, 2.85) {\faLayerGroup};
 
   \begin{scope}[shift={(0, 0.5)}, scale=0.75]
     \draw[gedgeVisible] (0,0) -- (1.5,0.8);
@@ -1209,7 +1287,7 @@
 
 % --- 12.1-12.2: Attention · Not every neighbour deserves an equal vote ---
 \begin{frame}[plain]
-\kicker{SCENE 12 / 17 \quad ATTENTION}
+\kicker{ATTENTION}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
   \node[visible on=<1-2>, anchor=south, text=chalk, font=\fontsize{13}{15}\selectfont\sffamily\bfseries]
     at (0, 2.4) {We averaged Bob and Carol equally. Should we have?};
@@ -1232,10 +1310,12 @@
   \node[visible on=<1-2>, gnode, minimum size=28pt] at (B) {};
   \node[visible on=<3->, circle, draw=gold, fill=boardmid, line width=2pt, minimum size=28pt] at (B) {};
   \node[anchor=north, text=chalk, font=\fontsize{7.5}{9}\selectfont\twfont] at (B) [yshift=-15pt] {Bob (verified expert)};
+  \node[text=gold, font=\fontsize{15}{15}\selectfont] at ($(B)+(-0.95,0)$) {\faUserCheck};
 
   \node[visible on=<1-2>, gnode, minimum size=28pt] at (C) {};
   \node[visible on=<3->, circle, draw=dimtext!40, fill=boardmid, line width=1pt, minimum size=28pt] at (C) {};
   \node[anchor=north, text=chalk, font=\fontsize{7.5}{9}\selectfont\twfont] at (C) [yshift=-15pt] {Carol (total stranger)};
+  \node[text=dimtext, font=\fontsize{15}{15}\selectfont] at ($(C)+(0.95,0)$) {\faQuestionCircle};
 
   \node[visible on=<3->, anchor=north, text=gold, font=\fontsize{10.5}{13}\selectfont\twfont\bfseries, align=center]
     at (0, -1.8) {LEARNED ATTENTION WEIGHTS ($\alpha_{ij}$)};
@@ -1246,7 +1326,7 @@
 
 % --- 12.3: Attention · The Architecture Zoo ---
 \begin{frame}[plain]
-\kicker{SCENE 12 / 17 \quad THE ARCHITECTURE ZOO}
+\kicker{THE ARCHITECTURE ZOO}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
   \begin{scope}[shift={(0, 0.8)}]
     \node[draw=brass!60, fill=boardmid, text=chalk, rounded corners=3pt,
@@ -1260,6 +1340,9 @@
     \node[visible on=<3->, draw=gold, fill=boardmid, text=gold, line width=1.5pt, rounded corners=3pt,
           minimum width=3.4cm, minimum height=1.6cm, align=center] (z3) at ( 4.2, 0)
       {\textbf{\large GAT}\\[4pt]\fontsize{8}{9}\selectfont Learn who to trust};
+    \node[text=brass, font=\fontsize{16}{16}\selectfont] at (-4.2, 1.3) {\faBalanceScale};
+    \node[visible on=<2->, text=brass, font=\fontsize{16}{16}\selectfont] at (0, 1.3) {\faRandom};
+    \node[visible on=<3->, text=gold, font=\fontsize{16}{16}\selectfont] at (4.2, 1.3) {\faEye};
   \end{scope}
 
   \node[visible on=<4->, anchor=north, text=gold, font=\fontsize{10.5}{13}\selectfont\twfont\bfseries, align=center]
@@ -1270,22 +1353,39 @@
 \end{frame}
 
 
+% --- Case-study card: meta, title, three bullets (clicks 2-4), footer (click 5) ---
+% \casecard{meta}{title}{bullet 1}{bullet 2}{bullet 3}{footer}{footer colour}
+
+\newcommand{\casenohyph}{\hyphenpenalty=10000 \exhyphenpenalty=10000 }
+\newcommand{\casecard}[8]{%
+  \fill[boardmid, draw=brass!35, line width=0.6pt, rounded corners=4pt] (-2.85,-2.3) rectangle (2.85,2.3);
+  \node[anchor=north west, text=brass, font=\fontsize{6.5}{8}\selectfont\twfont\bfseries] at (-2.55, 2.04) {#1};
+  \node[anchor=north west, text=chalk, font=\fontsize{18}{21}\selectfont\sffamily\bfseries] at (-2.55, 1.72) {#2};
+  \node[anchor=north east, text=gold, font=\fontsize{18}{18}\selectfont] at (2.55, 1.95) {#8};
+  \begin{scope}[every node/.style={anchor=north west, text=chalk!85, align=left, text width=5.1cm, inner sep=0pt,
+                font=\fontsize{7.8}{9.6}\selectfont\sffamily\casenohyph}]
+    \node[visible on=<2->] (cc1) at (-2.55, 0.92) {#3};
+    \node[visible on=<3->] (cc2) at ([yshift=-4pt]cc1.south west) {#4};
+    \node[visible on=<4->] (cc3) at ([yshift=-4pt]cc2.south west) {#5};
+  \end{scope}
+  \begin{scope}[visible on=<5->]
+    \clip[rounded corners=4pt] (-2.85,-2.3) rectangle (2.85,2.3);
+    \fill[gold!10] (-2.85,-2.3) rectangle (2.85,-1.6);
+    \draw[brass!30, line width=0.5pt] (-2.85,-1.6) -- (2.85,-1.6);
+  \end{scope}
+  \node[visible on=<5->, anchor=center, text=#7, font=\fontsize{7.5}{9}\selectfont\twfont\bfseries] at (0,-1.95) {#6};
+}
+
 % --- 13.2: Case Study 1 · Halicin Solution ---
 \begin{frame}[plain]
-\kicker{SCENE 13 / 17 \quad CASE STUDY 1: DRUG DISCOVERY}
+\kicker{CASE STUDY 1: DRUG DISCOVERY}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
   \begin{scope}[shift={(-3.2, 0.2)}]
-    \fill[papercream, rounded corners=3pt] (-2.5,-2.2) rectangle (2.5,2.2);
-    \node[anchor=north west, text=brass!80!ink, font=\fontsize{6.5}{7.5}\selectfont\twfont\bfseries] at (-2.2, 1.95) {MIT $\cdot$ 2020};
-    \node[anchor=north west, text=ink, font=\dispfont\huge\bfseries] at (-2.2, 1.6) {Halicin};
-    \node[visible on=<2->, anchor=north west, text=ink!85, font=\fontsize{7.5}{9}\selectfont\sffamily, text width=4.3cm] at (-2.2, 0.75)
-      {$\bullet$ Screened \textbf{100 million} molecules as graphs.};
-    \node[visible on=<3->, anchor=north west, text=ink!85, font=\fontsize{7.5}{9}\selectfont\sffamily, text width=4.3cm] at (-2.2, 0.15)
-      {$\bullet$ Learned chemical bond topologies, not atom numbering.};
-    \node[visible on=<4->, anchor=north west, text=ink!85, font=\fontsize{7.5}{9}\selectfont\sffamily, text width=4.3cm] at (-2.2,-0.55)
-      {$\bullet$ Flagged a molecule humans had completely overlooked.};
-    \fill[paperdark, rounded corners=2pt, opacity=0.5, visible on=<5->] (-2.5,-2.2) rectangle (2.5,-1.3);
-    \node[visible on=<5->, anchor=center, text=biogreen!90!ink, font=\fontsize{7.5}{8.5}\selectfont\twfont\bfseries] at (0,-1.75) {Killed Pan-Resistant Bacteria};
+        \casecard{MIT $\cdot$ 2020}{Halicin}
+      {$\bullet$ Screened \textbf{100 million} molecules as graphs.}
+      {$\bullet$ Learned chemical bond topologies, not atom numbering.}
+      {$\bullet$ Flagged a molecule humans had completely overlooked.}
+      {Killed Pan-Resistant Bacteria}{biogreen!90!ink}{\faCapsules}
   \end{scope}
 
   \begin{scope}[shift={(3.2, 0.2)}]
@@ -1314,10 +1414,11 @@
 
 % --- 14.1: Case Study 2 · GraphCast Problem ---
 \begin{frame}[plain]
-\kicker{SCENE 14 / 17 \quad CASE STUDY 2: GLOBAL WEATHER}
+\kicker{CASE STUDY 2: GLOBAL WEATHER}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
   \node[anchor=north, text=brass, font=\fontsize{12}{14}\selectfont\twfont\bfseries]
     at (0, 2.5) {CASE FILE 02: THE ENTIRE ATMOSPHERE};
+  \node[anchor=east, text=skyblue, font=\fontsize{16}{16}\selectfont] at (-4.75, 2.28) {\faGlobeAmericas};
 
   \begin{scope}[shift={(0, 0.0)}]
     \draw[chalk!30, line width=1pt] (0,0) circle (1.7cm);
@@ -1336,7 +1437,7 @@
 
 % --- 14.2: Case Study 2 · GraphCast Solution ---
 \begin{frame}[plain]
-\kicker{SCENE 14 / 17 \quad CASE STUDY 2: GLOBAL WEATHER}
+\kicker{CASE STUDY 2: GLOBAL WEATHER}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
   \begin{scope}[shift={(-3.4, 0.2)}]
     \draw[chalk!30, line width=0.8pt] (0,0) circle (2.0cm);
@@ -1348,17 +1449,11 @@
   \end{scope}
 
   \begin{scope}[shift={(3.0, 0.2)}]
-    \fill[papercream, rounded corners=3pt] (-2.5,-2.2) rectangle (2.5,2.2);
-    \node[anchor=north west, text=brass!80!ink, font=\fontsize{6.5}{7.5}\selectfont\twfont\bfseries] at (-2.2, 1.95) {DEEPMIND $\cdot$ 2023};
-    \node[anchor=north west, text=ink, font=\dispfont\huge\bfseries] at (-2.2, 1.6) {GraphCast};
-    \node[visible on=<2->, anchor=north west, text=ink!85, font=\fontsize{7.5}{9}\selectfont\sffamily, text width=4.3cm] at (-2.2, 0.75)
-      {$\bullet$ 10-day global forecast in \textbf{under 1 minute} on one machine.};
-    \node[visible on=<3->, anchor=north west, text=ink!85, font=\fontsize{7.5}{9}\selectfont\sffamily, text width=4.3cm] at (-2.2, 0.05)
-      {$\bullet$ Beat the European gold-standard supercomputers on $>$90\% of variables.};
-    \node[visible on=<4->, anchor=north west, text=ink!85, font=\fontsize{7.5}{9}\selectfont\sffamily, text width=4.3cm] at (-2.2,-0.75)
-      {$\bullet$ Predicted Hurricane Lee days earlier.};
-    \fill[paperdark, rounded corners=2pt, opacity=0.5, visible on=<5->] (-2.5,-2.2) rectangle (2.5,-1.3);
-    \node[visible on=<5->, anchor=center, text=ink, font=\fontsize{7.5}{8.5}\selectfont\twfont\bfseries] at (0,-1.75) {Same Principle. Planetary Scale.};
+        \casecard{DEEPMIND $\cdot$ 2023}{GraphCast}
+      {$\bullet$ 10-day global forecast in \textbf{under 1 minute} on one machine.}
+      {$\bullet$ Beat the European gold-standard supercomputers on $>$90\% of variables.}
+      {$\bullet$ Predicted Hurricane Lee days earlier.}
+      {Same Principle. Planetary Scale.}{chalk}{\faCloudSunRain}
   \end{scope}
 
 \end{tikzpicture}
@@ -1366,10 +1461,11 @@
 
 % --- 15.1: Case Study 3 · CERN LHC Problem ---
 \begin{frame}[plain]
-\kicker{SCENE 15 / 17 \quad CASE STUDY 3: PARTICLE PHYSICS}
+\kicker{CASE STUDY 3: PARTICLE PHYSICS}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
   \node[anchor=north, text=brass, font=\fontsize{12}{14}\selectfont\twfont\bfseries]
     at (0, 2.5) {CASE FILE 03: CERN LARGE HADRON COLLIDER};
+  \node[anchor=east, text=brass, font=\fontsize{16}{16}\selectfont] at (-5.45, 2.28) {\faAtom};
 
   \begin{scope}[shift={(0, 0.1)}]
     \foreach \x/\y in {-2.2/1.1, -1.5/1.8, -0.6/0.9, 0.4/1.6, 1.5/1.2, 2.3/0.6,
@@ -1386,20 +1482,14 @@
 
 % --- 15.2: Case Study 3 · CERN LHC Solution ---
 \begin{frame}[plain]
-\kicker{SCENE 15 / 17 \quad CASE STUDY 3: PARTICLE PHYSICS}
+\kicker{CASE STUDY 3: PARTICLE PHYSICS}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
   \begin{scope}[shift={(-3.4, 0.2)}]
-    \fill[papercream, rounded corners=3pt] (-2.4,-2.2) rectangle (2.4,2.2);
-    \node[anchor=north west, text=brass!80!ink, font=\fontsize{6.5}{7.5}\selectfont\twfont\bfseries] at (-2.1, 1.95) {CERN LHC $\cdot$ CMS / ATLAS};
-    \node[anchor=north west, text=ink, font=\dispfont\huge\bfseries] at (-2.1, 1.6) {Connect Dots};
-    \node[visible on=<2->, anchor=north west, text=ink!85, font=\fontsize{7.5}{9}\selectfont\sffamily, text width=4.1cm] at (-2.1, 0.75)
-      {$\bullet$ Builds a graph of candidate hits.};
-    \node[visible on=<3->, anchor=north west, text=ink!85, font=\fontsize{7.5}{9}\selectfont\sffamily, text width=4.1cm] at (-2.1, 0.15)
-      {$\bullet$ The GNN prunes false connections in \textbf{milliseconds}.};
-    \node[visible on=<4->, anchor=north west, text=ink!85, font=\fontsize{7.5}{9}\selectfont\sffamily, text width=4.1cm] at (-2.1,-0.55)
-      {$\bullet$ Reconstructs particle trajectories in real time.};
-    \fill[paperdark, rounded corners=2pt, opacity=0.5, visible on=<5->] (-2.4,-2.2) rectangle (2.4,-1.3);
-    \node[visible on=<5->, anchor=center, text=crimson, font=\fontsize{7.5}{8.5}\selectfont\twfont\bfseries] at (0,-1.75) {Discovering New Physics};
+        \casecard{CERN LHC $\cdot$ CMS / ATLAS}{Connect Dots}
+      {$\bullet$ Builds a graph of candidate hits.}
+      {$\bullet$ The GNN prunes false connections in \textbf{milliseconds}.}
+      {$\bullet$ Reconstructs particle trajectories in real time.}
+      {Discovering New Physics}{crimson}{\faAtom}
   \end{scope}
 
   \begin{scope}[shift={(3.2, 0.2)}]
@@ -1419,10 +1509,11 @@
 
 % --- 16.1: The Unifying Picture · Three Cards ---
 \begin{frame}[plain]
-\kicker{SCENE 16 / 17 \quad THE UNIFYING PICTURE}
+\kicker{THE UNIFYING PICTURE}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
-  \fill[papercream, rounded corners=3pt] (-5.6,-1.2) rectangle (-2.0,2.2);
+  \fill[boardmid, draw=brass!35, line width=0.6pt, rounded corners=4pt] (-5.6,-1.2) rectangle (-2.0,2.2);
   \node[text=brass!80!ink, font=\fontsize{8}{9}\selectfont\twfont\bfseries, anchor=north] at (-3.8,2.0) {MOLECULES};
+  \node[text=brass, font=\fontsize{14}{14}\selectfont] at (-5.15, 1.8) {\faFlask};
   \node[text=ink!70, font=\fontsize{7.5}{9}\selectfont\sffamily, anchor=north] at (-3.8,1.6) {Atoms + Bonds};
   \draw[gedge] (-3.8,0.7) -- (-4.5,-0.2);
   \draw[gedge] (-3.8,0.7) -- (-3.1,-0.2);
@@ -1432,8 +1523,9 @@
   }
   \node[text=ink!85, font=\fontsize{7.5}{9}\selectfont\twfont\bfseries, anchor=center] at (-3.8,-0.8) {CHEMISTRY};
 
-  \fill[papercream, rounded corners=3pt, visible on=<2->] (-1.8,-1.2) rectangle (1.8,2.2);
+  \fill[boardmid, draw=brass!35, line width=0.6pt, rounded corners=4pt, visible on=<2->] (-1.8,-1.2) rectangle (1.8,2.2);
   \node[visible on=<2->, text=brass!80!ink, font=\fontsize{8}{9}\selectfont\twfont\bfseries, anchor=north] at (0,2.0) {PLANET};
+  \node[visible on=<2->, text=brass, font=\fontsize{14}{14}\selectfont] at (-1.35, 1.8) {\faGlobeAmericas};
   \node[visible on=<2->, text=ink!70, font=\fontsize{7.5}{9}\selectfont\sffamily, anchor=north] at (0,1.6) {Grid + Airflow};
   \draw[gedge, visible on=<2->] (0,0.7) -- (-0.7,-0.2);
   \draw[gedge, visible on=<2->] (0,0.7) -- (0.7,-0.2);
@@ -1443,8 +1535,9 @@
   }
   \node[visible on=<2->, text=ink!85, font=\fontsize{7.5}{9}\selectfont\twfont\bfseries, anchor=center] at (0,-0.8) {ATMOSPHERE};
 
-  \fill[papercream, rounded corners=3pt, visible on=<3->] (2.0,-1.2) rectangle (5.6,2.2);
+  \fill[boardmid, draw=brass!35, line width=0.6pt, rounded corners=4pt, visible on=<3->] (2.0,-1.2) rectangle (5.6,2.2);
   \node[visible on=<3->, text=brass!80!ink, font=\fontsize{8}{9}\selectfont\twfont\bfseries, anchor=north] at (3.8,2.0) {PARTICLES};
+  \node[visible on=<3->, text=brass, font=\fontsize{14}{14}\selectfont] at (2.45, 1.8) {\faAtom};
   \node[visible on=<3->, text=ink!70, font=\fontsize{7.5}{9}\selectfont\sffamily, anchor=north] at (3.8,1.6) {Hits + Tracks};
   \draw[gedge, visible on=<3->] (3.8,0.7) -- (3.1,-0.2);
   \draw[gedge, visible on=<3->] (3.8,0.7) -- (4.5,-0.2);
@@ -1461,7 +1554,7 @@
 
 % --- 16.2: The Unifying Picture · Dissolving to GRAPH ---
 \begin{frame}[plain]
-\kicker{SCENE 16 / 17 \quad THE UNIFYING PICTURE}
+\kicker{THE UNIFYING PICTURE}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
   \node[anchor=center, text=gold, font=\dispfont\fontsize{58}{50}\selectfont]
     at (0, 0.4) {G\,R\,A\,P\,H};
@@ -1476,7 +1569,7 @@
 
 % --- 17: Final Close · Thank You ---
 \begin{frame}[plain]
-\kicker{SCENE 17 / 17 \quad FINAL CLOSE}
+\kicker{FINAL CLOSE}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
   \node[anchor=center, text=gold, font=\dispfont\fontsize{52}{46}\selectfont]
     at (0, 0.0) {Thank you.};

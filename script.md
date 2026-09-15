@@ -1,7 +1,7 @@
 # Case File: Graph Neural Networks — Master Slide-by-Slide Speaker Script
 
 **Deck Target**: [gnn-deck.tex](file:///c:/Users/user/Desktop/presentation/gnn-deck.tex) / [gnn-deck.pdf](file:///c:/Users/user/Desktop/presentation/gnn-deck.pdf)
-**Total Slides**: 35 Slides (113 PDF Pages)
+**Total Slides**: 37 Slides (115 PDF Pages)
 **Target Duration**: 10:00 – 11:30 Total Runtime
 **Delivery Style**: Conversational, investigative, Veritasium-style causal progression (*Puzzle → Failure → Mathematical Discovery → Real-World Consequence*).
 
@@ -265,7 +265,15 @@
 
 ---
 
-### Slide 12 [Page 53] · Scene 09: Run It By Hand — Setup
+### Catchphrase [Page 53] · "Now watch five people gossip."
+**Visuals**: Dark slide, faint chalk scribbles, one line with *gossip* in orange.
+
+- *(Let it sit for a beat, then:)*
+  > "Now watch five people gossip."
+
+---
+
+### Slide 12 [Page 54] · Scene 09: Run It By Hand — Setup
 **Visuals**: Five people on screen: Alice in the center, connected to Bob and Carol; David connected to Bob, Eve connected to Carol. Right panel: Dossier worksheet with two vector slots: Activity and Topic X.
 
 - *(Point to: Graph appears)*
@@ -286,7 +294,7 @@
 
 ---
 
-### Slide 13 [Page 54] · Scene 09: Run It By Hand — Step 1: Gather
+### Slide 13 [Page 55] · Scene 09: Run It By Hand — Step 1: Gather
 **Visuals**: Amber arrows run from Bob and Carol into Alice, with their messages on the edges. David and Eve are dimmed.
 
 - *(Point to: Header: Step 1 of 3 --- GATHER)*
@@ -305,7 +313,7 @@
 
 ---
 
-### Slide 14 [Page 55] · Scene 09: Run It By Hand — Step 2: Aggregate
+### Slide 14 [Page 56] · Scene 09: Run It By Hand — Step 2: Aggregate
 **Visuals**: Worksheet calculates the slot-by-slot average. Neighbourhood badge under Alice: [0.50, 1.00]. An order-invariance line shows mean(Bob, Carol) = mean(Carol, Bob).
 
 - *(Point to: Header: Step 2 of 3 --- AGGREGATE)*
@@ -328,7 +336,7 @@
 
 ---
 
-### Slide 15 [Page 56] · Scene 09: Run It By Hand — Step 3: Update
+### Slide 15 [Page 57] · Scene 09: Run It By Hand — Step 3: Update
 **Visuals**: Worksheet shows linear combination of Alice's own card + neighbourhood summary. Alice's card is shown already rewritten in amber: [0.65, 0.50].
 
 - *(Point to: Header: Step 3 of 3 --- UPDATE)*
@@ -349,7 +357,7 @@
 
 ---
 
-### Slide 16 [Page 57] · Scene 09: Run It By Hand — The Answer
+### Slide 16 [Page 58] · Scene 09: Run It By Hand — The Answer
 **Visuals**: Before vs. After side-by-side comparison. Classification readout calculates $p = \sigma(2.10) = 89\%$. LIKELY INTERESTED badge.
 
 - *(Point to: Before: Alice [0.80, 0.00])*
@@ -367,7 +375,7 @@
 
 ---
 
-### Slide 17 [Page 58] · Scene 09: Run It By Hand — All At Once
+### Slide 17 [Page 59] · Scene 09: Run It By Hand — All At Once
 **Visuals**: The full 5-node graph with every card already updated after round 1. All Topic X slots read 0.50.
 
 - *(Opening line)*
@@ -384,10 +392,10 @@
 
 ---
 
-### Slide 18 [Pages 59–60] · Scene 10: The Formal Equation (two static slides)
+### Slide 18 [Pages 60–61] · Scene 10: The Formal Equation (two static slides)
 **Visuals**: The full GNN equation $h_v^{(k+1)} = \sigma(W_{\text{self}} h_v^{(k)} + W_{\text{nbr}} \text{AGG}(\{h_u^{(k)} : u \in \mathcal{N}(v)\}))$ on both slides. Part 1 highlights the neighbours' side and dims Alice's own terms; Part 2 does the reverse. Every callout carries a number from Alice's run.
 
-**Page 59 · Part 1 — What the neighbours contribute**
+**Page 60 · Part 1 — What the neighbours contribute**
 - *(Opening line)*
   > "Here is the master equation of Graph Neural Networks. Don't let the notation intimidate you --- you have already calculated every single symbol by hand. Start with the bright half: the neighbours."
 - *(Point to: my neighbours {Bob, Carol})*
@@ -399,7 +407,7 @@
 - *(Point to: how much of them)*
   > "$W_{\text{nbr}}$ is the learned weight: how much to trust the neighbours. We used 0.5. That half of the equation is Gather and Aggregate."
 
-**Page 60 · Part 2 — What Alice keeps, and the new card**
+**Page 61 · Part 2 — What Alice keeps, and the new card**
 - *(Point to: how much of me)*
   > "Now the other half. $W_{\text{self}}$ is how much Alice keeps of her own previous card: 0.5 times [0.80, 0.00]."
 - *(Point to: squash it back into range)*
@@ -411,7 +419,7 @@
 
 ---
 
-### Slide 19 [Page 61] · Architecture: From Embeddings to Decisions
+### Slide 19 [Page 62] · Architecture: From Embeddings to Decisions
 **Visuals**: 3-stage pipeline: Raw Input $x_v$ → $K$-Layer GNN → Final Vector $h_v^{(K)}$.
 
 - *(Point to: Raw Input box)*
@@ -425,34 +433,43 @@
 
 ---
 
-### Slide 20 [Pages 62–66] · Solving the Crime: Fraud Detection
+### Catchphrase [Page 63] · "Fraud. Superbugs. The entire planet."
+**Visuals**: Same dark scribble style, one line with *The entire planet.* in orange.
+
+- *(Slow, one word-group at a time:)*
+  > "Fraud. Superbugs. The entire planet.
+  > That's where these three simple steps are being used right now."
+
+---
+
+### Slide 20 [Pages 64–68] · Solving the Crime: Fraud Detection
 **Visuals**: Left: Target #4091 embedding card containing Bank and Scam ring connections. Right: Softmax head fires → Crimson box: FRAUDULENT 94.2%.
 
-- **[Page 62 / Initial]** *(Suspect embedding card)*
+- **[Page 64 / Initial]** *(Suspect embedding card)*
   > "Let's return to our opening crime scene in Dhaka. Target #4091."
-- **[Page 63 / Click 1]** *(Embedding contents revealed)*
+- **[Page 65 / Click 1]** *(Embedding contents revealed)*
   > "The GNN compressed their network into their final embedding: 1 verified bank, 2 flagged scam rings."
-- **[Page 64 / Click 2]** *(Gold arrow & Softmax Head)*
+- **[Page 66 / Click 2]** *(Gold arrow & Softmax Head)*
   > "We pass that embedding into a simple softmax classifier head."
-- **[Page 65 / Click 3]** *(Red banner: FRAUDULENT 94.2%)*
+- **[Page 67 / Click 3]** *(Red banner: FRAUDULENT 94.2%)*
   *(Punchy delivery)*
   > "Output: Fraudulent with 94.2% confidence."
-- **[Page 66 / Click 4]** *(Bottom takeaway)*
+- **[Page 68 / Click 4]** *(Bottom takeaway)*
   > "The GNN closed the cold open. Guilt by association, proven mathematically."
 
 ---
 
-### Slide 21 [Pages 67–70] · The Three Graph Prediction Tasks
+### Slide 21 [Pages 69–72] · The Three Graph Prediction Tasks
 **Visuals**: Three dossier cards side-by-side: Node Level (Classification), Edge Level (Link Prediction), Graph Level (Property Test).
 
-- **[Page 67 / Initial]** *(Node Level card)*
+- **[Page 69 / Initial]** *(Node Level card)*
   > "And that same mechanism solves every graph problem in computer science across three distinct levels:
   > First, **Node Level**: Is this individual account a scammer? Will this customer churn?"
-- **[Page 68 / Click 1]** *(Edge Level card)*
+- **[Page 70 / Click 1]** *(Edge Level card)*
   > "Second, **Edge Level**: Will an edge form between these two nodes? This powers recommendation engines and friend suggestions on LinkedIn or Instagram."
-- **[Page 69 / Click 2]** *(Graph Level card)*
+- **[Page 71 / Click 2]** *(Graph Level card)*
   > "Third, **Graph Level**: Pool all node vectors together to predict a property of the whole graph: Is this entire molecule toxic? Is this financial network experiencing systemic risk?"
-- **[Page 70 / Click 3]** *(Bottom takeaway)*
+- **[Page 72 / Click 3]** *(Bottom takeaway)*
   > "One unified engine powers all three levels of prediction."
 
 ---
@@ -462,28 +479,28 @@
 
 ---
 
-### Slide 22 [Pages 71–74] · Scene 11: Depth = Reach
+### Slide 22 [Pages 73–76] · Scene 11: Depth = Reach
 **Visuals**: Central node with concentric dashed circular reach boundaries: Layer 1 (1 hop) → Layer 2 (2 hops).
 
-- **[Page 71 / Initial]**
+- **[Page 73 / Initial]**
   > "Now, an intuitive question arises: if one layer let Alice hear from her direct neighbours..."
-- **[Page 72 / Click 1]** *(LAYER 1 badge in gold, 1.8cm dashed circle)*
+- **[Page 74 / Click 1]** *(LAYER 1 badge in gold, 1.8cm dashed circle)*
   > "...what happens if we stack a second layer?"
-- **[Page 73 / Click 2]** *(LAYER 2 badge, circle expands to 2.8cm, outer nodes illuminate)*
+- **[Page 75 / Click 2]** *(LAYER 2 badge, circle expands to 2.8cm, outer nodes illuminate)*
   > "In Layer 2, Alice's neighbours have already gathered from *their* neighbours. So Alice now hears from David and Eve --- two hops out!"
-- **[Page 74 / Click 3]** *(Takeaway: Depth is reach)*
+- **[Page 76 / Click 3]** *(Takeaway: Depth is reach)*
   > "In a GNN, **depth is reach**. Each extra layer widens the horizon of who a node can hear."
 
 ---
 
-### Slide 23 [Pages 75–76] · Scene 11: Over-Smoothing — Disaster at Layer 6
+### Slide 23 [Pages 77–78] · Scene 11: Over-Smoothing — Disaster at Layer 6
 **Visuals**: Top corner: LAYER 6 in crimson. All nodes wash out to identical, faint gray circles. Crimson title: OVER-SMOOTHING.
 
-- **[Page 75 / Initial]** *(Layer 6 counter, washed out gray nodes, OVER-SMOOTHING title)*
+- **[Page 77 / Initial]** *(Layer 6 counter, washed out gray nodes, OVER-SMOOTHING title)*
   > "So in deep learning, we always want more layers, right? In CNNs we use 50 or 100 layers. What happens if we stack 6 layers in a GNN?"
   *(Pause. Point to the faded, washed-out nodes.)*
   > "Disaster."
-- **[Page 76 / Click 1]** *(Both explanation bullets appear together)*
+- **[Page 78 / Click 1]** *(Both explanation bullets appear together)*
   *(Slow, deliberate delivery)*
   > "Remember Alice's demo: after just one round, every single person's Topic X slot already read 0.50.
   >
@@ -494,96 +511,96 @@
 
 ---
 
-### Slide 24 [Pages 77–80] · Scene 12: Attention — Not All Informants Are Equal
+### Slide 24 [Pages 79–82] · Scene 12: Attention — Not All Informants Are Equal
 **Visuals**: Alice between Bob and Carol. At Click 2, the edge to Bob thickens into glowing gold ($\alpha = 0.88$), while the edge to Carol fades to a thin hairline ($\alpha = 0.12$).
 
-- **[Page 77 / Initial]** *(We averaged Bob and Carol equally. Should we have?)*
+- **[Page 79 / Initial]** *(We averaged Bob and Carol equally. Should we have?)*
   > "Here is another flaw in our hand demo. We averaged Bob and Carol 50/50.
   >
   > But should we have?"
-- **[Page 78 / Click 1]** *(Red strings between nodes)*
+- **[Page 80 / Click 1]** *(Red strings between nodes)*
   > "What if Bob is a verified world expert on Topic X, and Carol is a casual observer?"
-- **[Page 79 / Click 2]** *(Bob's edge turns into a 4pt golden beam ($\alpha = 0.88$); Carol's turns into a faint line ($\alpha = 0.12$))*
+- **[Page 81 / Click 2]** *(Bob's edge turns into a 4pt golden beam ($\alpha = 0.88$); Carol's turns into a faint line ($\alpha = 0.12$))*
   *(Point with enthusiasm)*
   > "Why should Alice listen to them equally? She shouldn't!
   > The network should learn attention weights $\alpha$."
-- **[Page 80 / Click 3]** *(Bob node glows in gold, Carol dims)*
+- **[Page 82 / Click 3]** *(Bob node glows in gold, Carol dims)*
   > "Give 88% of your attention to the expert, and only 12% to the stranger."
 
 ---
 
-### Slide 25 [Pages 81–85] · Scene 12: The Architecture Zoo
+### Slide 25 [Pages 83–87] · Scene 12: The Architecture Zoo
 **Visuals**: Three architecture cards: GCN (Average everyone), GraphSAGE (Sample a few), GAT (Learn who to trust).
 
-- **[Page 81 / Initial]** *(GCN card)*
+- **[Page 83 / Initial]** *(GCN card)*
   > "That single realization gives rise to the entire family of modern GNN architectures:
   > Average everyone equally: that's **GCN** (Graph Convolutional Network)."
-- **[Page 82 / Click 1]** *(GraphSAGE card)*
+- **[Page 84 / Click 1]** *(GraphSAGE card)*
   > "When the graph has billions of nodes and you can't listen to everyone: sample a random subset. That's **GraphSAGE**."
-- **[Page 83 / Click 2]** *(GAT card highlighted in amber)*
+- **[Page 85 / Click 2]** *(GAT card highlighted in amber)*
   > "Learn dynamically who to trust using attention: that's **GAT** (Graph Attention Network)."
-- **[Page 84 / Click 3]** *(Header: Not every relationship is equally useful)*
+- **[Page 86 / Click 3]** *(Header: Not every relationship is equally useful)*
   > "Not every relationship is equally useful."
-- **[Page 85 / Click 4]** *(Bottom takeaway)*
+- **[Page 87 / Click 4]** *(Bottom takeaway)*
   > "Every modern GNN variant in the literature is simply a refined answer to one of three questions: how to gather, how to aggregate, or who to listen to."
 
 ---
 
-### Slide 26 [Pages 86–91] · Scene 13: Case Study 1 — Halicin (Drug Discovery)
+### Slide 26 [Pages 88–93] · Scene 13: Case Study 1 — Halicin (Drug Discovery)
 **Visuals**: Parchment dossier on left: *MIT · 2020 Halicin*. Right: Chemical ring graph with Carbon (C) and Nitrogen (N) nodes connected by crimson bonds. Green badge: *Killed Pan-Resistant Bacteria*.
 
-- **[Page 86 / Initial]** *(Halicin card & molecular graph)*
+- **[Page 88 / Initial]** *(Halicin card & molecular graph)*
   > "Up to this point, this might sound like an elegant academic theory.
   >
   > Let me show you what happens when this technology meets the real physical world.
   >
   > In 2020, researchers at MIT represented molecules as graphs. Atoms as nodes. Chemical bonds as edges."
-- **[Page 87 / Click 1]** *(Bullet 1: Screened 100 million molecules)*
+- **[Page 89 / Click 1]** *(Bullet 1: Screened 100 million molecules)*
   > "They screened a digital library of over **100 million** molecules."
-- **[Page 88 / Click 2]** *(Bullet 2: Learned chemical bond topologies)*
+- **[Page 90 / Click 2]** *(Bullet 2: Learned chemical bond topologies)*
   > "The GNN learned chemical bond topology --- completely immune to atom numbering."
-- **[Page 89 / Click 3]** *(Bullet 3: Flagged a molecule humans had overlooked)*
+- **[Page 91 / Click 3]** *(Bullet 3: Flagged a molecule humans had overlooked)*
   > "It flagged a candidate molecule that human chemists had completely overlooked because it looked nothing like any known antibiotic."
-- **[Page 90 / Click 4]** *(Green badge: Killed Pan-Resistant Bacteria)*
+- **[Page 92 / Click 4]** *(Green badge: Killed Pan-Resistant Bacteria)*
   > "They tested it in the lab. It wiped out *Acinetobacter baumannii* --- a deadly superbug resistant to every conventional antibiotic in medicine. They named it **Halicin**."
-- **[Page 91 / Click 5]** *(Bottom takeaway)*
+- **[Page 93 / Click 5]** *(Bottom takeaway)*
   *(Warm, inspiring tone)*
   > "A neural network read chemistry as a graph... and found a life-saving drug."
 
 ---
 
-### Slide 27 [Pages 92–94] · Scene 14: Case Study 2 — Global Weather (The Entire Atmosphere)
+### Slide 27 [Pages 94–96] · Scene 14: Case Study 2 — Global Weather (The Entire Atmosphere)
 **Visuals**: A clean spherical Earth outline. Radial airflow rays and latitude circles reveal a planetary mesh graph.
 
-- **[Page 92 / Initial]** *(Case File 02: The Entire Atmosphere)*
+- **[Page 94 / Initial]** *(Case File 02: The Entire Atmosphere)*
   > "Now let's expand our scale from nanometer molecules to an entire planet."
-- **[Page 93 / Click 1]** *(Mesh lines illuminate around the globe)*
+- **[Page 95 / Click 1]** *(Mesh lines illuminate around the globe)*
   > "What if every coordinate on Earth is a node? Adjacent atmospheric airflows are edges."
-- **[Page 94 / Click 2]** *(Subtitle)*
+- **[Page 96 / Click 2]** *(Subtitle)*
   > "The entire atmosphere of planet Earth becomes a single continuous spherical graph."
 
 ---
 
-### Slide 28 [Pages 95–99] · Scene 14: Case Study 2 — GraphCast (Planetary Scale)
+### Slide 28 [Pages 97–101] · Scene 14: Case Study 2 — GraphCast (Planetary Scale)
 **Visuals**: Left: Planetary mesh. Right: DeepMind 2023 GraphCast dossier card with bullet reveals.
 
-- **[Page 95 / Initial]** *(GraphCast card)*
+- **[Page 97 / Initial]** *(GraphCast card)*
   > "In 2023, Google DeepMind published **GraphCast**."
-- **[Page 96 / Click 1]** *(Bullet 1: 10-day global forecast in under 1 minute)*
+- **[Page 98 / Click 1]** *(Bullet 1: 10-day global forecast in under 1 minute)*
   > "It produces a 10-day global weather forecast in **under 1 minute** on a single machine."
-- **[Page 97 / Click 2]** *(Bullet 2: Beat European supercomputers on >90% of variables)*
+- **[Page 99 / Click 2]** *(Bullet 2: Beat European supercomputers on >90% of variables)*
   > "It outperformed the European gold-standard supercomputers that take hours on massive server clusters on over 90% of test variables."
-- **[Page 98 / Click 3]** *(Bullet 3: Predicted Hurricane Lee days earlier)*
+- **[Page 100 / Click 3]** *(Bullet 3: Predicted Hurricane Lee days earlier)*
   > "It accurately predicted the landfall trajectory of Hurricane Lee days ahead of official forecasters."
-- **[Page 99 / Click 4]** *(Card badge: Same Principle. Planetary Scale.)*
+- **[Page 101 / Click 4]** *(Card badge: Same Principle. Planetary Scale.)*
   > "The exact same three steps you ran on Alice --- Gather, Aggregate, Update --- executed across the entire planet at once."
 
 ---
 
-### Slide 29 [Pages 100–100] · Scene 15: Case Study 3 — CERN Particle Physics (The Question)
+### Slide 29 [Pages 102–102] · Scene 15: Case Study 3 — CERN Particle Physics (The Question)
 **Visuals**: A spray of particle sensor hit dots scattered in space. Full text revealed cleanly in one view.
 
-- **[Page 100 / Full Slide]**
+- **[Page 102 / Full Slide]**
   *(Curious, dramatic tone)*
   > "And finally, let's journey to CERN's Large Hadron Collider.
   >
@@ -594,53 +611,53 @@
 
 ---
 
-### Slide 30 [Pages 101–105] · Scene 15: Case Study 3 — CERN Particle Trajectory Tracking
+### Slide 30 [Pages 103–107] · Scene 15: Case Study 3 — CERN Particle Trajectory Tracking
 **Visuals**: Left: CERN LHC · CMS / ATLAS card. Right: Candidate sensor dots connect into a solid golden particle trajectory line! Red badge: Discovering New Physics.
 
-- **[Page 101 / Initial]** *(Connect Dots card)*
+- **[Page 103 / Initial]** *(Connect Dots card)*
   > "It is the ultimate connect-the-dots challenge."
-- **[Page 102 / Click 1]** *(Bullet 1: Builds a graph of candidate hits)*
+- **[Page 104 / Click 1]** *(Bullet 1: Builds a graph of candidate hits)*
   > "Physicists build a graph connecting candidate sensor hits."
-- **[Page 103 / Click 2]** *(Bullet 2 & Trajectory line lights up in bold gold)*
+- **[Page 105 / Click 2]** *(Bullet 2 & Trajectory line lights up in bold gold)*
   *(Point to the glowing gold curved trajectory)*
   > "A GNN evaluates edge probabilities and prunes away the false connections in **milliseconds**, tracking the true particle path in real time."
-- **[Page 104 / Click 3]** *(Bullet 3: Reconstructs particle trajectories)*
+- **[Page 106 / Click 3]** *(Bullet 3: Reconstructs particle trajectories)*
   > "Filtering millions of collisions per second."
-- **[Page 105 / Click 4]** *(Crimson badge: Discovering New Physics)*
+- **[Page 107 / Click 4]** *(Crimson badge: Discovering New Physics)*
   > "Graph Neural Networks are actively helping physicists discover new fundamental laws of nature."
 
 ---
 
-### Slide 31 [Pages 106–109] · Scene 16: The Unifying Picture — Three Fields
+### Slide 31 [Pages 108–111] · Scene 16: The Unifying Picture — Three Fields
 **Visuals**: Three paper cards side-by-side: MOLECULES (Chemistry), PLANET (Atmosphere), PARTICLES (Physics).
 
-- **[Page 106 / Initial]** *(Card 1: Molecules & Atoms)*
+- **[Page 108 / Initial]** *(Card 1: Molecules & Atoms)*
   > "Think about what we have just seen:
   > A molecule in biology."
-- **[Page 107 / Click 1]** *(Card 2: Planet & Airflow)*
+- **[Page 109 / Click 1]** *(Card 2: Planet & Airflow)*
   > "A planet in meteorology."
-- **[Page 108 / Click 2]** *(Card 3: Particles & Detectors)*
+- **[Page 110 / Click 2]** *(Card 3: Particles & Detectors)*
   > "A subatomic particle in quantum physics."
-- **[Page 109 / Click 3]** *(Bottom takeaway)*
+- **[Page 111 / Click 3]** *(Bottom takeaway)*
   > "To a traditional scientist, these three disciplines have absolutely nothing in common."
 
 ---
 
-### Slide 32 [Pages 110–112] · Scene 16: The Unifying Picture — GRAPH
+### Slide 32 [Pages 112–114] · Scene 16: The Unifying Picture — GRAPH
 **Visuals**: The screen clears to a massive, commanding gold word centered on the white canvas: G R A P H.
 
-- **[Page 110 / Initial]** *(Massive gold title: G R A P H)*
+- **[Page 112 / Initial]** *(Massive gold title: G R A P H)*
   *(Pause for two seconds. Let the single word anchor the entire talk.)*
   > "Except underneath... they share the exact same mathematical soul."
-- **[Page 111 / Click 1]** *(Subtitle: Different problems. Same underlying structure.)*
+- **[Page 113 / Click 1]** *(Subtitle: Different problems. Same underlying structure.)*
   > "Different problems. Same underlying structure."
-- **[Page 112 / Click 2]** *(Takeaway: Whenever relationships are part of the information...)*
+- **[Page 114 / Click 2]** *(Takeaway: Whenever relationships are part of the information...)*
   *(Speak with quiet authority)*
   > "Whenever the relationships are part of the information... ignoring those relationships is throwing information away."
 
 ---
 
-### Slide 33 [Page 113] · Scene 17: Final Close — Thank You
+### Slide 33 [Page 115] · Scene 17: Final Close — Thank You
 **Visuals**: Large gold *Thank you.* with *QUESTIONS & DISCUSSION* underneath.
 
 - *(Stand tall, look directly at the audience / evaluators)*
