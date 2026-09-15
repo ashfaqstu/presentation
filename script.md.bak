@@ -1,0 +1,486 @@
+# Graph Neural Networks — Rehearsal Speaker Script
+
+**Total Runtime: 10:00 (600s).**
+Deck: [`gnn-deck.html`](file:///c:/Users/user/Desktop/presentation/gnn-deck.html) — open in Chrome, press `F` for fullscreen, `S` for presenter notes drawer, `T` to toggle the 10:00 pacing timer.
+
+---
+
+## Storytelling & Delivery Principles
+
+1. **Misconception Before Explanation (Veritasium Rule 1)**:
+   Never start by announcing "Today I will talk about Graph Neural Networks." Start by giving the audience a puzzle where their initial mental model fails.
+2. **Question Before Solution (Veritasium Rule 2)**:
+   Ask the question out loud before revealing the concept. Let the question hang in the air so the audience actively craves the answer.
+3. **Causal Progression (The Veritasium Thread)**:
+   Every block must directly create the question answered by the next block:
+   *CNN works on grids &rarr; our data has no grid &rarr; obvious fixes fail &rarr; relationships contain information &rarr; GNN &rarr; step-by-step mechanism &rarr; real-world payoff.*
+4. **The Faculty Rule (What Judges Must Leave Remembering)**:
+   Do not drown the room in tensor algebra. Ensure every judge walks out remembering three clear ideas:
+   - **CNNs exploit grids.**
+   - **GNNs exploit relationships.**
+   - **Gather &rarr; Aggregate &rarr; Update.**
+
+---
+
+## 0:00 — Scene 1 · Cold Open: Trust the Person, or Trust the Network? `45s`
+
+**[On Screen: A single pinned suspect card in darkness. No title. No GNN mention.]**
+
+> "Let me give you a very simple problem.
+>
+> You have to decide whether this person is trustworthy.
+>
+> Here is everything we know about them.
+>
+> Twenty-four years old.
+> Seventeen posts.
+> Lives in Dhaka.
+>
+> Can you decide?"
+
+*(Pause. Count to two. Look around the room.)*
+
+> "Probably not. There just isn't enough information here.
+>
+> So let me give you one more piece of data."
+
+**[Fragment trigger: Red strings snap outward to connected nodes: VERIFIED BANK at the top, two SCAM ACCOUNTS below.]**
+
+> "Look at the people around them.
+>
+> Now the answer suddenly feels very different."
+
+*(Pause.)*
+
+> "The interesting thing is...
+> we didn't learn a single new fact about the person.
+>
+> We learned about the people they are connected to.
+>
+> What if the person itself isn't the information?
+> What if the **connections** are?"
+
+---
+
+## 0:45 — Scene 2 · The CNN Example `35s`
+
+**[Cut to an image on screen.]**
+
+> "Now let's forget people for a moment.
+>
+> Suppose I give this image to a neural network.
+> How could it recognize what's in this picture?"
+
+**[Fragment trigger: The image decomposes into local 3x3 pixel patches.]**
+
+> "It doesn't need to understand the entire picture all at once.
+> It can look at small, local regions.
+>
+> Pixels... combine into edges.
+> Edges combine into patterns.
+> Patterns combine into shapes.
+> And shapes combine into an object."
+
+**[Fragment trigger: Object recognized.]**
+
+> "And there is a reason this works so well.
+> This image has structure.
+> Every pixel has a predictable neighbourhood."
+
+---
+
+## 1:20 — Scene 3 · Name the CNN `20s`
+
+**[Typographic reveal: Convolutional Neural Network (CNN)]**
+
+> "This approach has a name you already know.
+>
+> A **Convolutional Neural Network**. CNN.
+>
+> But here is the critical part to remember:
+> CNN works because the world we gave it has an obvious, rigid arrangement."
+
+---
+
+## 1:40 — Scene 4 · Break the Assumption: Grid vs. Graph `25s`
+
+**[Side-by-side comparison: A neat rectangular pixel grid on the left; an irregular messy graph on the right.]**
+
+> "Now imagine the data doesn't look like this."
+
+**[Point to the grid.]**
+
+> "In a CNN, pixel number 37 has a predictable neighbor on the left, right, top, and bottom."
+
+**[Point to the graph.]**
+
+> "Now look over here.
+>
+> What is pixel number 37 in this graph?
+>
+> There is no pixel 37.
+> There are no rows. No columns. No left-to-right order.
+>
+> There are only things... and relationships between those things.
+>
+> So what do we do?"
+
+---
+
+## 2:05 — Scene 5 · Obvious Solutions 1 & 2 `20s`
+
+**[Fragment trigger: The graph connections disappear, leaving isolated floating points.]**
+
+> "Maybe our first instinct is: let's just ignore the relationships.
+>
+> Now every node is just an isolated piece of data."
+
+*(Beat.)*
+
+> "Except we've thrown away the very information we cared about."
+
+**[Fragment trigger: An adjacency matrix appears.]**
+
+> "Fine. Then let's keep the relationships.
+> We'll store them in an adjacency matrix and hand that matrix to a neural network.
+>
+> That looks completely reasonable."
+
+*(Beat.)*
+
+> "Until you watch this."
+
+---
+
+## 2:25 — Scene 6 · The Failure: Permutation Sensitivity `35s`
+
+**[Two caffeine molecules shown side by side. Same atoms, same bonds.]**
+
+> "Same molecule.
+> Same atoms.
+> Same bonds."
+
+**[Numbers change on the nodes. Two matrices appear below with different rows/columns.]**
+
+> "The only thing I changed...
+> is which atom I decided to label as number one."
+
+**[Fragment trigger: Predictions flash: Toxic 0.83 vs Toxic 0.11. Pulsing Red X stamp slams in.]**
+
+> "Toxic: 0.83.
+> Toxic: 0.11.
+>
+> Same molecule. Different answer."
+
+*(Hold the silence for two full seconds. Do not rush this punchline.)*
+
+> "The neural network learned our numbering system.
+> It never learned the chemistry."
+
+---
+
+## 3:00 — Scene 7 · The Pivotal Question `25s` · **PAUSE POINT**
+
+**[Screen clears to a single glowing node.]**
+
+> "So here is the real question."
+
+**[Large bold text: What is this node?]**
+
+*(Pause.)*
+
+> "Maybe we look at its features. Age, size, color..."
+
+**[Animation: The word 'is' is struck through and replaced in glowing gold: Who influences this node?]**
+
+*(Stop talking. Count to two.)*
+
+> "One small change. Completely different problem.
+>
+> Now the node cannot be understood by looking only at itself.
+> We have to look at who it is connected to.
+>
+> And that is the question ordinary neural networks were never designed to ask."
+
+---
+
+## 3:25 — Scene 8 · The GNN Idea `35s`
+
+**[A central node with neighbours appears.]**
+
+> "So what if...
+> instead of forcing the graph to behave like an image grid,
+> we build a neural network that understands the graph itself?
+>
+> Start with one node.
+> Ask the people it is connected to for information."
+
+**[Animation: Envelopes travel along incident edges inward.]**
+
+> "**Gather.**
+> Its neighbours send what they know."
+
+**[Animation: Envelopes collapse into one box.]**
+
+> "**Aggregate.**
+> We combine what they told us — without caring who spoke first."
+
+**[Animation: Node changes color/state.]**
+
+> "**Update.**
+> And now the node has a new representation of itself.
+>
+> And every node on the board does this at the exact same time.
+>
+> That is the basic idea of a **Graph Neural Network**."
+
+---
+
+## 4:00 — Scene 9 · Step-by-Step GNN Demo: Alice's Graph `95s`
+
+**[A clean, named 5-node graph: Alice connected to Bob and Carol; David connected to Bob; Eve connected to Carol.]**
+
+> "Let's actually run one together, step by step.
+>
+> Suppose these nodes are people in a network.
+> And our question is:
+>
+> *Is Alice likely to be interested in Topic X?*"
+
+**[Alice is highlighted.]**
+
+> "First, Alice looks at herself.
+> Her profile says: Age 24, Activity High, Topic Interest: Unknown.
+> Her own card isn't enough to answer the question."
+
+**[Bob and Carol are highlighted in gold.]**
+
+> "So Alice looks around. Step one: **Gather**.
+> She asks her immediate neighbours, Bob and Carol."
+
+**[Animation: Bob and Carol's feature cards physically slide along the edges toward Alice.]**
+
+> "Bob sends his card: he loves Topic X.
+> Carol sends hers: she follows related discussions.
+>
+> The messages arrive at Alice."
+
+**[Animation: The arriving cards merge into an aggregation box.]**
+
+> "Step two: **Aggregate**.
+> We combine what they told Alice.
+> It doesn't matter whether Bob's message arrived first or Carol's arrived first.
+> The combination is order-independent."
+
+**[Animation: Alice's card flips to a new color and status.]**
+
+> "Step three: **Update**.
+> Alice takes what her neighbours told her, combines it with her own information,
+> and updates her card.
+>
+> Her interest is no longer unknown. It flips to: **Likely Interested: 89%**."
+
+**[Zoom out: The entire graph ripples and all nodes update simultaneously.]**
+
+> "And every node on the board just did that at the exact same time.
+>
+> The whole graph is learning through conversations."
+
+---
+
+## 5:35 — Scene 10 · The Intuitive Equation `25s`
+
+**[The GNN message-passing equation appears in the center.]**
+
+> "Now we can look at the formal equation.
+> But do not be intimidated by this notation —
+> because this equation is not a new concept.
+>
+> It is simply the animation you just watched, written down."
+
+**[Runtime SVG callouts connect each term to plain English labels.]**
+
+> "Look at the pieces:
+> My neighbours.
+> The shuffle-proof combiner.
+> Combine with the old card.
+> Produce the new card.
+>
+> So whenever you see this equation in a paper, think:
+> **Gather. Aggregate. Update.**"
+
+---
+
+## 6:00 — Scene 11 · Depth = Reach & Over-smoothing `40s`
+
+**[Graph layout with Layer counter in the corner.]**
+
+> "Now one question appears naturally.
+>
+> If one layer lets Alice hear from her direct neighbours..."
+
+**[Layer 1 counter. 1-hop ring glows gold.]**
+
+> "What happens if we stack a second layer?"
+
+**[Layer 2 counter. 2-hop ring glows.]**
+
+> "Now Alice can hear from her neighbours' neighbours — David and Eve."
+
+**[Layer 3 counter. 3-hop ring glows.]**
+
+> "Three layers? Three steps away.
+>
+> So should we just keep adding dozens of layers like we do in CNNs?"
+
+*(Pause.)*
+
+> "No."
+
+**[Layer counter jumps to 6. Warp pulse. All nodes fade to identical uniform gray.]**
+
+> "Interrogate everyone long enough, and eventually everyone hears the exact same story.
+> Every node becomes identical.
+>
+> That is called **over-smoothing**.
+>
+> Most production GNNs use only two or three layers — and now you understand why."
+
+---
+
+## 6:40 — Scene 12 · Not All Informants Are Equal `30s`
+
+**[The graph edges change thickness and glow.]**
+
+> "There is one more question.
+> In our demo, Alice listened to Bob and Carol equally.
+>
+> But should she?
+>
+> What if Bob is a verified subject-matter expert, and Carol is a stranger?"
+
+**[One edge turns thick and gold; another turns thin and dim.]**
+
+> "Maybe the network should learn to pay more attention to one neighbour than another.
+>
+> That single idea gives rise to attention-based GNNs like **GAT**.
+>
+> Average everyone: that's **GCN**.
+> Sample a few: that's **GraphSAGE**.
+> Learn who to trust: that's **GAT**.
+>
+> Not every relationship is equally useful."
+
+---
+
+## 7:10 — Scene 13 · Case Study 1: Halicin (Drug Discovery) `50s`
+
+**[Background changes to electron micrograph of bacteria. Case card appears.]**
+
+> "Up to this point, this has been an elegant theoretical idea.
+>
+> So what happens when people actually put it to work?
+>
+> What if the graph is a molecule?
+> Atoms are nodes. Bonds are edges.
+>
+> Now the neural network can reason about chemical connectivity instead of an arbitrary matrix."
+
+**[Fragment trigger: Details of MIT 2020 study appear.]**
+
+> "In 2020, researchers at MIT used this to screen a digital library of roughly 100 million compounds.
+>
+> The model flagged a molecule that had been completely overlooked as an antibiotic.
+> They named it **halicin**.
+>
+> Halicin killed strains of bacteria resistant to every known antibiotic,
+> including *Acinetobacter baumannii* on screen behind me.
+>
+> A neural network read chemistry as a graph and found a life-saving drug humans had walked right past."
+
+---
+
+## 8:00 — Scene 14 · Case Study 2: GraphCast (Global Weather) `40s`
+
+**[Satellite image of Earth overlaid with an atmospheric mesh graph.]**
+
+> "Now let's expand the scale from nanometers to an entire planet.
+>
+> What if every point on Earth is a node?
+> Nearby points in the atmosphere are connected by edges.
+>
+> The atmosphere becomes one colossal graph."
+
+**[Fragment trigger: GraphCast results.]**
+
+> "This is DeepMind's **GraphCast**.
+>
+> It generates a 10-day global weather forecast in **under a minute on a single machine**.
+>
+> It outperformed the European gold-standard supercomputer model that takes hours to run,
+> and it predicted the trajectory of Hurricane Lee days earlier.
+>
+> Same principle. Planetary scale."
+
+---
+
+## 8:40 — Scene 15 · Case Study 3: CERN LHC (Particle Tracking) `40s`
+
+**[CMS/ATLAS particle detector collision visual.]**
+
+> "And one more.
+>
+> Inside the Large Hadron Collider at CERN, each proton collision sprays thousands of sensor hits.
+>
+> The challenge is: which hits came from the same subatomic particle?"
+
+**[Fragment trigger: Hit cloud to candidate graph to pruned tracks.]**
+
+> "It's a connect-the-dots problem at an absurd physical scale.
+>
+> Physicists build a graph of candidate hits and let a GNN prune the false connections,
+> reconstructing particle trajectories in milliseconds.
+>
+> Graphs are being used to discover new physics."
+
+---
+
+## 9:20 — Scene 16 · The Unifying Picture `25s`
+
+**[Three cards side by side: Molecule, Planet Earth, Particle Detector.]**
+
+> "A molecule.
+> A planet.
+> A particle detector.
+>
+> On the surface, these three fields have absolutely nothing in common."
+
+**[Animation: The three images fade away into darkness, leaving only one word glowing in gold: GRAPH]**
+
+> "Except underneath... they have the identical structure.
+>
+> Things connected to other things.
+>
+> **Different problems. Same structure.**"
+
+---
+
+## 9:45 — Scene 17 · Return to Opening & Final Close `15s`
+
+**[The opening Dhaka suspect card and its network return to screen.]**
+
+> "Remember the person we started with ten minutes ago?
+>
+> We couldn't understand them from their own profile alone.
+> We had to look at their network.
+>
+> Whenever the relationships are part of the information...
+> ignoring those relationships is throwing information away.
+>
+> A Graph Neural Network is simply the way we teach neural networks...
+> to look at the things... and the connections...
+> at the exact same time."
+
+*(Pause. Hold the visual.)*
+
+> "Thank you."
