@@ -1,9 +1,9 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.9.3)  16 SEP 2026 01:56
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.9.3)  16 SEP 2026 02:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**test_base.tex
-(./test_base.tex
+**gnn-deck.tex
+(./gnn-deck.tex
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-08-10>
 (d:/texlive/2026/texmf-dist/tex/latex/beamer/beamer.cls
@@ -916,8 +916,8 @@ File: l3backend-xetex.def 2026-08-10 L3 backend support: XeTeX
 \g__graphics_track_int=\count380
 \g__pdfannot_backend_int=\count381
 \g__pdfannot_backend_link_int=\count382
-) (./test_base.aux)
-\openout1 = `test_base.aux'.
+) (./gnn-deck.aux)
+\openout1 = `gnn-deck.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 131.
 LaTeX Font Info:    ... okay on input line 131.
@@ -975,9 +975,9 @@ LaTeX Font Info:    ... okay on input line 131.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package hyperref Info: Link coloring OFF on input line 131.
-(./test_base.out) (./test_base.out)
+(./gnn-deck.out) (./gnn-deck.out)
 \@outlinefile=\write5
-\openout5 = `test_base.out'.
+\openout5 = `gnn-deck.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 131.
@@ -1118,43 +1118,41 @@ LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  TU/CourierNew(0)/b/n --> TU/CourierNew(0)/b/n on input 
 line 131.
- (./test_base.nav)
+ (./gnn-deck.nav)
 File: mbappe_before_cutout.png Graphic file (type bmp)
 <mbappe_before_cutout.png>
-File: mbappe_after_cutout.png Graphic file (type bmp)
-<mbappe_after_cutout.png>
-LaTeX Font Info:    Calculating math sizes for size <6.5> on input line 449.
+LaTeX Font Info:    Calculating math sizes for size <6.5> on input line 243.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <6.5> not available
-(Font)              size <6> substituted on input line 449.
+(Font)              size <6> substituted on input line 243.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <4.54997> not available
-(Font)              size <5> substituted on input line 449.
+(Font)              size <5> substituted on input line 243.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <3.25> not available
-(Font)              size <5> substituted on input line 449.
+(Font)              size <5> substituted on input line 243.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <6.5> not available
-(Font)              size <6> substituted on input line 449.
+(Font)              size <6> substituted on input line 243.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <4.54997> not available
-(Font)              size <5> substituted on input line 449.
+(Font)              size <5> substituted on input line 243.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <3.25> not available
-(Font)              size <5> substituted on input line 449.
+(Font)              size <5> substituted on input line 243.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 449
+LaTeX Font Info:    Trying to load font information for U+msa on input line 243
 .
 (d:/texlive/2026/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 449
+LaTeX Font Info:    Trying to load font information for U+msb on input line 243
 .
 
 (d:/texlive/2026/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -1162,11 +1160,11 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <6.5> not available
-(Font)              size <6> substituted on input line 449.
+(Font)              size <6> substituted on input line 243.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <4.54997> not available
-(Font)              size <5> substituted on input line 449.
+(Font)              size <5> substituted on input line 243.
 
 File: cleaning.jpeg Graphic file (type bmp)
 <cleaning.jpeg>
@@ -1179,8 +1177,6 @@ File: hook_4thwall.jpg Graphic file (type bmp)
 ]
 File: mbappe_before_cutout.png Graphic file (type bmp)
 <mbappe_before_cutout.png>
-File: mbappe_after_cutout.png Graphic file (type bmp)
-<mbappe_after_cutout.png>
 File: cleaning.jpeg Graphic file (type bmp)
 <cleaning.jpeg>
 File: commanding_referee.jpeg Graphic file (type bmp)
@@ -1192,8 +1188,6 @@ File: hook_4thwall.jpg Graphic file (type bmp)
 ]
 File: mbappe_before_cutout.png Graphic file (type bmp)
 <mbappe_before_cutout.png>
-File: mbappe_after_cutout.png Graphic file (type bmp)
-<mbappe_after_cutout.png>
 File: cleaning.jpeg Graphic file (type bmp)
 <cleaning.jpeg>
 File: commanding_referee.jpeg Graphic file (type bmp)
@@ -1205,8 +1199,6 @@ File: hook_4thwall.jpg Graphic file (type bmp)
 ]
 File: mbappe_before_cutout.png Graphic file (type bmp)
 <mbappe_before_cutout.png>
-File: mbappe_after_cutout.png Graphic file (type bmp)
-<mbappe_after_cutout.png>
 File: cleaning.jpeg Graphic file (type bmp)
 <cleaning.jpeg>
 File: commanding_referee.jpeg Graphic file (type bmp)
@@ -1218,8 +1210,6 @@ File: hook_4thwall.jpg Graphic file (type bmp)
 ]
 File: mbappe_before_cutout.png Graphic file (type bmp)
 <mbappe_before_cutout.png>
-File: mbappe_after_cutout.png Graphic file (type bmp)
-<mbappe_after_cutout.png>
 File: cleaning.jpeg Graphic file (type bmp)
 <cleaning.jpeg>
 File: commanding_referee.jpeg Graphic file (type bmp)
@@ -1231,8 +1221,6 @@ File: hook_4thwall.jpg Graphic file (type bmp)
 ]
 File: mbappe_before_cutout.png Graphic file (type bmp)
 <mbappe_before_cutout.png>
-File: mbappe_after_cutout.png Graphic file (type bmp)
-<mbappe_after_cutout.png>
 File: cleaning.jpeg Graphic file (type bmp)
 <cleaning.jpeg>
 File: commanding_referee.jpeg Graphic file (type bmp)
@@ -1244,8 +1232,6 @@ File: hook_4thwall.jpg Graphic file (type bmp)
 ]
 File: mbappe_before_cutout.png Graphic file (type bmp)
 <mbappe_before_cutout.png>
-File: mbappe_after_cutout.png Graphic file (type bmp)
-<mbappe_after_cutout.png>
 File: cleaning.jpeg Graphic file (type bmp)
 <cleaning.jpeg>
 File: commanding_referee.jpeg Graphic file (type bmp)
@@ -1257,8 +1243,6 @@ File: hook_4thwall.jpg Graphic file (type bmp)
 ]
 File: mbappe_before_cutout.png Graphic file (type bmp)
 <mbappe_before_cutout.png>
-File: mbappe_after_cutout.png Graphic file (type bmp)
-<mbappe_after_cutout.png>
 File: cleaning.jpeg Graphic file (type bmp)
 <cleaning.jpeg>
 File: commanding_referee.jpeg Graphic file (type bmp)
@@ -1267,7 +1251,16 @@ File: hook_4thwall.jpg Graphic file (type bmp)
 <hook_4thwall.jpg>
  [8
 
-] [9
+]
+File: mbappe_before_cutout.png Graphic file (type bmp)
+<mbappe_before_cutout.png>
+File: cleaning.jpeg Graphic file (type bmp)
+<cleaning.jpeg>
+File: commanding_referee.jpeg Graphic file (type bmp)
+<commanding_referee.jpeg>
+File: hook_4thwall.jpg Graphic file (type bmp)
+<hook_4thwall.jpg>
+ [9
 
 ] [10
 
@@ -1286,42 +1279,43 @@ File: hook_4thwall.jpg Graphic file (type bmp)
 ] [17
 
 ]
-
-LaTeX Font Warning: Font shape `TU/Impact(0)/b/n' undefined
-(Font)              using `TU/Impact(0)/m/n' instead on input line 523.
-
 [18
 
-] [19
+]
+
+LaTeX Font Warning: Font shape `TU/Impact(0)/b/n' undefined
+(Font)              using `TU/Impact(0)/m/n' instead on input line 319.
+
+[19
 
 ] [20
 
+] [21
+
 ]
-LaTeX Font Info:    Calculating math sizes for size <8.5> on input line 574.
+LaTeX Font Info:    Calculating math sizes for size <8.5> on input line 370.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <8.5> not available
-(Font)              size <8> substituted on input line 574.
+(Font)              size <8> substituted on input line 370.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <4.25> not available
-(Font)              size <5> substituted on input line 574.
+(Font)              size <5> substituted on input line 370.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <8.5> not available
-(Font)              size <8> substituted on input line 574.
+(Font)              size <8> substituted on input line 370.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <4.25> not available
-(Font)              size <5> substituted on input line 574.
+(Font)              size <5> substituted on input line 370.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <8.5> not available
-(Font)              size <8> substituted on input line 574.
+(Font)              size <8> substituted on input line 370.
 
-[21
-
-] [22
+[22
 
 ] [23
 
@@ -1337,24 +1331,24 @@ LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <8.5> not available
 
 ] [29
 
+] [30
+
 ]
-LaTeX Font Info:    Calculating math sizes for size <9.5> on input line 674.
+LaTeX Font Info:    Calculating math sizes for size <9.5> on input line 470.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <9.5> not available
-(Font)              size <9> substituted on input line 674.
+(Font)              size <9> substituted on input line 470.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <9.5> not available
-(Font)              size <9> substituted on input line 674.
+(Font)              size <9> substituted on input line 470.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <9.5> not available
-(Font)              size <9> substituted on input line 674.
+(Font)              size <9> substituted on input line 470.
 
-[30
-
-] [31
+[31
 
 ] [32
 
@@ -1372,73 +1366,73 @@ LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <9.5> not available
 
 ] [39
 
+] [40
+
 ]
-LaTeX Font Info:    Calculating math sizes for size <19> on input line 755.
+LaTeX Font Info:    Calculating math sizes for size <19> on input line 574.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <19> not available
-(Font)              size <17.28> substituted on input line 755.
+(Font)              size <17.28> substituted on input line 574.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <13.29994> not available
-(Font)              size <14.4> substituted on input line 755.
+(Font)              size <14.4> substituted on input line 574.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <19> not available
-(Font)              size <17.28> substituted on input line 755.
+(Font)              size <17.28> substituted on input line 574.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <13.29994> not available
-(Font)              size <14.4> substituted on input line 755.
+(Font)              size <14.4> substituted on input line 574.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <19> not available
-(Font)              size <17.28> substituted on input line 755.
+(Font)              size <17.28> substituted on input line 574.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <13.29994> not available
-(Font)              size <14.4> substituted on input line 755.
+(Font)              size <14.4> substituted on input line 574.
 
-LaTeX Font Info:    Calculating math sizes for size <15> on input line 755.
+LaTeX Font Info:    Calculating math sizes for size <15> on input line 574.
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <15> not available
-(Font)              size <14.4> substituted on input line 755.
+(Font)              size <14.4> substituted on input line 574.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <10.49995> not available
-(Font)              size <10.95> substituted on input line 755.
+(Font)              size <10.95> substituted on input line 574.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <7.5> not available
-(Font)              size <7> substituted on input line 755.
+(Font)              size <7> substituted on input line 574.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <15> not available
-(Font)              size <14.4> substituted on input line 755.
+(Font)              size <14.4> substituted on input line 574.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <10.49995> not available
-(Font)              size <10.95> substituted on input line 755.
+(Font)              size <10.95> substituted on input line 574.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <7.5> not available
-(Font)              size <7> substituted on input line 755.
+(Font)              size <7> substituted on input line 574.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <15> not available
-(Font)              size <14.4> substituted on input line 755.
+(Font)              size <14.4> substituted on input line 574.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <10.49995> not available
-(Font)              size <10.95> substituted on input line 755.
+(Font)              size <10.95> substituted on input line 574.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <7.5> not available
-(Font)              size <7> substituted on input line 755.
+(Font)              size <7> substituted on input line 574.
 
-[40
-
-] [41
+[41
 
 ] [42
 
@@ -1466,16 +1460,56 @@ LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <7.5> not available
 
 ] [54
 
-]
-[55
+] [55
 
-] [56
+]
+LaTeX Font Info:    Calculating math sizes for size <13> on input line 950.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <13> not available
+(Font)              size <12> substituted on input line 950.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <13> not available
+(Font)              size <12> substituted on input line 950.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <13> not available
+(Font)              size <12> substituted on input line 950.
+
+[56
 
 ] [57
 
-] [58
+]
+LaTeX Font Info:    Calculating math sizes for size <11> on input line 1028.
 
-] [59
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <5.5> not available
+(Font)              size <5> substituted on input line 1028.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <5.5> not available
+(Font)              size <5> substituted on input line 1028.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <5.5> not available
+(Font)              size <5> substituted on input line 1028.
+
+[58
+
+]
+LaTeX Font Info:    Calculating math sizes for size <7.5> on input line 1054.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <3.75> not available
+(Font)              size <5> substituted on input line 1054.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <3.75> not available
+(Font)              size <5> substituted on input line 1054.
+
+[59
 
 ] [60
 
@@ -1489,7 +1523,22 @@ LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <7.5> not available
 
 ] [65
 
-] [66
+]
+LaTeX Font Info:    Calculating math sizes for size <10.5> on input line 1151.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <10.5> not available
+(Font)              size <10.95> substituted on input line 1151.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <10.5> not available
+(Font)              size <10.95> substituted on input line 1151.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <10.5> not available
+(Font)              size <10.95> substituted on input line 1151.
+
+[66
 
 ] [67
 
@@ -1497,8 +1546,7 @@ LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <7.5> not available
 
 ] [69
 
-]
-[70
+] [70
 
 ] [71
 
@@ -1510,12 +1558,116 @@ LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <7.5> not available
 
 ] [75
 
+] [76
+
+] [77
+
+] [78
+
+] [79
+
+] [80
+
 ]
-LaTeX Font Info:    Calculating math sizes for size <13> on input line 1073.
+[81
+
+] [82
+
+] [83
+
+] [84
+
+] [85
+
+] [86
+
+] [87
+
+] [88
+
+] [89
+
+] [90
+
+] [91
+
+] [92
+
+] [93
+
+] [94
+
+] [95
+
+]
+[96
+
+] [97
+
+] [98
+
+] [99
+
+] [100
+
+] [101
+
+] [102
+
+] [103
+
+] [104
+
+] [105
+
+] [106
+
+] [107
+
+] [108
+
+]
+[109
+
+] [110
+
+] [111
+
+] [112
+
+]
+\tf@nav=\write6
+\openout6 = `gnn-deck.nav'.
+
+\tf@toc=\write7
+\openout7 = `gnn-deck.toc'.
+
+\tf@snm=\write8
+\openout8 = `gnn-deck.snm'.
+
+ (./gnn-deck.aux)
+ ***********
+LaTeX2e <2026-06-01>
+L3 programming layer <2026-08-10>
+ ***********
 
 
-LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <13> not available
-(Font)              size <12> substituted on input line 1073.
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 1.75pt have occurred.
 
 
-LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <13> not
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+Package rerunfilecheck Info: File `gnn-deck.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+ ) 
+Here is how much of TeX's memory you used:
+ 29975 strings out of 467745
+ 641277 string characters out of 5425967
+ 1156255 words of memory out of 5000000
+ 58411 multiletter control sequences out of 15000+600000
+ 656162 words of font info for 336 fonts, out of 8000000 for 9000
+ 1348 hyphenation exceptions out of 8191
+ 128i,12n,123p,422b,985s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+Output written on gnn-deck.pdf (112 pages).

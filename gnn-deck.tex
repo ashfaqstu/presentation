@@ -635,6 +635,101 @@
 \end{tikzpicture}
 \end{frame}
 
+% --- 8.7: The Key Difference · Each drawback we hit, and how a GNN fixes it (static) ---
+\begin{frame}[plain]
+\kicker{SCENE 08 / 17 \quad THE KEY DIFFERENCE}
+\begin{tikzpicture}[remember picture,overlay,shift={(current page.center)},
+    probcard/.style={fill=crimson!5, draw=crimson!55, line width=0.8pt, rounded corners=4pt},
+    fixcard/.style={fill=gold!7, draw=gold, line width=1.1pt, rounded corners=4pt},
+    probtitle/.style={anchor=north west, text=crimson, font=\fontsize{9}{10.5}\selectfont\sffamily\bfseries},
+    fixtitle/.style={anchor=north west, text=gold, font=\fontsize{9}{10.5}\selectfont\sffamily\bfseries},
+    cardbody/.style={anchor=north west, text=chalk!85, align=left, font=\fontsize{8}{9.6}\selectfont\sffamily},
+    cardtag/.style={anchor=south west, font=\fontsize{6.5}{8}\selectfont\twfont\bfseries}]
+
+  \node[anchor=north, text=chalk, font=\fontsize{15}{18}\selectfont\sffamily\bfseries]
+    at (0, 3.95) {What went wrong, and how a \textcolor{gold}{GNN} fixes it};
+
+  \node[anchor=south west, text=crimson, font=\fontsize{8}{10}\selectfont\twfont\bfseries] at (-7.3, 2.86) {THE DRAWBACK WE HIT};
+  \node[anchor=south west, text=gold,    font=\fontsize{8}{10}\selectfont\twfont\bfseries] at ( 0.55, 2.86) {HOW A GNN SOLVES IT};
+
+  % ================= ROW 1: structure =================
+  \begin{scope}[shift={(0, 1.92)}]
+    \draw[probcard] (-7.3,-0.88) rectangle (-0.55,0.88);
+    \draw[fixcard]  ( 0.55,-0.88) rectangle ( 7.3,0.88);
+    \draw[-{Latex[length=6pt]}, gold, line width=1.6pt] (-0.42,0) -- (0.42,0);
+
+    % icon: rigid grid
+    \foreach \r in {0,1,2} { \foreach \c in {0,1,2} {
+      \draw[crimson!60, fill=papercream, line width=0.4pt] ({-7.0+\c*0.2}, {0.3-\r*0.2}) rectangle ++(0.17,-0.17);
+    } }
+    \node[probtitle] at (-6.2, 0.76) {Needs a fixed grid or vector};
+    \node[cardbody]  at (-6.2, 0.36) {A graph has no ``pixel 37''. Dropping the\\edges to make it fit loses the structure.};
+    \node[cardtag, text=crimson!70] at (-6.2,-0.8) {SEEN IN SCENES 04-05};
+
+    % icon: irregular graph
+    \draw[gold, line width=0.8pt] (0.95,0.2) -- (1.3,-0.05) -- (1.05,-0.35) (1.3,-0.05) -- (1.55,0.3);
+    \foreach \x/\y in {0.95/0.2, 1.3/-0.05, 1.05/-0.35, 1.55/0.3} { \fill[papercream, draw=gold, line width=0.8pt] (\x,\y) circle (0.07); }
+    \node[fixtitle] at (1.9, 0.76) {Reads the graph as it is};
+    \node[cardbody] at (1.9, 0.36) {Each node looks at whoever it is\\connected to, however many there are.};
+    \node[cardtag, text=gold] at (1.9,-0.8) {STEP 1 $\cdot$ GATHER};
+  \end{scope}
+
+  % ================= ROW 2: node order =================
+  \begin{scope}[shift={(0, 0.0)}]
+    \draw[probcard] (-7.3,-0.88) rectangle (-0.55,0.88);
+    \draw[fixcard]  ( 0.55,-0.88) rectangle ( 7.3,0.88);
+    \draw[-{Latex[length=6pt]}, gold, line width=1.6pt] (-0.42,0) -- (0.42,0);
+
+    % icon: two differently-filled matrices
+    \foreach \r in {0,1,2} { \foreach \c in {0,1,2} {
+      \draw[crimson!50, fill=papercream, line width=0.3pt] ({-7.1+\c*0.13}, {0.3-\r*0.13}) rectangle ++(0.11,-0.11);
+      \draw[crimson!50, fill=papercream, line width=0.3pt] ({-6.6+\c*0.13}, {0.3-\r*0.13}) rectangle ++(0.11,-0.11);
+    } }
+    \foreach \x/\y in {-7.1/0.3, -6.97/0.17, -6.84/0.04} { \fill[ink!75] (\x,\y) rectangle ++(0.11,-0.11); }
+    \foreach \x/\y in {-6.34/0.3, -6.6/0.17, -6.47/0.04} { \fill[ink!75] (\x,\y) rectangle ++(0.11,-0.11); }
+    \node[text=crimson, font=\fontsize{7}{8}\selectfont\sffamily\bfseries] at (-6.73,-0.3) {$\neq$};
+    \node[probtitle] at (-6.2, 0.76) {Answer depends on numbering};
+    \node[cardbody]  at (-6.2, 0.36) {Same molecule, atoms renumbered, flattened\\matrix changes: toxicity 0.83 vs 0.11.};
+    \node[cardtag, text=crimson!70] at (-6.2,-0.8) {SEEN IN SCENE 06};
+
+    % icon: messages merging into one average
+    \draw[gold, line width=0.8pt, -{Latex[length=3pt]}] (0.9, 0.3) -- (1.2,0.03);
+    \draw[gold, line width=0.8pt, -{Latex[length=3pt]}] (0.9,-0.3) -- (1.2,-0.03);
+    \node[circle, draw=gold, fill=papercream, line width=0.8pt, inner sep=0.5pt, font=\fontsize{6.5}{7}\selectfont] at (1.4,0) {$\bar{x}$};
+    \node[fixtitle] at (1.9, 0.76) {Order cannot matter};
+    \node[cardbody] at (1.9, 0.36) {Neighbour messages are averaged, and\\mean(Bob, Carol) = mean(Carol, Bob).};
+    \node[cardtag, text=gold] at (1.9,-0.8) {STEP 2 $\cdot$ AGGREGATE};
+  \end{scope}
+
+  % ================= ROW 3: own features only =================
+  \begin{scope}[shift={(0,-1.92)}]
+    \draw[probcard] (-7.3,-0.88) rectangle (-0.55,0.88);
+    \draw[fixcard]  ( 0.55,-0.88) rectangle ( 7.3,0.88);
+    \draw[-{Latex[length=6pt]}, gold, line width=1.6pt] (-0.42,0) -- (0.42,0);
+
+    % icon: a node on its own
+    \fill[papercream, draw=crimson!70, line width=1pt] (-6.75,0.0) circle (0.17);
+    \node[probtitle] at (-6.2, 0.76) {Judges a node only by itself};
+    \node[cardbody]  at (-6.2, 0.36) {Mbapp\'e's own card looked completely\\normal. The evidence was in his connections.};
+    \node[cardtag, text=crimson!70] at (-6.2,-0.8) {SEEN IN SCENE 01};
+
+    % icon: node absorbing its neighbours
+    \foreach \x/\y in {0.9/0.35, 0.85/-0.3, 1.65/0.3} {
+      \draw[gold, line width=0.7pt] (\x,\y) -- (1.25,0.0);
+      \fill[papercream, draw=gold!80, line width=0.6pt] (\x,\y) circle (0.06);
+    }
+    \fill[gold!35, draw=gold, line width=1pt] (1.25,0.0) circle (0.13);
+    \node[fixtitle] at (1.9, 0.76) {Relationships become features};
+    \node[cardbody] at (1.9, 0.36) {Each node rewrites its own card using\\its features plus its neighbours'.};
+    \node[cardtag, text=gold] at (1.9,-0.8) {STEP 3 $\cdot$ UPDATE};
+  \end{scope}
+
+  % ---- takeaway ----
+  \node[anchor=north, text=chalk, font=\fontsize{11}{13}\selectfont\sffamily\bfseries, align=center]
+    at (0,-3.0) {Each fix is one of the three steps. Let's run them by hand.};
+\end{tikzpicture}
+\end{frame}
+
 % =============================================================
 % ACT II-A: RUN ONE LAYER BY HAND (ALICE'S GRAPH, REAL NUMBERS)
 % =============================================================
