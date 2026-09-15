@@ -134,114 +134,151 @@
 % ACT I: THE GAP
 % =============================================================
 
-% --- 1.1-1.9: Cold Open · Mbappé alone, then his interactions, then the inference ---
-% One frame, nine clicks. Nothing moves; each click adds exactly one idea:
-%   1 Mbappé alone            2 "nothing suspicious"
-%   3-5 three neighbours arrive, each joined by a labelled relationship edge
-%   6 "why is everyone taking orders?"   7 inference arrow -> DICTATOR?
-%   8-9 the two questions; every edge turns orange on "connections".
-{
-\definecolor{hookbg}{HTML}{F6F1E7}
-\definecolor{hooknavy}{HTML}{13213A}
-\definecolor{hookorange}{HTML}{D9731A}
-\definecolor{hookred}{HTML}{C62828}
-\setbeamercolor{background canvas}{bg=hookbg}
+% --- 1.1-1.9: Cold Open · three slides, same nine clicks, deck colours ---
+%   1.A  Mbappé alone                      (2 clicks)
+%   1.B  his interactions with three people (4 clicks)
+%   1.C  the inference and the two questions (3 clicks)
 \tikzset{
-  hookphoto/.style={draw=hooknavy!30, line width=0.8pt, rounded corners=5pt, inner sep=0pt},
-  hookname/.style={text=hooknavy!75, font=\fontsize{7}{8.5}\selectfont\twfont\bfseries},
-  hookrel/.style={text=hookorange, align=center, font=\fontsize{8}{9.5}\selectfont\sffamily\itshape},
-  hookedge/.style={draw=hooknavy!55, line width=1.3pt, -{Stealth[length=7pt]}, shorten >=2pt, shorten <=2pt},
-  hookedgeOn/.style={draw=hookorange, line width=2.6pt, -{Stealth[length=9pt]}, shorten >=2pt, shorten <=2pt}
+  hookphoto/.style={draw=chalk!25, line width=0.8pt, rounded corners=5pt, inner sep=0pt},
+  hookname/.style={text=dimtext, font=\fontsize{7.5}{9}\selectfont\twfont\bfseries},
+  hookrel/.style={text=gold, align=center, font=\fontsize{8.5}{10}\selectfont\sffamily\itshape},
+  hookedge/.style={draw=chalk!50, line width=1.3pt, -{Stealth[length=7pt]}, shorten >=2pt, shorten <=2pt},
+  hookedgeOn/.style={draw=gold, line width=2.6pt, -{Stealth[length=9pt]}, shorten >=2pt, shorten <=2pt},
+  hookpill/.style={fill=chalk, text=white, rounded corners=3pt, inner xsep=10pt, inner ysep=3.5pt, align=center}
 }
+
+% ---------------- 1.A: Mbappé alone ----------------
 \begin{frame}[plain]
 \kicker{SCENE 01 / 17 \quad COLD OPEN}
 \begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
-
-  % ================= TITLE -> QUESTIONS (same spot) =================
-  \node[visible on=<1-7>, anchor=south west, text=hooknavy, font=\fontsize{23}{27}\selectfont\sffamily\bfseries]
+  \node[anchor=south west, text=chalk, font=\fontsize{23}{27}\selectfont\sffamily\bfseries]
     at (-7.2, 2.75) {Can we trust this person?};
-  \node[visible on=<8->, anchor=south west, text=hooknavy, font=\fontsize{15}{18}\selectfont\sffamily\bfseries]
-    at (-7.2, 3.02) {What if the person itself isn't the information?};
-  \node[visible on=<9->, anchor=south west, text=hooknavy, font=\fontsize{19}{23}\selectfont\sffamily\bfseries]
-    at (-7.2, 2.28) {What if the \textcolor{hookorange}{connections} are?};
 
-  % ================= CENTRAL NODE: MBAPPÉ =================
-  \coordinate (C) at (0, 0.9);
+  \coordinate (C) at (0, 0.35);
   \begin{scope}
-    \clip (C) circle (1.3cm);
-    \node[inner sep=0pt] at ($(C)+(0,-0.23)$) {\includegraphics[height=4.3cm]{mbappe_before_cutout.png}};
+    \clip (C) circle (1.7cm);
+    \node[inner sep=0pt] at ($(C)+(0,-0.3)$) {\includegraphics[height=5.6cm]{mbappe_before_cutout.png}};
   \end{scope}
-  \node[visible on=<1-8>, circle, draw=hooknavy, line width=2pt, minimum size=2.6cm, inner sep=0pt] (mb) at (C) {};
-  \node[visible on=<9->,  circle, draw=hookorange, line width=2.6pt, minimum size=2.6cm, inner sep=0pt] at (C) {};
+  \draw[chalk, line width=2.2pt] (C) circle (1.7cm);
 
-  \node[anchor=north, fill=hooknavy, text=hookbg, rounded corners=3pt, inner xsep=9pt, inner ysep=3pt, align=center]
-    (pill) at (0, -0.3)
+  \node[hookpill, anchor=north] at (0,-1.25)
+    {{\fontsize{10}{12}\selectfont\sffamily\bfseries KYLIAN MBAPPÉ}\\[-1pt]
+     {\fontsize{7}{8.5}\selectfont\twfont FORWARD $\cdot$ WORLD CUP WINNER}};
+
+  \node[visible on=<2->, anchor=north, text=dimtext, font=\fontsize{13}{16}\selectfont\sffamily\itshape]
+    at (0,-2.7) {On his own, nothing looks suspicious.};
+\end{tikzpicture}
+\end{frame}
+
+% ---------------- 1.B: the three interactions ----------------
+\begin{frame}[plain]
+\kicker{SCENE 01 / 17 \quad COLD OPEN}
+\begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
+  \node[anchor=south west, text=chalk, font=\fontsize{23}{27}\selectfont\sffamily\bfseries]
+    at (-7.2, 2.75) {Can we trust this person?};
+
+  % centre node
+  \coordinate (C) at (0, 0.45);
+  \begin{scope}
+    \clip (C) circle (1.35cm);
+    \node[inner sep=0pt] at ($(C)+(0,-0.24)$) {\includegraphics[height=4.45cm]{mbappe_before_cutout.png}};
+  \end{scope}
+  \node[circle, draw=chalk, line width=2pt, minimum size=2.7cm, inner sep=0pt] (mb) at (C) {};
+  \node[hookpill, anchor=north] at (0,-0.8)
     {{\fontsize{9}{11}\selectfont\sffamily\bfseries KYLIAN MBAPPÉ}\\[-1pt]
      {\fontsize{6.5}{8}\selectfont\twfont FORWARD $\cdot$ WORLD CUP WINNER}};
 
-  % ================= NEIGHBOUR 1: pitch staff (click 3) =================
+  % neighbour 1: pitch staff (click 1)
+  \begin{scope}[visible on=<1->]
+    \begin{scope}
+      \clip[rounded corners=5pt] (-6.295,-1.05) rectangle (-3.905,1.95);
+      \node[inner sep=0pt] at (-5.1, 0.45) {\includegraphics[height=3.0cm]{cleaning.jpeg}};
+    \end{scope}
+    \node[hookphoto, minimum width=2.39cm, minimum height=3.0cm] (n1) at (-5.1, 0.45) {};
+    \node[hookname, anchor=south] at (-5.1, 2.0) {PITCH STAFF};
+    \draw[hookedge] (n1) -- (mb);
+    \node[hookrel, anchor=south] at (-2.62, 0.55) {ordered to\\mop the pitch};
+  \end{scope}
+
+  % neighbour 2: the referee (click 2)
+  \begin{scope}[visible on=<2->]
+    \begin{scope}
+      \clip[rounded corners=5pt] (3.34,0.35) rectangle (6.66,2.35);
+      \node[inner sep=0pt] at (5.0, 1.35) {\includegraphics[height=2.0cm]{commanding_referee.jpeg}};
+    \end{scope}
+    \node[hookphoto, minimum width=3.32cm, minimum height=2.0cm] (n2) at (5.0, 1.35) {};
+    \node[hookname, anchor=south] at (5.0, 2.4) {THE REFEREE};
+    \draw[hookedge] (n2) -- (mb);
+    \node[hookrel, anchor=south] at (2.3, 1.2) {told how to\\referee};
+  \end{scope}
+
+  % neighbour 3: the viewer (click 3)
   \begin{scope}[visible on=<3->]
-    \fill[hooknavy!8, rounded corners=5pt] (-6.155,-0.88) rectangle (-4.085,1.72);
     \begin{scope}
-      \clip[rounded corners=5pt] (-6.235,-0.8) rectangle (-4.165,1.8);
-      \node[inner sep=0pt] at (-5.2, 0.5) {\includegraphics[height=2.6cm]{cleaning.jpeg}};
+      \clip[rounded corners=5pt] (3.787,-2.7) rectangle (6.213,-0.6);
+      \node[inner sep=0pt] at (5.0, -1.65) {\includegraphics[height=2.1cm]{hook_4thwall.jpg}};
     \end{scope}
-    \node[hookphoto, minimum width=2.07cm, minimum height=2.6cm] (n1) at (-5.2, 0.5) {};
-    \node[hookname, anchor=south] at (-5.2, 1.85) {PITCH STAFF};
+    \node[hookphoto, minimum width=2.426cm, minimum height=2.1cm] (n3) at (5.0, -1.65) {};
+    \node[hookname, anchor=north] at (5.0, -2.78) {YOU, THE VIEWER};
+    \draw[hookedge] (n3) -- (mb);
+    \node[hookrel, anchor=south west] at (2.55, -0.45) {stared down\\through the screen};
   \end{scope}
-  \draw[hookedge,   visible on=<3-8>] (n1) -- (mb);
-  \draw[hookedgeOn, visible on=<9->]  (n1) -- (mb);
-  \node[hookrel, visible on=<3->, anchor=south] at (-2.73, 0.8) {ordered to\\mop the pitch};
 
-  % ================= NEIGHBOUR 2: the referee (click 4) =================
-  \begin{scope}[visible on=<4->]
-    \fill[hooknavy!8, rounded corners=5pt] (3.785,0.37) rectangle (6.775,2.17);
-    \begin{scope}
-      \clip[rounded corners=5pt] (3.705,0.45) rectangle (6.695,2.25);
-      \node[inner sep=0pt] at (5.2, 1.35) {\includegraphics[height=1.8cm]{commanding_referee.jpeg}};
-    \end{scope}
-    \node[hookphoto, minimum width=2.99cm, minimum height=1.8cm] (n2) at (5.2, 1.35) {};
-    \node[hookname, anchor=south] at (5.2, 2.3) {THE REFEREE};
-  \end{scope}
-  \draw[hookedge,   visible on=<4-8>] (n2) -- (mb);
-  \draw[hookedgeOn, visible on=<9->]  (n2) -- (mb);
-  \node[hookrel, visible on=<4->, anchor=south] at (2.5, 1.28) {told how to\\referee};
-
-  % ================= NEIGHBOUR 3: the viewer / 4th wall (click 5) =================
-  \begin{scope}[visible on=<5->]
-    \fill[hooknavy!8, rounded corners=5pt] (4.182,-3.43) rectangle (6.378,-1.53);
-    \begin{scope}
-      \clip[rounded corners=5pt] (4.102,-3.35) rectangle (6.298,-1.45);
-      \node[inner sep=0pt] at (5.2, -2.4) {\includegraphics[height=1.9cm]{hook_4thwall.jpg}};
-    \end{scope}
-    \node[hookphoto, minimum width=2.196cm, minimum height=1.9cm] (n3) at (5.2, -2.4) {};
-    \node[hookname, anchor=south] at (5.2, -1.4) {YOU, THE VIEWER};
-  \end{scope}
-  \draw[hookedge,   visible on=<5-8>] (n3) -- (mb);
-  \draw[hookedgeOn, visible on=<9->]  (n3) -- (mb);
-  \node[hookrel, visible on=<5->, anchor=south west] at (2.75, -0.62) {stared down\\through the screen};
-
-  % ================= INFERENCE: relationships -> information -> DICTATOR? =================
-  \draw[visible on=<7->, draw=hooknavy!55, line width=1.3pt, -{Stealth[length=7pt]}] (0,-1.3) -- (0,-1.8);
-  \node[visible on=<7->, anchor=east, text=hookorange, font=\fontsize{7}{8.5}\selectfont\twfont\bfseries]
-    at (-0.25,-1.55) {INFERRED FROM HIS CONNECTIONS};
-
-  \node[visible on=<7-8>, anchor=north, text=hookred, font=\dispfont\fontsize{30}{32}\selectfont]
-    at (0,-1.8) {DICTATOR?};
-  \node[visible on=<9->, anchor=north, text=hookred!35, font=\dispfont\fontsize{30}{32}\selectfont]
-    at (0,-1.8) {DICTATOR?};
-  \node[visible on=<7->, anchor=north, text=hookred!70, font=\fontsize{7}{8.5}\selectfont\twfont\bfseries]
-    at (0,-2.8) {(OF THE PENALTY BOX)};
-
-  % ================= BOTTOM-LEFT NARRATION LINE =================
-  \node[visible on=<2-5>, anchor=south west, text=hooknavy!65, font=\fontsize{12}{15}\selectfont\sffamily\itshape]
-    at (-7.2,-3.95) {On his own, nothing looks suspicious.};
-  \node[visible on=<6->, anchor=south west, text=hooknavy, font=\fontsize{12}{15}\selectfont\sffamily\itshape]
-    at (-7.2,-3.95) {Wait\dots\ why is everyone taking orders from this guy?};
-
+  % narration
+  \node[visible on=<1-3>, anchor=south west, text=dimtext, font=\fontsize{12}{15}\selectfont\sffamily\itshape]
+    at (-7.2,-3.9) {On his own, nothing looks suspicious.};
+  \node[visible on=<4->, anchor=south west, text=chalk, font=\fontsize{12}{15}\selectfont\sffamily\itshape]
+    at (-7.2,-3.9) {Wait\dots\ why is everyone taking orders from this guy?};
 \end{tikzpicture}
 \end{frame}
-}
+
+% ---------------- 1.C: the inference, then the two questions ----------------
+\begin{frame}[plain]
+\kicker{SCENE 01 / 17 \quad COLD OPEN}
+\begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
+  \node[anchor=south west, text=chalk, font=\fontsize{23}{27}\selectfont\sffamily\bfseries]
+    at (-7.2, 2.75) {Can we trust this person?};
+
+  % ---- left: the dictator, with his three connections as small nodes ----
+  \coordinate (D) at (-3.6, 0.45);
+  \begin{scope}
+    \clip (D) circle (1.6cm);
+    \node[inner sep=0pt] at ($(D)+(0,-0.45)$) {\includegraphics[height=4.2cm]{mbappe_dictator.jpg}};
+  \end{scope}
+  \node[visible on=<1-2>, circle, draw=crimson, line width=2.4pt, minimum size=3.2cm, inner sep=0pt] (dm) at (D) {};
+  \node[visible on=<3->,  circle, draw=gold,    line width=2.8pt, minimum size=3.2cm, inner sep=0pt] at (D) {};
+
+  % three connection thumbnails, each crop centred on the face
+  \foreach \name/\px/\py/\dx/\dy/\img/\h in {
+      t1/-6.35/1.75/0.28/-0.51/cleaning.jpeg/1.6cm,
+      t2/-0.95/1.75/-0.57/-0.23/commanding_referee.jpeg/1.2cm,
+      t3/-6.35/-0.95/-0.28/0.0/hook_4thwall.jpg/1.3cm} {
+    \begin{scope}
+      \clip (\px,\py) circle (0.6cm);
+      \node[inner sep=0pt] at (\px+\dx,\py+\dy) {\includegraphics[height=\h]{\img}};
+    \end{scope}
+    \node[circle, draw=chalk!45, line width=1pt, minimum size=1.2cm, inner sep=0pt] (\name) at (\px,\py) {};
+  }
+  \foreach \name in {t1,t2,t3} {
+    \draw[hookedge,   visible on=<1-2>] (\name) -- (dm);
+    \draw[hookedgeOn, visible on=<3->]  (\name) -- (dm);
+  }
+
+  \node[anchor=north, text=gold, font=\fontsize{7.5}{9}\selectfont\twfont\bfseries]
+    at (-3.6,-1.3) {INFERRED FROM HIS CONNECTIONS};
+  \node[visible on=<1-2>, anchor=north, text=crimson,    font=\dispfont\fontsize{34}{36}\selectfont] at (-3.6,-1.62) {DICTATOR?};
+  \node[visible on=<3->,  anchor=north, text=crimson!40, font=\dispfont\fontsize{34}{36}\selectfont] at (-3.6,-1.62) {DICTATOR?};
+  \node[anchor=north, text=crimson!75, font=\fontsize{7.5}{9}\selectfont\twfont\bfseries]
+    at (-3.6,-2.8) {(OF THE PENALTY BOX)};
+
+  % ---- right: the two questions ----
+  \draw[visible on=<2->, dimtext!30, line width=0.6pt] (0.55, 1.9) -- (0.55,-2.6);
+  \node[visible on=<2->, anchor=south west, text=chalk, font=\fontsize{15}{19}\selectfont\sffamily\bfseries, align=left]
+    at (0.95, 0.55) {What if the person itself\\isn't the information?};
+  \node[visible on=<3->, anchor=north west, text=chalk, font=\fontsize{21}{25}\selectfont\sffamily\bfseries, align=left]
+    at (0.95, -0.2) {What if the\\\textcolor{gold}{connections} are?};
+\end{tikzpicture}
+\end{frame}
 
 % --- 2.1: CNN Example · Predictable Grid ---
 \begin{frame}[plain]

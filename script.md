@@ -38,7 +38,7 @@
 ---
 
 ### Slide 01–02 [Pages 1–9] · Scene 01: Cold Open — Mbappé and His Connections
-**Visuals**: One slide that builds click by click on a warm cream background. Mbappé is the central node. Three photos arrive as neighbouring nodes, each joined to him by an edge with the relationship written on it in orange: `PITCH STAFF — ordered to mop the pitch`, `THE REFEREE — told how to referee`, `YOU, THE VIEWER — stared down through the screen`. An arrow then leads from Mbappé down to a red `DICTATOR?` (of the penalty box). Finally the title becomes the two questions, and every edge turns orange.
+**Visuals**: Same nine clicks as before, now spread over three slides on the deck's normal white background. Pages 1–2: Mbappé alone as the centre node. Pages 3–6: the three photos arrive as neighbouring nodes, each joined to him by an edge labelled with the relationship in orange (`PITCH STAFF — ordered to mop the pitch`, `THE REFEREE — told how to referee`, `YOU, THE VIEWER — stared down through the screen`). Pages 7–9: Mbappé now appears in the military-uniform photo, still linked to the three connections, with `INFERRED FROM HIS CONNECTIONS` → red `DICTATOR?` (of the penalty box); the two questions appear on the right and the connection edges turn orange on the last click.
 
 - **[Page 1 / Initial]** *(Mbappé alone: KYLIAN MBAPPÉ · FORWARD · WORLD CUP WINNER)*
   > "Can we trust this person?
